@@ -71,12 +71,8 @@
 
 - By following this agreement, we commit to enhancing collaboration, code quality, and project progress.
 
-13. Document History
-
-- [Date and version number of the contract]
-- Brief description of changes made in each version]
-  Signatures
-  By signing below, we acknowledge that we have read, understood, and agreed to adhere to the terms outlined in this contract.
+13. Signatures
+- By signing below, we acknowledge that we have read, understood, and agreed to adhere to the terms outlined in this contract.
 
 Have been read and signed by;
 
