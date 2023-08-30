@@ -3,33 +3,45 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProgramComponent } from './program/program.component';
-import { WorkoutComponent } from './workout/workout.component';
-import { ExcerciseComponent } from './excercise/excercise.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { ProgramComponent } from './components/program/program.component';
+import { WorkoutComponent } from './components/workout/workout.component';
+import { ExcerciseComponent } from './components/excercise/excercise.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { GuardsComponent } from './guards/guards.component';
-import { ProfileComponent } from './views/profile/profile.component';
-import { LoginComponent } from './views/login/login.component';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { AdminComponent } from './views/admin/admin.component';
+import { AuthGuard } from './guards/auth.guard';
+import {LoginComponent} from "./components/login/login.component";
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {LoginViewComponent} from "./views/login-view/login-view.component";
+import {AdminViewComponent} from "./views/admin-view/admin-view.component";
+import {DashboardViewComponent} from "./views/dashboard-view/dashboard-view.component";
+import {ProfileViewComponent} from "./views/profile-view/profile-view.component";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProgramComponent,
     WorkoutComponent,
+    LoginComponent,
     ExcerciseComponent,
     NavbarComponent,
     FooterComponent,
-    GuardsComponent,
-    ProfileComponent,
-    LoginComponent,
+    AuthGuard,
+    LoginViewComponent,
+    AdminViewComponent,
+    DashboardViewComponent,
+    ProfileViewComponent,
     DashboardComponent,
+    ProfileComponent,
     AdminComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

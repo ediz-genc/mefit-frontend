@@ -1,0 +1,68 @@
+
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#app-name{
+  flex: 1;
+  margin: auto;
+  padding: 10px;
+  font-size: x-large;
+  color: #ffffff;
+}
+
+ul {
+  flex: auto;
+  color: #ffffff;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  color: #ffffff;
+  background-color: #1976d2;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#spacer{
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  color: white;
+  display: flex;
+  font-size: large;
+}
+
+nav li {
+  margin-right: 20px;
+}
+.login,
+.profile,
+.dashboard{
+  color: white;
+}
+
+.logout {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: large;
+  margin-left: auto; /* Push the logout link to the right */
+  color: #ffffff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+  background-color: #d04545; /* Slightly darker red on hover */
+}
+
+
