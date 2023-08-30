@@ -80,10 +80,10 @@
 
 Have been read and signed by;
 
-[Ediz Genc]()
+[Ediz Genc](https://github.com/ediz-genc)
 
 [Gustaf Hasselgren](https://github.com/GustafHasselgren)
 
-[Linus Tareby]()
+[Linus Tareby](https://github.com/linusJtareby)
 
 [Mahir Eziz](https://github.com/Mahezi)
