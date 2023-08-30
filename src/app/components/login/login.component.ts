@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from "@angular/router";
+import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,9 +11,11 @@ export class LoginComponent {
 
   constructor(
     private readonly router: Router,
-  ) { }
+  ) {
+  }
+
   login() {
-    this.router.navigateByUrl("");
+    this.router.navigateByUrl("dashboard").then(r => true);
   }
 
 }
