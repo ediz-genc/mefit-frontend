@@ -22,6 +22,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AuthInterceptor } from './guards/interceptor/auth.interceptor';
 import { ProgramViewComponent } from './views/program-view/program-view.component';
 import { ProfileCardComponent } from './components/profile/profile-card/profile-card.component';
+import { ProfileGoalHistoryComponent } from './components/profile/profile-goal-history/profile-goal-history.component';
+import { ProfileGoalHistoryItemComponent } from './components/profile/profile-goal-history-item/profile-goal-history-item.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ProfileCardComponent } from './components/profile/profile-card/profile-
     ProfileComponent,
     AdminComponent,
     ProgramViewComponent,
-    ProfileCardComponent
+    ProfileCardComponent,
+    ProfileGoalHistoryComponent,
+    ProfileGoalHistoryItemComponent
   ],
   imports: [
     BrowserModule,

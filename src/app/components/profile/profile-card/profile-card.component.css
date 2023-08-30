@@ -1,8 +1,7 @@
 .card.container {
-    background-color: lightgrey;
-    margin: auto;
-    max-width: 60rem;
-    padding: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
 }
 
 .row {
@@ -10,6 +9,16 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin: auto;
+}
+
+.card-top-row {
+    background: white;
+}
+
+.card-main-body {
+    background-color: lightgrey;
+    padding: 3rem;
+    position: relative;
 }
 
 .user-name {
@@ -24,8 +33,13 @@
     align-items: center;
 }
 
+.img-container {
+    
+}
 .avatar {
     border-radius: 50%;
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
+    position: relative;
+    top: -8rem;
 }
