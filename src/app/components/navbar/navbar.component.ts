@@ -12,7 +12,7 @@ export class NavbarComponent {
   ngOnInit(): void {}
 
   logout(): void {
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('login').then(r => true)
   }
 
 }
