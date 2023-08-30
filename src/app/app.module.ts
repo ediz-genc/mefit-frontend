@@ -21,6 +21,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuthInterceptor } from './guards/interceptor/auth.interceptor';
 import { ProgramViewComponent } from './views/program-view/program-view.component';
+import { ProfileCardComponent } from './components/profile/profile-card/profile-card.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +40,8 @@ import { ProgramViewComponent } from './views/program-view/program-view.componen
     DashboardComponent,
     ProfileComponent,
     AdminComponent,
-    ProgramViewComponent
-  
+    ProgramViewComponent,
+    ProfileCardComponent
   ],
   imports: [
     BrowserModule,
