@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FitnessLevel } from 'src/app/enums/fitness-level.enum';
 
 @Component({
   selector: 'app-excercise',
@@ -6,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./excercise.component.css']
 })
 export class ExcerciseComponent {
-
 }

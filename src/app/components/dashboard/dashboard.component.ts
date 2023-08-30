@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FitnessLevel } from 'src/app/enums/fitness-level.enum';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  fitnessLevel: FitnessLevel = FitnessLevel.Intermediate; // TEST!
 
 }
