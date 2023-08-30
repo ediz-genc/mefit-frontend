@@ -1,10 +1,12 @@
-export interface exercise {
+import { FitnessLevel } from "../enums/fitness-level.enum"
+
+export interface Exercise {
     id: number
     name: string
     description: string
     muscleGroup: string
-    imag: string
+    img: string
     video: string
-    fitnessLevel: String
+    fitnessLevel: FitnessLevel
     workouts: []
 }
