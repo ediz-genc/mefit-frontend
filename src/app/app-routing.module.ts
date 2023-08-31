@@ -11,21 +11,22 @@ const routes: Routes = [
     path:"login",
     pathMatch:"full",
     component: LoginViewComponent,
+    // canActivate:[LoginAuthGuard]
   },
   {
     path:"dashboard",
     component: DashboardViewComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path:"profile",
     component: ProfileViewComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path:"admin",
     component: AdminViewComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
 ];
 
