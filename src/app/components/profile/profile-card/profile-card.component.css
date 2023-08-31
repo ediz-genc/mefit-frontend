@@ -7,22 +7,21 @@
 .row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     margin: auto;
 }
 
+.user-name {
+    margin: auto;
+}
 .card-top-row {
     background: white;
+    padding: 2rem;
 }
 
 .card-main-body {
     background-color: lightgrey;
     padding: 3rem;
     position: relative;
-}
-
-.user-name {
-    
 }
 
 .user-info-container {
@@ -33,9 +32,6 @@
     align-items: center;
 }
 
-.img-container {
-    
-}
 .avatar {
     border-radius: 50%;
     height: 250px;
