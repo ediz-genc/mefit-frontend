@@ -1,10 +1,13 @@
+import { Goal } from "./goal.model";
+import { Workout } from "./workout.model";
+
 export interface Program {
     id: number
     name: string
     description: string
-    img: string
+    imgUrl: string
     category: string;
-    workouts: []
-    goals: []
+    workouts: Workout[]
+    goals: Goal[]
 }
 

@@ -1,9 +1,14 @@
+import { Program } from "./program.model"
+import { User } from "./user.model"
+import { Workout } from "./workout.model"
+
 export interface Goal {
     id: number
     name: string
-    startDate: number
-    endDate: number
-    user: []
-    programs: []
-    workouts: []
+    startDate: string
+    endDate: string
+    completed: boolean
+    user: User
+    programs: Program[]
+    workouts: Workout[]
 }
