@@ -1,12 +1,14 @@
 import { UserRole } from "../enums/user-role.enum"
+import { Goal } from "./goal.model"
 
 export interface User {
     id: number
     username: string
-    role: UserRole
-    img: string
+    role: string
+    profilePicUrl: string
     bio: string
     weight: string
     length: string
-    goals: []
+    currentGoal: Goal
+    goalHistory: Goal[]
 }

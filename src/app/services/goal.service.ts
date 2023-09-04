@@ -1,3 +1,4 @@
+
 // View and set goals
 // This view should show the full details pertaining to a goal (weekly workouts). 
 
@@ -49,6 +50,7 @@ export class GoalService {
 
     //-----------------Contributor-specific actions-----------------//
      
+
 
     
 }

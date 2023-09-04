@@ -1,3 +1,4 @@
+
 // Workouts are shown in two areas, one for users and another for contributors.
 
 
@@ -39,3 +40,4 @@ export class WorkoutService {
         return;
     }
 }
+

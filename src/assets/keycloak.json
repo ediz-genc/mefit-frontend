@@ -1,0 +1,8 @@
+{
+    "realm": "me-fit-auth-v1",
+    "auth-server-url": "https://lemur-9.cloud-iam.com/auth/",
+    "ssl-required": "external",
+    "resource": "miFit",
+    "public-client": true,
+    "confidential-port": 0
+  }

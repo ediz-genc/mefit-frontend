@@ -1,3 +1,4 @@
+
 // This section describes the functionality related to a user’s profile and their interactions with the application.
 // For every user, there should exist a profile view that is available to all other users within the system.
 
