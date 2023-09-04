@@ -1,30 +1,30 @@
-//Retrieves user profile information from Keycloak.
-//Manages user-related data and functionality.
+
+// This section describes the functionality related to a user’s profile and their interactions with the application.
+// For every user, there should exist a profile view that is available to all other users within the system.
 
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { User } from "../models/user.model";
 import { Injectable } from "@angular/core";
-import { Goal } from "../models/goal.model";
-import { GoalService } from "./goal.service";
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 
-export class UserService{
-    private API_URL:string = "http://localhost:8080/api/v1/users"
-
-    constructor(private readonly http:HttpClient){ }
+export class UserService {
+    constructor(private http: HttpClient) {}
 
 
-
-    fetchAllUsers(): void{
-         this.http.get<User[]>(this.API_URL)
+    // The profile view should display the user’s name, profile picture, short bio, fitness preferences, and other relevant information such as height and weight.
+    getUserProfile(){
+        return;
     }
 
-    fetchUsers():Observable<User[]> {
-        return this.http.get<User[]>(this.API_URL)
+    // Every user should have a corresponding settings view containing a form to edit their profile settings.
+    // They should not be able to change their credentials in MeFit as they are stored on an Identity Provider.
+    updateUserProfile(){
+        return;
     }
+
+
+
 
 }
