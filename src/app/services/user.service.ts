@@ -4,18 +4,40 @@
 
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { User } from "../models/user.model";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
+
 export class UserService {
     constructor(private http: HttpClient) {}
 
+    baseApiUrl = environment.apiUrl
 
     // The profile view should display the user’s name, profile picture, short bio, fitness preferences, and other relevant information such as height and weight.
-    getUserProfile(){
-        return;
+    getUser() :Observable<User>{
+        return this.http.get<User>(this.baseApiUrl + '/users');
+    }
+
+    getUserById(id: string) :Observable<User>{ 
+        return this.http.get<User>(this.baseApiUrl + '/users/' + id);
+    }
+
+    addUser(newUser: User) :Observable<any>{
+
+        const userToAdd = this.http.post<User>(this.baseApiUrl + '/users/', 
+            JSON.stringify(newUser),
+            {
+                headers: {
+                    Authentication: 'Bearer ' + localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+            },
+        })
+        return userToAdd;
     }
 
     // Every user should have a corresponding settings view containing a form to edit their profile settings.

@@ -1,4 +1,5 @@
 
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import keycloak from "src/keycloak";
 
@@ -7,6 +8,8 @@ import keycloak from "src/keycloak";
 })
 
 export class LoginService {
+
+    constructor(private readonly http: HttpClient) {}
 
     saveToken(): void { 
         localStorage.setItem('token', JSON.stringify(keycloak.token));
@@ -26,8 +29,6 @@ export class LoginService {
         return false;
     }
 
-    
-
     login() {
         keycloak.login();
     }
@@ -36,5 +37,12 @@ export class LoginService {
         keycloak.logout();
         localStorage.removeItem('token');
     }
+
+    getToken(): string{
+        return JSON.parse(localStorage.getItem('token')!);
+    }
+
+
+
 
 }
