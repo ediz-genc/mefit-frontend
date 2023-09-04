@@ -1,8 +1,7 @@
-import {Component, OnDestroy} from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import { UserService } from 'src/app/services/user.service';
-import keycloak from 'src/keycloak';
+import { LoginService } from 'src/app/services/login.service';
+
 
 
 @Component({
@@ -14,15 +13,17 @@ export class LoginComponent{
 
   constructor(
     private readonly router: Router, 
-    private readonly userService: UserService) { }
+    private readonly loginService: LoginService) { }
 
+  ngOnInit(): void { 
+    if (this.loginService.userAuthenticated() == true && this.loginService.tokenSaved() == false) {
+      this.loginService.saveToken();
+      this.router.navigateByUrl("dashboard");
+    }
+  }
 
   login() {
-    //this.router.navigateByUrl("dashboard").then(r => true);
-    // keycloak.login();
-    console.log(keycloak.token)
-
-    keycloak.token;
+    this.loginService.login();
   }
 
 }

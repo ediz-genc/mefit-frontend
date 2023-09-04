@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private readonly router: Router){}
+  constructor(private readonly router: Router, private readonly loginService: LoginService){}
 
-  ngOnInit(): void {}
-
-  logout(): void {
-    this.router.navigateByUrl('login').then(r => true)
+  ngOnInit(): void {
   }
 
+  logout(): void {
+    this.loginService.logout();
+  }
+
+  tokenSaved(): boolean {
+    return this.loginService.tokenSaved();
+  }
 }
