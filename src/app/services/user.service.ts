@@ -7,6 +7,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { User } from "../models/user.model";
 import { environment } from "src/environments/environment";
+import { User } from "../models/user.model";
+import { UserRole } from "../enums/user-role.enum";
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +16,23 @@ import { environment } from "src/environments/environment";
 
 
 export class UserService {
+
+    private currentUser:User = {
+        id: 0,
+        username: "TestUser",
+        role: UserRole.Admin,
+        img: "https://www.w3schools.com/howto/img_avatar.png",
+        bio: "Test bio that might be longer in prod. Alot longer in fact, so long that you might need to test it on multiple lines. And even then, it might not be enough. Go ahead, try your best.",
+        weight: "65",
+        length: "170",
+        goals: []
+    }
+
     constructor(private http: HttpClient) {}
 
+    getCurrentUser() {
+        return this.currentUser;
+    }
     baseApiUrl = environment.apiUrl
 
     // The profile view should display the user’s name, profile picture, short bio, fitness preferences, and other relevant information such as height and weight.
@@ -42,7 +59,7 @@ export class UserService {
 
     // Every user should have a corresponding settings view containing a form to edit their profile settings.
     // They should not be able to change their credentials in MeFit as they are stored on an Identity Provider.
-    updateUserProfile(){
+    updateUserProfile() {
         return;
     }
 
