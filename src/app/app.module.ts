@@ -19,6 +19,7 @@ import {ProfileViewComponent} from "./views/profile-view/profile-view.component"
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ProgramViewComponent } from './views/program-view/program-view.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { AdminComponent } from './components/admin/admin.component';
     ProfileViewComponent,
     DashboardComponent,
     ProfileComponent,
-    AdminComponent
+    AdminComponent,
+    ProgramViewComponent
+  
   ],
   imports: [
     BrowserModule,

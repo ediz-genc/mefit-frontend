@@ -1,5 +1,5 @@
 export interface Program {
-    id: number
+    programId: number
     name: string
     description: string
     img: string

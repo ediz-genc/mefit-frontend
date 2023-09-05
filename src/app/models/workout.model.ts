@@ -1,5 +1,5 @@
 export interface Workout {
-    id: number
+    workoutId: number
     name: string
     description: string
     exercises: []

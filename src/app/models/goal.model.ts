@@ -1,5 +1,5 @@
 export interface Goal {
-    id: number
+    goalId: number
     name: string
     startDate: number
     endDate: number

@@ -5,6 +5,7 @@ import {DashboardViewComponent} from "./views/dashboard-view/dashboard-view.comp
 import {ProfileViewComponent} from "./views/profile-view/profile-view.component";
 import {AdminViewComponent} from "./views/admin-view/admin-view.component";
 import {AuthGuard} from "./guards/auth.guard";
+import { ProgramViewComponent } from './views/program-view/program-view.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path:"profile",
     component: ProfileViewComponent,
+    // canActivate:[AuthGuard]
+  },
+  {
+    path:"program",
+    component: ProgramViewComponent,
     // canActivate:[AuthGuard]
   },
   {
