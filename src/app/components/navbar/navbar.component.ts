@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import keycloak from 'src/keycloak';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +12,7 @@ export class NavbarComponent {
   constructor(private readonly router: Router, private readonly loginService: LoginService){}
 
   ngOnInit(): void {
+    console.log(keycloak.token)
   }
 
   logout(): void {
