@@ -15,6 +15,7 @@
 
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -45,6 +46,14 @@ export class GoalService {
     logCompletedWorkout(){
 
     }
+
+    addProgramAndWorkoutToGoal(goalId: number, programId: number, workoutId: number): Observable<void> {
+        const data = {
+          programId: programId,
+          workoutId: workoutId,
+        };
+        return this.http.patch<void>(`http://localhost:8080/api/v1/goals/${goalId}`, data);
+      }
 
 
 

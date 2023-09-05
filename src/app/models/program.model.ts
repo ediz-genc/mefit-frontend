@@ -2,7 +2,7 @@ import { Goal } from "./goal.model";
 import { Workout } from "./workout.model";
 
 export interface Program {
-    id: number
+    programId: number
     name: string
     description: string
     imgUrl: string

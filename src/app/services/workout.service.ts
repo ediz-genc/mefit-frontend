@@ -5,6 +5,8 @@
 
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Workout } from "../models/workout.model";
 
 @Injectable({
     providedIn: 'root'
@@ -16,16 +18,16 @@ export class WorkoutService {
     //-----------------User-specific actions-----------------//
     
     // As a user, you can browse workouts in the application. Workouts can be filtered by type or other tags. Users can view the details of a workout, such as the exercises, sets, and reps for each exercise.
-    getWorkouts(){
-        return;
+    getWorkouts(): Observable<Workout[]> {
+        return this.http.get<Workout[]>("http://localhost:8080/api/v1/workouts");
     }
-
 
     // A user can add a workout to a goal.
-    addWorkoutToGoal(){
-        return;
+    addWorkoutToGoal(workoutId: number, goalId: number): Observable<any> {
+        return this.http.patch<any>(`http://localhost:8080/api/v1/goals/${goalId}`, {
+          workoutId: workoutId,
+        });
     }
-
     
     //-----------------Contributor-specific actions-----------------//
 

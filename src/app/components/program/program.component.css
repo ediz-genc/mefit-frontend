@@ -1,0 +1,65 @@
+/* user.component.css */
+
+/* Container for the user component */
+.user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 100%; /* Ensure the component doesn't overflow its container */
+  }
+  
+  /* Select dropdowns */
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Button for adding to goal */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; /* Lägger till 10px avstånd ovanför knappen */
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Optional: Add some spacing and margins */
+  h2 {
+    margin-top: 20px;
+  }
+  
+  /* Optional: Style the container for the dropdowns and button */
+  .selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Expand to full width on smaller screens */
+    max-width: 300px; /* Limit width on larger screens */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive Styles */
+  
+  /* Adjust styles for screens with a maximum width of 768px */
+  @media (max-width: 768px) {
+    .selection-container {
+      max-width: 100%; /* Expand to full width */
+    }
+  }
+  

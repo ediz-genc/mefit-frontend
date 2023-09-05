@@ -2,7 +2,7 @@ import { FitnessLevel } from "../enums/fitness-level.enum"
 import { Workout } from "./workout.model"
 
 export interface Exercise {
-    id: number
+    exerciseId: number
     name: string
     description: string
     muscleGroup: string

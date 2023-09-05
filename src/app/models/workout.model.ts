@@ -3,7 +3,7 @@ import { Goal } from "./goal.model"
 import { Program } from "./program.model"
 
 export interface Workout {
-    id: number
+    workoutId: number
     name: string
     description: string
     exercises: Exercise[]

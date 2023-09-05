@@ -1,1 +1,20 @@
 <p>program works!</p>
+
+<div class="user-container">
+    <h2>Programs</h2>
+    <div class="selection-container">
+      <select [(ngModel)]="selectedProgram">
+        <option *ngFor="let program of programs" [value]="program">{{ program.name }}</option>
+      </select>
+    </div>
+  
+    <h2>Workouts</h2>
+    <div class="selection-container">
+      <select [(ngModel)]="selectedWorkout">
+        <option *ngFor="let workout of workouts" [value]="workout">{{ workout.name }}</option>
+      </select>
+    </div>
+  
+    <button (click)="addProgramAndWorkoutToGoal()">Add to Goal</button>
+  </div>
+  
