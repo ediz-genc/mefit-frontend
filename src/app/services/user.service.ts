@@ -19,8 +19,8 @@ export class UserService {
     baseApiUrl = environment.apiUrl
 
     // The profile view should display the user’s name, profile picture, short bio, fitness preferences, and other relevant information such as height and weight.
-    getUser() :Observable<User>{
-        return this.http.get<User>(this.baseApiUrl + '/users');
+    getUser() :Observable<any>{
+        return this.http.get(this.baseApiUrl + '/users', {})
     }
 
     getUserById(id: string) :Observable<User>{ 

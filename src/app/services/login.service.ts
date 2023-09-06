@@ -12,7 +12,7 @@ export class LoginService {
     constructor(private readonly http: HttpClient) {}
 
     saveToken(): void { 
-        localStorage.setItem('token', JSON.stringify(keycloak.token));
+        localStorage.setItem('token', keycloak.token!);
     }
 
     tokenSaved(): boolean  { 
@@ -39,7 +39,7 @@ export class LoginService {
     }
 
     getToken(): string{
-        return JSON.parse(localStorage.getItem('token')!);
+        return localStorage.getItem('token')!;
     }
 
 
