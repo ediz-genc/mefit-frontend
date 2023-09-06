@@ -7,7 +7,6 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { User } from "../models/user.model";
 import { environment } from "src/environments/environment";
-import { User } from "../models/user.model";
 import { UserRole } from "../enums/user-role.enum";
 
 @Injectable({
@@ -18,14 +17,15 @@ import { UserRole } from "../enums/user-role.enum";
 export class UserService {
 
     private currentUser:User = {
-        id: 0,
+        userId: 0,
         username: "TestUser",
         role: UserRole.Admin,
-        img: "https://www.w3schools.com/howto/img_avatar.png",
+        profilePicUrl: "https://www.w3schools.com/howto/img_avatar.png",
         bio: "Test bio that might be longer in prod. Alot longer in fact, so long that you might need to test it on multiple lines. And even then, it might not be enough. Go ahead, try your best.",
         weight: "65",
         length: "170",
-        goals: []
+        currentGoalId: 0,
+        goalHistoryIds: [0]
     }
 
     constructor(private http: HttpClient) {}
