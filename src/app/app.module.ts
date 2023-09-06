@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './guards/auth.guard';
 import {LoginComponent} from "./components/login/login.component";
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {LoginViewComponent} from "./views/login-view/login-view.component";
 import {AdminViewComponent} from "./views/admin-view/admin-view.component";
 import {DashboardViewComponent} from "./views/dashboard-view/dashboard-view.component";
@@ -19,7 +19,11 @@ import {ProfileViewComponent} from "./views/profile-view/profile-view.component"
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AuthInterceptor } from './guards/interceptor/auth.interceptor';
 import { ProgramViewComponent } from './views/program-view/program-view.component';
+import { ProfileCardComponent } from './components/profile/profile-card/profile-card.component';
+import { ProfileGoalHistoryComponent } from './components/profile/profile-goal-history/profile-goal-history.component';
+import { ProfileGoalHistoryItemComponent } from './components/profile/profile-goal-history-item/profile-goal-history-item.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +42,10 @@ import { ProgramViewComponent } from './views/program-view/program-view.componen
     DashboardComponent,
     ProfileComponent,
     AdminComponent,
-    ProgramViewComponent
-  
+    ProgramViewComponent,
+    ProfileCardComponent,
+    ProfileGoalHistoryComponent,
+    ProfileGoalHistoryItemComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,7 @@ import { ProgramViewComponent } from './views/program-view/program-view.componen
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

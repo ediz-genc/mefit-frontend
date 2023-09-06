@@ -1,0 +1,12 @@
+.container {
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 2px solid darkgray;
+    background: white;
+    border-radius: 1rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
