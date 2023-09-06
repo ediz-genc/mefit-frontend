@@ -16,6 +16,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Goal } from "../models/goal.model";
+import { User } from "../models/user.model";
+import { Workout } from "../models/workout.model";
 
 @Injectable({
     providedIn: 'root'
@@ -27,24 +30,26 @@ export class GoalService {
     //-----------------User-specific actions-----------------//
 
     // The period and status of the current goal
-    getCurrentGoal(){
-        return;
+    getCurrentGoal(userId: string):Observable<Goal>{
+        return this.http.get<Goal>("http//localhost8080/api/v1/goals/" + userId)
     }
 
-    // All workouts for the goal, completed and pending
-    getCompletedGoals(){
-        return;
+    // Completed workouts
+    getCompletedWorkouts(userId: string): Observable <Workout[]>{
+        return this.http.get<Workout[]>(`http//localhost8080/api/v1/goals/${userId}/workouts/completed`);
     }
 
+    // Pending workouts
+    getPendingWorkouts(userId: string): Observable <Workout[]>{
+        return this.http.get<Workout[]>(`http//localhost8080/api/v1/goals/${userId}/workouts/pending`);
+    }
+
+    getAllWorkouts(userId: string): Observable<Workout[]>{
+        return this.http.get<Workout[]>(`http//localhost8080/api/v1/goals/${userId}/workouts`)
+    }
     // The reference to the user's previously achieved goals
-    getGoalHistory(){
-        return;
-    }
-
-    
-    // An interaction to allow the user to log completed workouts for the current goal
-    logCompletedWorkout(){
-
+    getGoalHistory(userId: string): Observable <Goal[]>{
+        return this.http.get<Goal[]>(`http//localhost8080/api/v1/goals/${userId}/history`);
     }
 
     addProgramAndWorkoutToGoal(goalId: number, programId: number, workoutId: number): Observable<void> {

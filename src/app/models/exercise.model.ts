@@ -8,6 +8,6 @@ export interface Exercise {
     muscleGroup: string
     imgUrl: string
     vidUrl: string
-    fitnessLevel: FitnessLevel
-    workouts: Workout[]
+    fitnessLevel: number
+    workouts: number[]
 }

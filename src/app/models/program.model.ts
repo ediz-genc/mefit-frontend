@@ -7,7 +7,7 @@ export interface Program {
     description: string
     imgUrl: string
     category: string;
-    workouts: Workout[]
-    goals: Goal[]
+    workouts: number[]
+    goals: number[]
 }
 

@@ -9,6 +9,6 @@ export interface User {
     bio: string
     weight: string
     length: string
-    currentGoal: Goal
-    goalHistory: Goal[]
+    currentGoal: number
+    goalHistory: number[]
 }
