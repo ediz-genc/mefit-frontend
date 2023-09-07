@@ -24,6 +24,7 @@ import { ProgramViewComponent } from './views/program-view/program-view.componen
 import { ProfileCardComponent } from './components/profile/profile-card/profile-card.component';
 import { ProfileGoalHistoryComponent } from './components/profile/profile-goal-history/profile-goal-history.component';
 import { ProfileGoalHistoryItemComponent } from './components/profile/profile-goal-history-item/profile-goal-history-item.component';
+import { RegisterViewComponent } from './views/register-view/register-view.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProfileGoalHistoryItemComponent } from './components/profile/profile-go
     ProgramViewComponent,
     ProfileCardComponent,
     ProfileGoalHistoryComponent,
-    ProfileGoalHistoryItemComponent
+    ProfileGoalHistoryItemComponent,
+    RegisterViewComponent
   ],
   imports: [
     BrowserModule,

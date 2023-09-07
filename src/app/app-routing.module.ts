@@ -6,6 +6,7 @@ import {ProfileViewComponent} from "./views/profile-view/profile-view.component"
 import {AdminViewComponent} from "./views/admin-view/admin-view.component";
 import {AuthGuard} from "./guards/auth.guard";
 import { ProgramViewComponent } from './views/program-view/program-view.component';
+import { RegisterViewComponent } from './views/register-view/register-view.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
     component: AdminViewComponent,
     // canActivate:[AuthGuard]
   },
+  {
+    path:"register",
+    component: RegisterViewComponent,
+    // canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({
