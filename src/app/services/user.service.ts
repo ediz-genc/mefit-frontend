@@ -18,6 +18,7 @@ export class UserService {
 
     private currentUser:User = {
         userId: 0,
+        keyId: "test",
         username: "TestUser",
         role: UserRole.Admin,
         profilePicUrl: "https://www.w3schools.com/howto/img_avatar.png",

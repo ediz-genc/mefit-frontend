@@ -9,5 +9,6 @@ export interface Program {
     category: string;
     workouts: number[]
     goals: number[]
+    goalsCompleted: number[]
 }
 

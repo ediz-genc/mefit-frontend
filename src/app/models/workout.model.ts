@@ -9,4 +9,5 @@ export interface Workout {
     exercises: number[]
     programs: number[]
     goals: number[]
+    goalsCompleted: number[]
 }

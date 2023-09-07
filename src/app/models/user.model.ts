@@ -3,6 +3,7 @@ import { Goal } from "./goal.model"
 
 export interface User {
     userId: number
+    keyId: string
     username: string
     role: string
     profilePicUrl: string

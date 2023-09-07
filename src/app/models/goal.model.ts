@@ -8,7 +8,9 @@ export interface Goal {
     startDate: string
     endDate: string
     completed: boolean
-    user: number
+    userId: number
     programs: number[]
-    workouts: number[]
+    completedProgramId: number[]
+    workoutId: number[]
+    completedWorkoutId: number[]
 }
