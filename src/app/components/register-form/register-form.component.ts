@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
@@ -16,9 +17,32 @@ export class RegisterFormComponent {
   weight = 0;
   length = 0;
 
-  constructor(private readonly userService: UserService, private readonly loginService: LoginService) { 
+  userExists:boolean = false;
+
+  constructor(
+    private readonly userService: UserService, 
+    private readonly loginService: LoginService, 
+    private readonly router: Router) 
+    { 
+    router = router;
     userService = userService;
     loginService = loginService;
+  }
+
+  ngOnInit():void {
+    this.userService.userExists(this.loginService.getTokenId()).subscribe({
+      next: (data) => {
+          this.userExists = data;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        if (this.userExists) {
+          this.router.navigate(['/dashboard']);
+        }
+      }
+    });
   }
 
   registerUser() {
