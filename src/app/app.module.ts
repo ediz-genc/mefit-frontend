@@ -25,6 +25,7 @@ import { ProfileCardComponent } from './components/profile/profile-card/profile-
 import { ProfileGoalHistoryComponent } from './components/profile/profile-goal-history/profile-goal-history.component';
 import { ProfileGoalHistoryItemComponent } from './components/profile/profile-goal-history-item/profile-goal-history-item.component';
 import { RegisterViewComponent } from './views/register-view/register-view.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { RegisterViewComponent } from './views/register-view/register-view.compo
     ProfileCardComponent,
     ProfileGoalHistoryComponent,
     ProfileGoalHistoryItemComponent,
-    RegisterViewComponent
+    RegisterViewComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
