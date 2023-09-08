@@ -1,0 +1,19 @@
+<p>register-form works!</p>
+<div class="form-card">
+    <div class="form-container">
+        <p>Username</p>
+        <input type="text" [(ngModel)]="username">
+        <p>Profile Image</p>
+        <input type="text" [(ngModel)]="profilePicUrl">
+        <p>Present yourself!</p>
+        <input type="text" [(ngModel)]="bio">
+        <p>Current Weight</p>
+        <input type="text" [(ngModel)]="weight">
+        <p>Height</p>
+        <input type="text" [(ngModel)]="length">
+        <div class="row">
+            <button (click)="registerUser()" class="accept form-button">Accept</button>
+            <button class="cancel form-button">Cancel</button>
+        </div>
+    </div>
+</div>

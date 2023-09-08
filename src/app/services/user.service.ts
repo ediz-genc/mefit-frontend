@@ -17,15 +17,14 @@ import { UserRole } from "../enums/user-role.enum";
 export class UserService {
 
     private currentUser:User = {
-        userId: '',
+        id: "test",
         username: "TestUser",
-        role: UserRole.Admin,
         profilePicUrl: "https://www.w3schools.com/howto/img_avatar.png",
         bio: "Test bio that might be longer in prod. Alot longer in fact, so long that you might need to test it on multiple lines. And even then, it might not be enough. Go ahead, try your best.",
-        weight: "65",
-        length: "170",
+        weight: 65,
+        length: 170,
         currentGoalId: 0,
-        goalHistoryIds: [0]
+        goalHistoryId: []
     }
 
     constructor(private http: HttpClient) {}
@@ -37,20 +36,23 @@ export class UserService {
 
     // The profile view should display the user’s name, profile picture, short bio, fitness preferences, and other relevant information such as height and weight.
     getUser() :Observable<any>{
-        return this.http.get(this.baseApiUrl + '/users', {})
+        return this.http.get(this.baseApiUrl + '/users')
     }
 
     getUserById(id: string) :Observable<User>{ 
         return this.http.get<User>(this.baseApiUrl + '/users/' + id);
     }
 
+    userExists(id: string) :Observable<boolean> {
+        return this.http.get<boolean>(this.baseApiUrl + '/users/' + id + '/exists');
+    }
+
     addUser(newUser: User) :Observable<any>{
 
-        const userToAdd = this.http.post<User>(this.baseApiUrl + '/users/', 
+        const userToAdd = this.http.post<User>(this.baseApiUrl + '/users', 
             JSON.stringify(newUser),
             {
                 headers: {
-                    Authentication: 'Bearer ' + localStorage.getItem('token'),
                     'Content-Type': 'application/json'
             },
         })
