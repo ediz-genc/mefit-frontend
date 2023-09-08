@@ -22,20 +22,22 @@ import { WorkoutService } from 'src/app/services/workout.service';
   
 export class DashboardComponent implements OnInit{
 
-  constructor(public readonly programService: ProgramService,
+  completedWorkoutsInGoal: Workout[] = []
+  completedProgramsInGoal: Program[] = []
+  pendingWorkoutsInGoal: Workout[] = []
+  pendingProgramsInGoal: Program[] = []
 
+  constructor(public readonly programService: ProgramService,
     private readonly loginService: LoginService,
     private readonly userService: UserService) {}
-
-    completedWorkoutsInGoal: Workout[] = []
-    completedProgramsInGoal: Program[] = []
-    pendingWorkoutsInGoal: Workout[] = []
-    pendingProgramsInGoal: Program[] = []
 
     userId: string = this.loginService.getTokenId();
 
 
   ngOnInit(): void {
+
+    // Fetch goal
+    
 
     // Fetch completed workouts
     this.userService.getCompletedWorkouts(this.userId).subscribe({next: (response) => {this.completedWorkoutsInGoal = response}, 
@@ -44,18 +46,18 @@ export class DashboardComponent implements OnInit{
     })
 
     // Fetch completed programs
-    this.userService.getCompletedPrograms(this.userId).subscribe((response) =>{
-      this.completedProgramsInGoal = response
+    this.userService.getCompletedPrograms(this.userId).subscribe({next: (response) => {this.completedProgramsInGoal = response}, 
+    error: (error: HttpErrorResponse) => console.log(error)
     })
 
     // Fetch pending workouts
-    this.userService.getPendingWorkouts(this.userId).subscribe((response) =>{
-      this.pendingWorkoutsInGoal = response
+    this.userService.getPendingWorkouts(this.userId).subscribe({next: (response) =>{this.pendingWorkoutsInGoal = response}, 
+    error: (error: HttpErrorResponse) => console.log(error)
     })
 
     // Fetch pending programs
-    this.userService.getPendingPrograms(this.userId).subscribe((response) =>{
-      this.pendingProgramsInGoal = response
+    this.userService.getPendingPrograms(this.userId).subscribe({next: (response) =>{this.pendingProgramsInGoal = response}, 
+      error: (error: HttpErrorResponse) => console.log(error)
     })
   }
 

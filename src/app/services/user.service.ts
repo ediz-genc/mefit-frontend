@@ -67,34 +67,19 @@ export class UserService {
     }
 
     getPendingWorkouts(userId: string): Observable<any>{
-        return this.http.get(this.baseApiUrl + `/${userId}/workouts/pending`, {
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": "Bearer " + localStorage.getItem('token')
-        },
-    });
+        return this.http.get(this.baseApiUrl + `/users/${userId}/workouts/pending`)
     }
 
     getCompletedWorkouts(userId: string): Observable<any>{
-        return this.http.get(this.baseApiUrl + `/${userId}/workouts/completed`);
+        return this.http.get(this.baseApiUrl + `/users/${userId}/workouts/completed`);
     }
 
     getPendingPrograms(userId: string): Observable<any>{
-        return this.http.get(this.baseApiUrl + `/${userId}/programs/pending`, {
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": "Bearer " + localStorage.getItem('token')
-            },
-        });
+        return this.http.get(this.baseApiUrl + `/users/${userId}/programs/pending`)
     }
 
     getCompletedPrograms(userId: string): Observable<any>{
-        return this.http.get(this.baseApiUrl + `/${userId}/programs/completed`, {
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": "Bearer " + localStorage.getItem('token')
-            },
-        });
+        return this.http.get(this.baseApiUrl + `/users/${userId}/programs/completed`)
     }
 
 

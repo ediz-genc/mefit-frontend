@@ -1,18 +1,39 @@
 <p>register-form works!</p>
 <div class="form-card">
     <div class="form-container">
-        <p>Completed workouts: </p>
+        <h2>Completed workouts: </h2>
         <div *ngFor="let item of completedWorkoutsInGoal">
             <p>Name: {{ item.name }}</p>
             <p>Description: {{ item.description }}</p>
         </div>
-        <div>
+        <h2>Pending workouts: </h2>
+        <div *ngFor="let item of pendingWorkoutsInGoal">
+            <p>Name: {{item.name}}</p>
+            <p>Description: {{item.description}}</p>
+            <button>Completed</button>
+
         </div>
-        <p>Pending workouts: </p>
-        <div>
+        <h2>Completed programs: </h2>
+        <div *ngFor="let item of completedProgramsInGoal">
+            <p>Name: {{item.name}}</p>
+            <p>Description: {{item.description}}</p>
+            <p>Category: {{item.category}}</p>
+            <img src= {{item.imgUrl}} alt="Img for {{item.name}}" >
         </div>
-        <p>Days left to complete goal: </p>
+        <h2>Pending programs: </h2>
+        <div *ngFor="let item of pendingProgramsInGoal">
+            <div>
+                <p>Name: {{item.name}}</p>
+                <p>Description: {{item.description}}</p>
+                <p>Category: {{item.category}}</p>
+                <img src= {{item.imgUrl}} alt="Img for {{item.name}}" >
+                <button>Completed</button>
+            </div>
+
+        </div>
+        <h2>Days left to complete goal: </h2>
         <div>
+
         </div>
     </div>
 </div>
