@@ -24,7 +24,7 @@ export class WorkoutService {
 
     // A user can add a workout to a goal.
     addWorkoutToGoal(workoutId: number, goalId: number): Observable<any> {
-        return this.http.patch<any>(`http://localhost:8080/api/v1/goals/${goalId}`, {
+        return this.http.patch<any>(`/api/v1/goals/${goalId}`, {
           workoutId: workoutId,
         });
     }
