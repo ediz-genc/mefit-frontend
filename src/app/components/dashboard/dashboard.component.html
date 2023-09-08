@@ -1,18 +1,18 @@
 <p>register-form works!</p>
 <div class="form-card">
     <div class="form-container">
-        <p>Your goals: </p>
-        <input type="text">
-        <p>Profile Image</p>
-        <input type="text">
-        <p>Present yourself!</p>
-        <input type="text">
-        <p>Current Weight</p>
-        <input type="text">
-        <p>Height</p>
-        <input type="text">
-        <div class="row">
-
+        <p>Completed workouts: </p>
+        <div *ngFor="let item of completedWorkoutsInGoal">
+            <p>Name: {{ item.name }}</p>
+            <p>Description: {{ item.description }}</p>
+        </div>
+        <div>
+        </div>
+        <p>Pending workouts: </p>
+        <div>
+        </div>
+        <p>Days left to complete goal: </p>
+        <div>
         </div>
     </div>
 </div>

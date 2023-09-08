@@ -29,6 +29,7 @@ export class UserService {
 
     constructor(private http: HttpClient) {}
 
+    
     getCurrentUser() {
         return this.currentUser;
     }
@@ -63,6 +64,37 @@ export class UserService {
     // They should not be able to change their credentials in MeFit as they are stored on an Identity Provider.
     updateUserProfile() {
         return;
+    }
+
+    getPendingWorkouts(userId: string): Observable<any>{
+        return this.http.get(this.baseApiUrl + `/${userId}/workouts/pending`, {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem('token')
+        },
+    });
+    }
+
+    getCompletedWorkouts(userId: string): Observable<any>{
+        return this.http.get(this.baseApiUrl + `/${userId}/workouts/completed`);
+    }
+
+    getPendingPrograms(userId: string): Observable<any>{
+        return this.http.get(this.baseApiUrl + `/${userId}/programs/pending`, {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+        });
+    }
+
+    getCompletedPrograms(userId: string): Observable<any>{
+        return this.http.get(this.baseApiUrl + `/${userId}/programs/completed`, {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+        });
     }
 
 

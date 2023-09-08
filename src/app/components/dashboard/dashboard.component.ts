@@ -2,9 +2,13 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { Goal } from 'src/app/models/goal.model';
 import { Program } from 'src/app/models/program.model';
+import { User } from 'src/app/models/user.model';
 import { Workout } from 'src/app/models/workout.model';
 import { GoalService } from 'src/app/services/goal.service';
+import { LoginService } from 'src/app/services/login.service';
 import { ProgramService } from 'src/app/services/program.service';
 import { UserService } from 'src/app/services/user.service';
 import { WorkoutService } from 'src/app/services/workout.service';
@@ -18,30 +22,41 @@ import { WorkoutService } from 'src/app/services/workout.service';
   
 export class DashboardComponent implements OnInit{
 
-  constructor(public readonly userService: UserService, private programService: ProgramService,
-    private workoutService: WorkoutService, private goalService: GoalService) {}
+  constructor(public readonly programService: ProgramService,
 
-    completedProgramsInGoal: Program[] = []
+    private readonly loginService: LoginService,
+    private readonly userService: UserService) {}
+
     completedWorkoutsInGoal: Workout[] = []
+    completedProgramsInGoal: Program[] = []
+    pendingWorkoutsInGoal: Workout[] = []
+    pendingProgramsInGoal: Program[] = []
+
+    userId: string = this.loginService.getTokenId();
+
 
   ngOnInit(): void {
-    // this.userService.getCurrentUser()
-    //     // Fetch completed workouts
-    //     this.goalService.getCompletedWorkouts().subscribe((response) => {
-    //       this.completedWorkoutsInGoal = response;
-    //     })
 
-    //     this.goalService.getCompletedPrograms(this.userService.getCurrentUser().id).subscribe((response) =>{
-    //       this.completedWorkoutsInGoal = response
-    //     })
-  }
+    // Fetch completed workouts
+    this.userService.getCompletedWorkouts(this.userId).subscribe({next: (response) => {this.completedWorkoutsInGoal = response}, 
+    error: (error: HttpErrorResponse)=> console.log(error)
+    
+    })
 
+    // Fetch completed programs
+    this.userService.getCompletedPrograms(this.userId).subscribe((response) =>{
+      this.completedProgramsInGoal = response
+    })
 
-  getUsers() {
-    // this.userService.getUser().subscribe({
-    //   next: (data) => console.log(data), 
-    //   error: (error:HttpErrorResponse) => console.log(error)
-    // })
+    // Fetch pending workouts
+    this.userService.getPendingWorkouts(this.userId).subscribe((response) =>{
+      this.pendingWorkoutsInGoal = response
+    })
+
+    // Fetch pending programs
+    this.userService.getPendingPrograms(this.userId).subscribe((response) =>{
+      this.pendingProgramsInGoal = response
+    })
   }
 
 }
