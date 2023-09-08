@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 import keycloak from 'src/keycloak';
 
@@ -15,14 +16,14 @@ export class RegisterFormComponent {
   weight = 0;
   length = 0;
 
-  constructor(private readonly userService: UserService) { 
+  constructor(private readonly userService: UserService, private readonly loginService: LoginService) { 
     userService = userService;
+    loginService = loginService;
   }
-  
 
   registerUser() {
     const newUser: User = {
-      id: keycloak.tokenParsed!.sub!, //get ID from jwt token
+      id: this.loginService.getTokenId(), //get ID from jwt token
       username: this.username,
       profilePicUrl: this.profilePicUrl,
       bio: this.bio,
