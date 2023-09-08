@@ -19,7 +19,6 @@ import { Observable } from "rxjs";
 import { Goal } from "../models/goal.model";
 import { User } from "../models/user.model";
 import { Workout } from "../models/workout.model";
-import { Program } from "../models/program.model";
 
 @Injectable({
     providedIn: 'root'
@@ -31,45 +30,27 @@ export class GoalService {
     //-----------------User-specific actions-----------------//
 
     // The period and status of the current goal
-    getCurrentGoal(userId: string):Observable<Goal>{
-        return this.http.get<Goal>("/api/v1/goals/" + userId)
+    getGoalById(goalId: number):Observable<Goal>{
+        return this.http.get<Goal>("http//localhost8080/api/v1/goals/" + goalId)
     }
 
     // Completed workouts
-    getCompletedWorkouts(userId: string): Observable <Workout[]>{
-        return this.http.get<Workout[]>(`/api/v1/goals/${userId}/workouts/completed`);
+    getCompletedWorkouts(goalId: number): Observable <Workout[]>{
+        return this.http.get<Workout[]>(`http//localhost8080/api/v1/goals/${goalId}/workouts/completed`);
     }
 
-    // Get all pending workouts in a goal
+    // Pending workouts
     getPendingWorkouts(goalId: number): Observable <Workout[]>{
-        return this.http.get<Workout[]>(`/api/v1/goals/${goalId}/workouts/pending`);
+        return this.http.get<Workout[]>(`http//localhost8080/api/v1/goals/${goalId}/workouts/pending`);
     }
 
-    //Get all workouts in a goal
     getAllWorkouts(goalId: number): Observable<Workout[]>{
-        return this.http.get<Workout[]>(`/api/v1/goals/${goalId}/workouts`)
+        return this.http.get<Workout[]>(`http//localhost8080/api/v1/goals/${goalId}/workouts`)
     }
-
-    // Getting all completed programs in a goal
-    getCompletedPrograms(goalId: number): Observable<Program[]>{
-        return this.http.get<Program[]>(`/api/v1/goals/${goalId}/programs/completed`)
-    }
-
-    // Get all pending programs in a goal
-    getPendingPrograms(goalId: number): Observable<Program[]>{
-        return this.http.get<Program[]>(`/api/v1/goals/${goalId}/programs/pending`)
-    }
-
-    // Get all programs in a goal
-    getAllPrograms(goalId: number): Observable<Program[]>{
-        return this.http.get<Program[]>(`/api/v1/goals/${goalId}/programs`)
-    }
-
     // The reference to the user's previously achieved goals
-    getGoalHistory(userId: string): Observable <Goal[]>{
-        return this.http.get<Goal[]>(`/api/v1/goals/${userId}/history`);
+    getGoalHistory(goalId: number): Observable <Goal[]>{
+        return this.http.get<Goal[]>(`http//localhost8080/api/v1/goals/${goalId}/history`);
     }
-
 
     addProgramAndWorkoutToGoal(goalId: number, programId: number, workoutId: number): Observable<void> {
         const data = {
@@ -82,12 +63,8 @@ export class GoalService {
 
 
     //-----------------Contributor-specific actions-----------------//
-    
-    //-----------------Admin-specific actions----------------------//
-    //Delete a goal
-    deleteGoal(userId: string): Observable<void>{
-        return this.http.delete<void>(`/api/v1/goals/${userId}`);
-    }
+     
+
 
     
 }
