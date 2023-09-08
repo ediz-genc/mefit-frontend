@@ -18,7 +18,7 @@ export class LoginComponent{
   ngOnInit(): void { 
     if (this.loginService.userAuthenticated() == true && this.loginService.tokenSaved() == false) {
       this.loginService.saveToken();
-      this.router.navigateByUrl("dashboard");
+      this.router.navigateByUrl("register");
     }
   }
 

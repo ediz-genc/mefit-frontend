@@ -43,6 +43,6 @@ export class LoginService {
     }
 
     getTokenId(): string{
-        return keycloak.tokenParsed?.sub!;
+        return keycloak.tokenParsed!.sub!;
     }
 }
