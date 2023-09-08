@@ -38,8 +38,8 @@ export class LoginService {
         localStorage.removeItem('token');
     }
 
-    getToken(): string{
-        return localStorage.getItem('token')!;
+    getTokenId(): string{
+        return keycloak.tokenParsed?.sub!;
     }
 
 
