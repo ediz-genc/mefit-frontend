@@ -38,8 +38,36 @@ export class WorkoutService {
     // Recommended fitness level
     // An optional image
     
-    createWorkout(){
-        return;
+    createWorkout(workout: Workout): Observable<Workout>{
+        const data ={
+            id: workout.workoutId,
+            name: workout.name,
+            description: workout.description, 
+        }
+        return this.http.post<Workout>(`/api/v1/workouts`, 
+        JSON.stringify(data),
+        {
+            headers: {
+                Authentication: 'Bearer ' + localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+        },
+        }) 
     }
+
+    putWorkout(workout: Workout, workoutId: number): void{
+        const data ={
+            name: workout.name,
+            description: workout.description
+        }
+        const changeWorkout = this.http.put(`api/v1/workouts/${workoutId}`, 
+        JSON.stringify(data), 
+        {
+            headers: {Authentication: 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json'},
+        })
+    }
+
+    
+
 }
 
