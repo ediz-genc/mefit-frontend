@@ -24,7 +24,7 @@ export class WorkoutService {
 
     // A user can add a workout to a goal.
     addWorkoutToGoal(workoutId: number, goalId: number): Observable<any> {
-        return this.http.patch<any>(`http://localhost:8080/api/v1/goals/${goalId}`, {
+        return this.http.patch<any>(`/api/v1/goals/${goalId}`, {
           workoutId: workoutId,
         });
     }
@@ -38,8 +38,36 @@ export class WorkoutService {
     // Recommended fitness level
     // An optional image
     
-    createWorkout(){
-        return;
+    createWorkout(workout: Workout): Observable<Workout>{
+        const data ={
+            id: workout.workoutId,
+            name: workout.name,
+            description: workout.description, 
+        }
+        return this.http.post<Workout>(`/api/v1/workouts`, 
+        JSON.stringify(data),
+        {
+            headers: {
+                Authentication: 'Bearer ' + localStorage.getItem('token'),
+                'Content-Type': 'application/json'
+        },
+        }) 
     }
+
+    putWorkout(workout: Workout, workoutId: number): void{
+        const data ={
+            name: workout.name,
+            description: workout.description
+        }
+        const changeWorkout = this.http.put(`api/v1/workouts/${workoutId}`, 
+        JSON.stringify(data), 
+        {
+            headers: {Authentication: 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json'},
+        })
+    }
+
+    
+
 }
 

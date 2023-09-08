@@ -2,8 +2,7 @@ import { UserRole } from "../enums/user-role.enum"
 import { Goal } from "./goal.model"
 
 export interface User {
-    userId: number
-    keyId: string
+    userId: string
     username: string
     role: string
     profilePicUrl: string
