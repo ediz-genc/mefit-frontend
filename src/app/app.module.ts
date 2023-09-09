@@ -8,7 +8,7 @@ import {ExcerciseComponent} from './components/excercise/excercise.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {FooterComponent} from './footer/footer.component';
 import {AuthGuard} from './guards/auth.guard';
-import {LoginComponent} from "./components/login/login.component";
+import {HomeComponent} from "./components/home/home.component";
 import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HomeViewComponent} from "./views/home-view/home-view.component";
@@ -33,7 +33,7 @@ import {RegisterFormComponent} from './components/register-form/register-form.co
     AppComponent,
     ProgramComponent,
     WorkoutComponent,
-    LoginComponent,
+    HomeComponent,
     ExcerciseComponent,
     NavbarComponent,
     FooterComponent,
