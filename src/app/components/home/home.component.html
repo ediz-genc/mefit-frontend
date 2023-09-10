@@ -1,7 +1,17 @@
-<h4>login-form-works</h4>
+<div class="container">
+  <main class="grid-container">
+    <section class="hero_left" style="background-image: url('assets/images/background_left.jpg');">
+      <h1>Welcome to MeFIT</h1>
+      <p>Discover a world of possibilities.</p>
+      <div class="container">
+        <button type="submit" (click)="login()">Login</button>
+      </div>
+    </section>
 
-<form>
-  <div class="container">
-    <button type="submit" (click)="login()">Login</button>
-  </div>
-</form>
+    <section class="hero_right" style="background-image: url('assets/images/background_right.jpg');">
+      <a routerLink="/fitness-content" class="btn btn-primary">Get Started >></a>
+    </section>
+  </main>
+</div>
+
+

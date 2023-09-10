@@ -1,14 +1,19 @@
-<nav>
-  <span id="app-name">MeFIT</span>
+<header>
+  <nav>
+    <div>
+      <img ngSrc="/assets/images/logo.png" class="logo" alt="logo" width="102" height="58"/>
+    </div>
+    <span id="app-name" style="font-family: cursive;">MeFIT</span>
+    <div class="spacer"></div>
+    <ul>
+      <li *ngIf="!tokenSaved()"><a routerLink="" routerLinkActive="active" class="home">Home</a></li>
+      <li><a routerLink="dashboard" routerLinkActive="active" class="dashboard">Dashboard</a></li>
+      <li><a routerLink="fitness-content" routerLinkActive="active" class="fitness-content">Fitness Content</a></li>
+      <li><a routerLink="profile" routerLinkActive="active" class="profile">Profile</a></li>
+      <li><a routerLink="register" routerLinkActive="active" class="register">Register User</a></li>
+      <li><a routerLink="admin" routerLinkActive="active" class="admin">Admin</a></li>
+    </ul>
 
-  <div class="spacer"></div>
-  <ul>
-    <li *ngIf="!tokenSaved()"><a  routerLink="login" routerLinkActive="active" class="home">Home</a></li>
-    <li><a routerLink="dashboard" routerLinkActive="active" class="dashboard">Dashboard</a></li>
-    <li><a routerLink="program" routerLinkActive="active" class="fitness-content">Fitness Content</a></li>
-    <li><a routerLink="profile" routerLinkActive="active" class="profile">Profile</a></li>
-    <li><a routerLink="register" routerLinkActive="active" class="register">Register User</a></li>
-  </ul>
-
-  <li><a routerLink="" routerLinkActive="active" class="logout" (click)="logout()">Logout</a></li>
-</nav>
+    <li><a routerLink="" routerLinkActive="active" class="logout" (click)="logout()">Logout</a></li>
+  </nav>
+</header>

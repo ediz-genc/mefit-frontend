@@ -2,9 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ProgramComponent} from './components/program/program.component';
-import {WorkoutComponent} from './components/workout/workout.component';
-import {ExcerciseComponent} from './components/excercise/excercise.component';
+import {FitnessContentComponent} from './components/fitnessContent/fitnessContent.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {FooterComponent} from './footer/footer.component';
 import {AuthGuard} from './guards/auth.guard';
@@ -27,14 +25,13 @@ import {
 } from './components/profile/profile-goal-history-item/profile-goal-history-item.component';
 import {RegisterViewComponent} from './views/register-view/register-view.component';
 import {RegisterFormComponent} from './components/register-form/register-form.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProgramComponent,
-    WorkoutComponent,
+    FitnessContentComponent,
     HomeComponent,
-    ExcerciseComponent,
     NavbarComponent,
     FooterComponent,
     AuthGuard,
@@ -56,7 +53,8 @@ import {RegisterFormComponent} from './components/register-form/register-form.co
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgOptimizedImage
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

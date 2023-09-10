@@ -6,6 +6,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
 #app-name{
   flex: 1;
   margin: auto;
@@ -45,7 +47,8 @@ nav li {
 .profile,
 .dashboard,
 .fitness-content,
-.register{
+.register,
+.admin{
   color: white;
 }
 

@@ -8,14 +8,20 @@ import {FitnessContentViewComponent} from './views/fitnessContent-view/fitnessCo
 import {RegisterViewComponent} from './views/register-view/register-view.component';
 
 const routes: Routes = [
+
   {
     path: "",
-    pathMatch: "full",
     component: HomeViewComponent,
   },
+
   {
     path: "dashboard",
     component: DashboardViewComponent,
+    // canActivate:[AuthGuard]
+  },
+  {
+    path: "fitness-content",
+    component: FitnessContentViewComponent,
     // canActivate:[AuthGuard]
   },
   {
@@ -24,18 +30,13 @@ const routes: Routes = [
     // canActivate:[AuthGuard]
   },
   {
-    path: "program",
-    component: FitnessContentViewComponent,
+    path: "register",
+    component: RegisterViewComponent,
     // canActivate:[AuthGuard]
   },
   {
     path: "admin",
     component: AdminViewComponent,
-    // canActivate:[AuthGuard]
-  },
-  {
-    path: "register",
-    component: RegisterViewComponent,
     // canActivate:[AuthGuard]
   }
 ];
