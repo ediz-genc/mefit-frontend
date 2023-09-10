@@ -4,7 +4,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FitnessContentComponent} from './components/fitnessContent/fitnessContent.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
-import {FooterComponent} from './footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
 import {AuthGuard} from './guards/auth.guard';
 import {HomeComponent} from "./components/home/home.component";
 import {FormsModule} from "@angular/forms";

@@ -54,7 +54,6 @@ nav li {
 
 .logout {
   background-color: transparent;
-  border: none;
   cursor: pointer;
   font-size: large;
   margin-left: auto; /* Push the logout link to the right */
@@ -67,7 +66,44 @@ nav li {
 }
 
 .logout:hover {
-  background-color: #d04545; /* Slightly darker red on hover */
+  background-color: #d04545;
+}
+
+.user-panel {
+  position: fixed;
+  background: #1976d2;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  left: 84%;
+}
+
+.user-panel h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.user-panel p {
+  margin-bottom: 5px;
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: #d04545;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: flex;
+  margin-left: auto;
+}
+
+.close-button:hover {
+  background-color: #7e4141;
 }
 
 
