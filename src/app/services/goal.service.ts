@@ -48,8 +48,8 @@ export class GoalService {
         return this.http.get<Workout[]>(`http//localhost8080/api/v1/goals/${goalId}/workouts`)
     }
     // The reference to the user's previously achieved goals
-    getGoalHistory(goalId: number): Observable <Goal[]>{
-        return this.http.get<Goal[]>(`http//localhost8080/api/v1/goals/${goalId}/history`);
+    getGoalHistory(id: String): Observable <Goal[]>{
+        return this.http.get<Goal[]>(`http//localhost8080/api/v1/users/${id}/history`);
     }
 
     addProgramAndWorkoutToGoal(goalId: number, programId: number, workoutId: number): Observable<void> {

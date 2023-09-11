@@ -6,6 +6,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {User} from "../models/user.model";
 import {environment} from "src/environments/environment";
+import { Goal } from "../models/goal.model";
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,10 @@ export class UserService {
       })
     return userToAdd;
   }
+
+  getGoalHistory(id: String): Observable <Goal[]>{
+    return this.http.get<Goal[]>(this.baseApiUrl + `/users/${id}/history`);
+}
 
   // Every user should have a corresponding settings view containing a form to edit their profile settings.
   // They should not be able to change their credentials in MeFit as they are stored on an Identity Provider.
