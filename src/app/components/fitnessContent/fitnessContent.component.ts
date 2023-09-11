@@ -6,11 +6,11 @@ import { ProgramService } from 'src/app/services/program.service';
 import { WorkoutService } from 'src/app/services/workout.service';
 
 @Component({
-  selector: 'app-program',
-  templateUrl: './program.component.html',
-  styleUrls: ['./program.component.css']
+  selector: 'app-fitnessContent',
+  templateUrl: './fitnessContent.component.html',
+  styleUrls: ['./fitnessContent.component.css']
 })
-export class ProgramComponent implements OnInit {
+export class FitnessContentComponent implements OnInit {
   programs: Program[] = [];
   workouts: Workout[] = [];
   selectedProgram: Program | undefined;
@@ -47,5 +47,5 @@ export class ProgramComponent implements OnInit {
       });
     }
   }
-  
+
 }

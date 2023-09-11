@@ -1,0 +1,64 @@
+
+svg#clouds {
+  position: fixed;
+  bottom: -160px;
+  left: -230px;
+  z-index: -10;
+  width: 1920px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.footer-icons {
+  margin: 5px;
+}
+
+.social-button {
+  display: inline-block;
+  font-size: 15px;
+  margin-right:5px;
+  color: #fff;
+}
+
+/* Specific styles for each social media button */
+.fa-facebook {
+  background-color: #1877f2; /* Facebook blue */
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.fa-twitter {
+  background-color: #1da1f2; /* Twitter blue */
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.fa-instagram {
+  background-color: #e4405f; /* Instagram pink */
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.fa-linkedin {
+  background-color: #0077b5; /* LinkedIn blue */
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.tech-stack-list {
+  list-style: none;
+  padding: 0;
+}
+.tech-stack-list li {
+  margin-bottom: 5px;
+}
+
+.tech-stack-list i {
+  margin-right: 5px;
+  color: #007bff; /* Color for the angle-right icon */
+}

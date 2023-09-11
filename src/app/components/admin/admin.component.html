@@ -1,1 +1,39 @@
-<p>admin works!</p>
+<div class="admin-container">
+  <div class="admin-panel">
+    <h1>Admin Panel</h1>
+
+    <!-- User Applications Section -->
+    <div class="user-applications">
+      <h2>User Applications for Contributor Role</h2>
+      <ul>
+        <li *ngFor="let application of userApplications">
+          <div class="application-details">
+            <p><strong>User:</strong> {{ application.userName }}</p>
+            <p><strong>Motivation:</strong> {{ application.motivation }}</p>
+          </div>
+          <div class="application-actions">
+            <button (click)="approveApplication(application)">Approve</button>
+            <button (click)="declineApplication(application)">Decline</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- User Management Section -->
+    <div class="user-management">
+      <h2>User Management</h2>
+      <ul>
+        <li *ngFor="let user of users">
+          <div class="user-details">
+            <p><strong>User:</strong> {{ user.userName }}</p>
+            <p><strong>Role:</strong> {{ user.role }}</p>
+          </div>
+          <div class="user-actions">
+            <button (click)="editUser(user)">Edit</button>
+            <button (click)="deleteUser(user)">Delete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
