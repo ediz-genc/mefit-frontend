@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProgramViewComponent } from './program-view.component';
+import { FitnessContentViewComponent } from './fitnessContent-view.component';
 
 describe('ProfileComponent', () => {
-  let component: ProgramViewComponent;
-  let fixture: ComponentFixture<ProgramViewComponent>;
+  let component: FitnessContentViewComponent;
+  let fixture: ComponentFixture<FitnessContentViewComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProgramViewComponent]
+      declarations: [FitnessContentViewComponent]
     });
-    fixture = TestBed.createComponent(ProgramViewComponent);
+    fixture = TestBed.createComponent(FitnessContentViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
