@@ -1,3 +1,4 @@
+
 svg#clouds {
   position: fixed;
   bottom: -160px;
@@ -14,35 +15,39 @@ footer {
   width: 100%;
 }
 .footer-icons {
-  margin: 10px;
+  margin: 5px;
 }
-/* Style the social media buttons as colorful buttons with company logos */
+
 .social-button {
   display: inline-block;
   font-size: 15px;
-  margin-right: 10px; /* Adjust as needed for spacing between buttons */
-  background-color: #007bff; /* Change to the desired button color */
+  margin-right:5px;
   color: #fff;
-  padding: 10px 15px;
-  border-radius: 20px;
-  text-decoration: none;
 }
 
 /* Specific styles for each social media button */
 .fa-facebook {
   background-color: #1877f2; /* Facebook blue */
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .fa-twitter {
   background-color: #1da1f2; /* Twitter blue */
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .fa-instagram {
   background-color: #e4405f; /* Instagram pink */
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .fa-linkedin {
   background-color: #0077b5; /* LinkedIn blue */
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .tech-stack-list {

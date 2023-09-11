@@ -74,6 +74,7 @@ button:hover {
   text-decoration: none;
   border-radius: 5px;
   overflow: hidden;
+  font-weight: bold;
 }
 
 .btn-primary:hover {

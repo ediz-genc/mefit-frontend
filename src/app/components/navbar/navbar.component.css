@@ -53,31 +53,46 @@ nav li {
 }
 
 .logout {
-  background-color: transparent;
+  background-color: #d04545;
   cursor: pointer;
-  font-size: large;
-  margin-left: auto; /* Push the logout link to the right */
   color: #ffffff;
   padding: 8px 15px;
-  border-radius: 5px;
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: bold;
   transition: background-color 0.3s ease;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .logout:hover {
-  background-color: #d04545;
+  background-color: #7e4141;
+}
+.user-container{
+  margin-right: 10px;
+  transition: transform 0.5s ease, cursor 0.5s ease;
+}
+.user-pointer:hover {
+  cursor: pointer;
+  transform: scale(1.1); /* Adjust the scale factor as desired for the zoom effect */
 }
 
 .user-panel {
-  position: fixed;
-  background: #1976d2;
+  position: absolute;
+  background: #3d3c3c;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  left: 84%;
+  padding: 20px;
+  left: 89%;
+  border-left: 1px solid #fff; /* Adjust the color and style as needed */
 }
-
+.separator {
+  border-top: 0 solid #fff; /* Adjust the color and style as needed */
+  margin-top: 20px; /* Adjust the spacing above the separator */
+  margin-bottom: 20px; /* Adjust the spacing below the separator */
+}
 .user-panel h5 {
   font-size: 18px;
   margin-bottom: 10px;
@@ -100,6 +115,7 @@ nav li {
   transition: background-color 0.3s ease;
   display: flex;
   margin-left: auto;
+  margin-bottom: 10px;
 }
 
 .close-button:hover {

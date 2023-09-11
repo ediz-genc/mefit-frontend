@@ -1,0 +1,84 @@
+.admin-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 50vh; /* Fill the viewport vertically */
+  padding: 20px;
+  border-radius: 5px;
+  width: auto;
+}
+
+.admin-panel {
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 20px;
+}
+
+.user-applications, .user-management {
+  margin: 20px;
+  display: inline-block;
+  width: 40%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.user-details, .application-details {
+  flex: 2;
+}
+
+.user-actions, .application-actions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: #1976d2;
+  border: none;
+
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin-top: 5px;
+
+  padding: 4px 8px;
+  color: #ffffff;
+
+  border-radius: 5px;
+
+  transition: background-color 0.3s ease;
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #7e4141;
+}

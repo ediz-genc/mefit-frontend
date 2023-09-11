@@ -13,25 +13,28 @@
       <li><a routerLink="register" routerLinkActive="active" class="register">Register User</a></li>
       <li><a routerLink="admin" routerLinkActive="active" class="admin">Admin</a></li>
     </ul>
-    <div class="user-container">
+    <div class="user-container" *ngIf="isUserLoggedIn">
 
       <button class="btn btn-link" id="user-panel-button" (click)="toggleUserPanel()">
         <ng-container *ngIf="currentUser.profilePicUrl; else avatarImage">
           <img ngSrc="{{currentUser.profilePicUrl}}" alt="Avatar" class="avatar" width="50" height="50">
         </ng-container>
         <ng-template #avatarImage>
-          <img ngSrc="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar" width="50" height="50">
+          <img ngSrc="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar" width="50"
+               height="50">
         </ng-template>
       </button>
       <!-- User Panel -->
       <div class="user-panel" *ngIf="isUserPanelOpen">
         <button class="close-button" (click)="closeUserPanel()">X</button>
-        <h5>User Information</h5>
-        <p><b>User ID:</b> {{currentUser.id}}</p>
-        <p><b>User Name:</b> {{currentUser.username}}</p>
+        <h5>Signed in as:</h5>
+        <hr class="separator">
+        <p><b>ID:</b> {{currentUser.id}}</p>
+        <p><b>Name:</b> {{currentUser.username}}</p>
+        <hr class="separator">
+        <li><a routerLink="" routerLinkActive="active" class="logout" (click)="logout()">Logout</a></li>
       </div>
     </div>
 
-    <li><a routerLink="" routerLinkActive="active" class="logout" (click)="logout()">Logout</a></li>
   </nav>
 </header>

@@ -17,8 +17,7 @@ export class UserService {
   private currentUser: User = {
     id: "test",
     username: "TestUser",
-    // profilePicUrl: "https://www.w3schools.com/howto/img_avatar.png",
-    profilePicUrl: "",
+    profilePicUrl: "https://www.w3schools.com/howto/img_avatar.png",
     bio: "Test bio that might be longer in prod. A lot longer in fact, so long that you might need to test it on multiple lines. And even then, it might not be enough. Go ahead, try your best.",
     weight: 65,
     length: 170,
