@@ -19,7 +19,8 @@ export class UserService {
         id: "test",
         username: "TestUser",
         profilePicUrl: "https://www.w3schools.com/howto/img_avatar.png",
-        bio: "Test bio that might be longer in prod. Alot longer in fact, so long that you might need to test it on multiple lines. And even then, it might not be enough. Go ahead, try your best.",
+        bio: "Test bio that might be longer in prod. Alot longer in fact, so long that you might need to test it on " +
+          "multiple lines. And even then, it might not be enough. Go ahead, try your best.",
         weight: 65,
         length: 170,
         currentGoalId: 0,
@@ -28,7 +29,7 @@ export class UserService {
 
     constructor(private http: HttpClient) {}
 
-    
+
     getCurrentUser() {
         return this.currentUser;
     }
@@ -39,7 +40,7 @@ export class UserService {
         return this.http.get(this.baseApiUrl + '/users')
     }
 
-    getUserById(id: string) :Observable<User>{ 
+    getUserById(id: string) :Observable<User>{
         return this.http.get<User>(this.baseApiUrl + '/users/' + id);
     }
 
@@ -49,7 +50,7 @@ export class UserService {
 
     addUser(newUser: User) :Observable<any>{
 
-        const userToAdd = this.http.post<User>(this.baseApiUrl + '/users', 
+        const userToAdd = this.http.post<User>(this.baseApiUrl + '/users',
             JSON.stringify(newUser),
             {
                 headers: {
@@ -92,16 +93,16 @@ export class UserService {
 
         // Get the current date
         const currentDate = new Date();
-      
+
         // Create a new Date object for the target date, adjusting month (0-based) and day
         const targetDate = new Date(year, month - 1, day)
-      
+
         // Calculate the time difference in milliseconds
         const timeDifference = targetDate.getTime() - currentDate.getTime();
-      
+
         // Calculate the number of days left
         const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
-      
+
         return daysLeft;
     }
 

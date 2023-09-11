@@ -1,28 +1,71 @@
-<div class="card container">
-    <div class="card-top-row row">
-        <h2 class="user-name"><b>{{currentUser.username}}</b></h2>
+<!--<div class="card container">-->
+<!--    <div class="card-top-row row">-->
+<!--        <h2 class="user-name"><b>{{currentUser.username}}</b></h2>-->
+<!--    </div>-->
+<!--    <div class="card-main-body">-->
+<!--        <div class="row">-->
+<!--            <div class="img-container">-->
+<!--                <img src={{currentUser.profilePicUrl}} alt="Avatar" class="avatar">-->
+<!--            </div>-->
+<!--            <div class="user-info-container">-->
+<!--                    <div class="user-bio-container">-->
+<!--                        <p><b>User bio</b></p>-->
+<!--                        <p>{{currentUser.bio}}</p>-->
+<!--                    </div>-->
+
+
+<!--                <div class="user-stats-container">-->
+<!--                    <p><b>User stats</b></p>-->
+<!--                    <p>Weight: {{ currentUser.weight }}</p>-->
+<!--                    <p>Height: {{ currentUser.length }}</p>-->
+<!--                </div>-->
+<!--                <div class="placeholder">Tom ruta för annan info?</div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="container">
+  <section class="user-profile">
+    <div class="profile-header">
+      <div class="profile-picture">
+        <img ngSrc="{{currentUser.profilePicUrl}}" alt="Profile Picture" width="100" height="100">
+      </div>
+      <div class="profile-info">
+        <h1>{{currentUser.username}}</h1>
+        <p>Height: {{currentUser.length}}</p>
+        <p>Weight: {{currentUser.weight}}</p>
+      </div>
     </div>
-    <div class="card-main-body">
-        <div class="row">
-            <div class="img-container">
-                <img src={{currentUser.profilePicUrl}} alt="Avatar" class="avatar">
-            </div>
-            <div class="user-info-container">
-                    <div class="user-bio-container">
-                        <p><b>User bio</b></p>
-                        <p>{{currentUser.bio}}</p>
-                    </div>
-
-
-                <div class="user-stats-container">
-                    <p><b>User stats</b></p>
-                    <p>Weight: {{ currentUser.weight }}</p>
-                    <p>Height: {{ currentUser.length }}</p>
-                </div>
-                <div class="placeholder">Tom ruta för annan info?</div>
-
-            </div>
-        </div>
+    <div class="profile-bio">
+      <h2>About Me</h2>
+      <p>{{currentUser.bio}}</p>
     </div>
+  </section>
+
+  <section class="user-settings" *ngIf="isToggleOpen"  #userSettings>
+    <h1>Edit Profile Settings</h1>
+    <div class="toggle-button" (click)="toggleForm()">
+      <span>&#9654;</span>
+    </div>
+    <form [hidden]="!formVisible">
+      <div class="form-group">
+        <label for="bio">Short Bio</label>
+        <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="height">Height (cm)</label>
+        <input type="number" id="height" name="height" placeholder="t.ex.175">
+      </div>
+      <div class="form-group">
+        <label for="weight">Weight (kg)</label>
+        <input type="number" id="weight" name="weight" placeholder="t.ex.70">
+      </div>
+      <div class="form-group">
+        <label for="profile-picture">Profile Picture</label>
+        <input type="file" id="profile-picture" name="profile-picture">
+      </div>
+      <button type="submit">Save Changes</button>
+    </form>
+  </section>
 </div>
-
