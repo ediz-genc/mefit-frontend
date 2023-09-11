@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Goal } from 'src/app/models/goal.model';
 
 @Component({
   selector: 'app-profile-goal-history-item',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile-goal-history-item.component.css']
 })
 export class ProfileGoalHistoryItemComponent {
-
+  @Input() goal!: Goal;
 }
