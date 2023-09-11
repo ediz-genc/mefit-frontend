@@ -110,11 +110,5 @@ export class UserService {
     return this.http.get<Goal[]>(this.baseApiUrl + `/users/${id}/history`);
 }
 
-  // Every user should have a corresponding settings view containing a form to edit their profile settings.
-  // They should not be able to change their credentials in MeFit as they are stored on an Identity Provider.
-  updateUserProfile() {
-    return;
-  }
-
 
 }
