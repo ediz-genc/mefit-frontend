@@ -1,7 +1,6 @@
 # MeFIT client
 
-**Domain link:** https://me-fit-frontend-tawny.vercel.app/profile
-
+**Domain link:** https://me-fit-frontend-tawny.vercel.app
 ## Introduction
 
 Welcome to the Frontend Component of the Collaborative Case Project!
@@ -17,7 +16,7 @@ In this journey, be prepared to leverage the power of teamwork and technical pro
 <br>
 <br>
 <div align="center">
-  <center><img src="assets/gym_models.png" alt="MeFIT" width="600"/></center>
+  <center><img src="src/assets/images/gym_models.png" width="600"/></center>
 </div>
 <br>
 <br>
