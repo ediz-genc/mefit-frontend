@@ -29,10 +29,21 @@ export class DashboardComponent implements OnInit{
   };
 
   userId: string = this.loginService.getTokenId();
+  
   ngOnInit(): void {
     
     // Fetch goal
-    this.userService.getUserById(this.userId).subscribe({next: (response: User) => {this.currentUser = response},
+    this.userService.getUserById(this.userId).subscribe({next: (response: User) => {this.currentUser = {
+      id: response.id,
+      username: response.username,
+      profilePicUrl: response.profilePicUrl,
+      bio: response.bio,
+      weight: response.weight,
+      length: response.length,
+      currentGoalId: response.currentGoalId,
+      goalHistoryId: response.goalHistoryId
+    }},
     error: (error: HttpErrorResponse) => console.log(error)})
   }
+
 }
