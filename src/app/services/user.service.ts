@@ -8,11 +8,11 @@ import { Observable } from "rxjs";
 import { User } from "../models/user.model";
 import { environment } from "src/environments/environment";
 import { UserRole } from "../enums/user-role.enum";
+import { Goal } from "../models/goal.model";
 
 @Injectable({
     providedIn: 'root'
 })
-
 
 export class UserService {
 
@@ -82,7 +82,27 @@ export class UserService {
         return this.http.get(this.baseApiUrl + `/users/${userId}/programs/completed`)
     }
 
+    getCurrentGoal(userId: string): Observable<any>{
+        return this.http.get(this.baseApiUrl + `/users/${userId}/goal`)
+    }
 
+    //Created by GPT (just gets NaN)
+    public getDaysLeftUntilDate(dateStr: string): number {
+        // Split the input date string into year, month, and day components
+        const [year, month, day] = dateStr.split('-').map(Number);
 
-
+        // Get the current date
+        const currentDate = new Date();
+      
+        // Create a new Date object for the target date, adjusting month (0-based) and day
+        const targetDate = new Date(year, month - 1, day)
+      
+        // Calculate the time difference in milliseconds
+        const timeDifference = targetDate.getTime() - currentDate.getTime();
+      
+        // Calculate the number of days left
+        const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
+      
+        return daysLeft;
+    }
 }

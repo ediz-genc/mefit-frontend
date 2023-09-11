@@ -26,23 +26,35 @@ export class DashboardComponent implements OnInit{
   completedProgramsInGoal: Program[] = []
   pendingWorkoutsInGoal: Workout[] = []
   pendingProgramsInGoal: Program[] = []
+  goal: Goal = {
+    goalId: 0,
+    name: '',
+    startDate: '',
+    endDate: '',
+    completed: false,
+    userId: 0,
+    programs: [],
+    completedProgramId: [],
+    workoutId: [],
+    completedWorkoutId: [],
+  }
+  daysLeft: number = 0
+  
 
-  constructor(public readonly programService: ProgramService,
-    private readonly loginService: LoginService,
+  constructor( private readonly loginService: LoginService,
     private readonly userService: UserService) {}
 
     userId: string = this.loginService.getTokenId();
 
-
   ngOnInit(): void {
 
     // Fetch goal
-    
+    this.userService.getCurrentGoal(this.userId).subscribe({next: (response: Goal) => {this.goal = response},
+    error: (error: HttpErrorResponse) => console.log(error)})
 
     // Fetch completed workouts
     this.userService.getCompletedWorkouts(this.userId).subscribe({next: (response) => {this.completedWorkoutsInGoal = response}, 
     error: (error: HttpErrorResponse)=> console.log(error)
-    
     })
 
     // Fetch completed programs
@@ -59,6 +71,9 @@ export class DashboardComponent implements OnInit{
     this.userService.getPendingPrograms(this.userId).subscribe({next: (response) =>{this.pendingProgramsInGoal = response}, 
       error: (error: HttpErrorResponse) => console.log(error)
     })
-  }
 
+      //Get days left
+    this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.startDate);
+  }
+  
 }
