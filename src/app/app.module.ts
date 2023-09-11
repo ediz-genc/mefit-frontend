@@ -26,6 +26,8 @@ import {
 import {RegisterViewComponent} from './views/register-view/register-view.component';
 import {RegisterFormComponent} from './components/register-form/register-form.component';
 import {NgOptimizedImage} from "@angular/common";
+import { DashboardCreateGoalComponent } from './components/dashboard/dashboard-create-goal/dashboard-create-goal.component';
+import { DashboardDisplayGoalComponent } from './components/dashboard/dashboard-display-goal/dashboard-display-goal.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import {NgOptimizedImage} from "@angular/common";
     ProfileGoalHistoryItemComponent,
     RegisterViewComponent,
     RegisterFormComponent,
+    DashboardCreateGoalComponent,
+    DashboardDisplayGoalComponent,
   ],
   imports: [
     BrowserModule,
