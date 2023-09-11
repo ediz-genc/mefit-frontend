@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit{
   };
 
   userId: string = this.loginService.getTokenId();
-  
+
   ngOnInit(): void {
     
     // Fetch goal
@@ -46,4 +46,12 @@ export class DashboardComponent implements OnInit{
     error: (error: HttpErrorResponse) => console.log(error)})
   }
 
+
+  userHasCurrentGoal() {
+    if (this.currentUser.currentGoalId == 0 || this.currentUser.currentGoalId == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }
