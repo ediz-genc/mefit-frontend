@@ -1,1 +1,69 @@
-<p>dashboard-create-goal works!</p>
+<div class="container">
+    <h1>Create Goal</h1>
+    <form>
+
+        <div class="goal-attributes">
+            <label for="goalName">Goal Name:</label>
+            <input type="start" id="goalName" name="goalName" required>
+        </div>
+
+        <div class="goal-attributes">
+            <label for="startDate">Starting-date: </label>
+            <input type="date" id="startDate" name="startDate" required>
+        </div>
+
+        <div class="goal-attributes">
+            <label for="endDate">Ending-date: </label>
+            <input type="date" id="endDate" name="endDate" required>
+        </div>
+
+
+        <div>
+            <label for="program">Select Program:</label>
+            <select [(ngModel)]="selectedProgram" id="program" name="selectedProgram" required>
+                <option *ngFor="let program of programs" [ngValue]="program">{{program.name}}</option>
+            </select>
+            <button (click)="addProgramToGoal()">Add program</button>
+        </div>
+
+        <div>
+            <label for="workout">Select Workout:</label>
+            <select  [(ngModel)]="selectedWorkout" id="workout" name="selectedWorkout" required>
+                <option *ngFor="let workout of workouts" [ngValue]="workout">{{workout.name}}</option>
+            </select>
+            <button (click)="addWorkoutToGoal()">Add workout</button>
+        </div>
+
+        <button>Create Goal</button>
+
+        <div class="exercise-list">
+            <h2>Exercises - customize and create your own workout</h2>
+
+            <div class="exercise-item">
+                <label for="selectedExercise">Workout name: </label>
+                <input type="text" id="workoutName" required>
+                <select [(ngModel)]="selectedExercise" class="exercise-dropdown" name="selectedExercise" required>
+                    <option *ngFor="let exercise of exercises" [ngValue]="exercise"> {{exercise.name}} </option>
+                </select>
+                <button (click)="addExerciseToWorkout()">Add to workout</button>
+            </div>
+            <button>Create workout with exercises</button>
+
+        </div>
+        
+    </form>
+
+    <!-- Display Boxes -->
+    <div class="display-box">
+        <h2>Selected Program:</h2>
+        <p *ngFor="let program of selectedPrograms"> {{program.name}} <button (click)="removeProgramFromGoal()">Remove program</button></p>
+    </div>
+    <div class="display-box">
+        <h2>Selected Workout:</h2>
+        <p *ngFor="let workout of selectedWorkouts">{{workout.name}} <button (click)="removeWorkoutFromGoal()">Remove workout</button></p>
+    </div>
+    <div class="display-box">
+        <h2>Selected Exercises:</h2>
+        <p *ngFor="let exercise of selectedExercises"> {{exercise.name}} <button (click)="removeWorkoutFromGoal()">Remove workout</button> </p>
+    </div>
+</div>

@@ -27,11 +27,12 @@ export class DashboardComponent implements OnInit{
     currentGoalId: 0,
     goalHistoryId: []
   };
+  userId: string = ''
 
-  userId: string = this.loginService.getTokenId();
 
   ngOnInit(): void {
-    
+    this.userId = this.loginService.getTokenId();
+
     // Fetch goal
     this.userService.getUserById(this.userId).subscribe({next: (response: User) => {this.currentUser = {
       id: response.id,
