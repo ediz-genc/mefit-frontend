@@ -18,6 +18,7 @@ export class DashboardDisplayGoalComponent implements OnInit{
   completedProgramsInGoal: Program[] = []
   pendingWorkoutsInGoal: Workout[] = []
   pendingProgramsInGoal: Program[] = []
+
   goal: Goal = {
     goalId: 0,
     name: '',
@@ -31,6 +32,8 @@ export class DashboardDisplayGoalComponent implements OnInit{
     completedWorkoutId: [],
   }
   daysLeft: number = 0
+
+  completedPercentage: number = 0;
   
 
   constructor( private readonly loginService: LoginService,
@@ -66,6 +69,51 @@ export class DashboardDisplayGoalComponent implements OnInit{
 
       //Get days left
     //this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.startDate);
+
+    //Get completed percentage
+    this.completedPercentage = this.calculateCompletedTotalPercentage();
   }
 
+  completedWorkouts() : number {
+    return this.completedWorkoutsInGoal.reduce((a, workout) => a + workout.exerciseIds.length, 0);
+  }
+
+  pendingWorkouts() : number {
+    return this.pendingWorkoutsInGoal.reduce((a, workout) => a + workout.exerciseIds.length, 0);
+  }
+
+  completedPrograms() : number {
+    return this.completedProgramsInGoal.reduce((a, program) => a + program.workouts.length, 0); 
+  }
+
+  pendingPrograms() : number {
+    return this.pendingProgramsInGoal.reduce((a, program) => a + program.workouts.length, 0); 
+  }
+
+  calculateCompletedWorkoutsPercentage() : number {
+    let completedWorkouts = this.completedWorkouts();
+    let totalWorkouts = this.pendingWorkouts() + completedWorkouts;
+    let completedPercentage = completedWorkouts / totalWorkouts * 100;
+    return completedPercentage;
+  }
+
+  calculateCompletedProgramsPercentage() : number {
+    let completedPrograms = this.completedPrograms();
+    let totalPrograms = this.pendingPrograms() + completedPrograms;
+    let completedPercentage = completedPrograms / totalPrograms * 100;
+    return completedPercentage;
+  }
+
+  calculateCompletedTotalPercentage() : number {
+    let completedWorkouts = this.completedWorkouts();
+    let completedPrograms = this.completedPrograms();
+    let totalWorkouts = this.pendingWorkouts() + completedWorkouts;
+    let totalPrograms = this.pendingPrograms() + completedPrograms;
+    let completedPercentage = (completedWorkouts + completedPrograms) / (totalWorkouts + totalPrograms) * 100;
+    return completedPercentage;
+  }
+
+  percentageToRadians(percentage: number) : number {
+    return percentage * Math.PI / 100;
+  }
 }
