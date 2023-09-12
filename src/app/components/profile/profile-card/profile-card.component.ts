@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, HostListener} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {User} from 'src/app/models/user.model';
 import {LoginService} from 'src/app/services/login.service';
 import {UserService} from 'src/app/services/user.service';
@@ -10,9 +10,9 @@ import {UserService} from 'src/app/services/user.service';
 })
 export class ProfileCardComponent implements OnInit {
 
-  @ViewChild('userSettings') userSettings: any; // Reference to the section element
-  formVisible = false; // Track whether the form is visible
-  isToggleOpen = true;
+  @ViewChild('userSettings') userSettings: any;
+  formVisible = false;
+  isTriangleExpanded = false;
 
   public currentUser:User = this.userService.getCurrentUser();
   // currentUser: User = {
@@ -29,19 +29,6 @@ export class ProfileCardComponent implements OnInit {
   constructor(
     private userService: UserService,
     private readonly loginService: LoginService) {
-  }
-
-  @HostListener('document:click', ['$event'])
-  handleDocumentClick(event: MouseEvent) {
-    if (!this.isToggleOpen) {
-      return;
-    }
-
-    // Check if the click target is outside of the toggleable section
-    const toggleableSection = document.querySelector('.user-settings');
-    if (toggleableSection && !toggleableSection.contains(event.target as Node)) {
-      this.closeToggle();
-    }
   }
 
   ngOnInit(): void {
@@ -61,6 +48,7 @@ export class ProfileCardComponent implements OnInit {
 
   toggleForm() {
     this.formVisible = !this.formVisible;
+    this.isTriangleExpanded = this.formVisible;
     const userSettingsElement = this.userSettings.nativeElement;
     const toggleButton = userSettingsElement.querySelector('.toggle-button');
     if (this.formVisible) {
@@ -69,12 +57,8 @@ export class ProfileCardComponent implements OnInit {
       toggleButton.classList.remove('expanded');
     }
   }
-  openToggle() {
-    this.isToggleOpen = true;
-  }
-
   closeToggle() {
-    this.isToggleOpen = false;
+    this.formVisible = false;
+    this.isTriangleExpanded = false;
   }
-
 }
