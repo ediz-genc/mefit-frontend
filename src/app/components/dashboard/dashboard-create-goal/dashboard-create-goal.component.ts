@@ -98,8 +98,6 @@ export class DashboardCreateGoalComponent{
       this.exercises = this.exercises.filter(exercise => exercise !== this.selectedExercise);
       this.selectedExercise = null;
     }
-    console.log(this.selectedExercises)
-
   }
 
   removeExerciseFromWorkout(exercise: Exercise){
@@ -108,11 +106,9 @@ export class DashboardCreateGoalComponent{
       this.selectedExercises.splice(index, 1);
       this.exercises.push(exercise);
     }
-    console.log(this.selectedExercises)
   }
 
   addProgramToGoal(){
-    console.log(this.selectedPrograms)
     if (this.selectedProgram) {
       this.selectedPrograms.push(this.selectedProgram);
       this.programs = this.programs.filter(program => program !== this.selectedProgram);
@@ -148,8 +144,6 @@ export class DashboardCreateGoalComponent{
   createNewGoal() {
 
     let goalId: number;
-    console.log(this.selectedPrograms)
-    console.log(this.selectedWorkouts)
     this.workoutsIds = this.selectedWorkouts.map((workout) => workout.id)
     this.programIds = this.selectedPrograms.map((program) => program.id)
 
@@ -176,9 +170,7 @@ export class DashboardCreateGoalComponent{
   }
 
   createNewWorkout(){
-    console.log(this.selectedExercises)
     this.exercisesIds = this.selectedExercises.map((exercise) => exercise.id)
-    console.log(this.exercisesIds)
 
     const workout: Workout = {
       workoutId: 0,
@@ -190,7 +182,8 @@ export class DashboardCreateGoalComponent{
     }
     
     this.workoutService.createWorkout(workout)
-    console.log(JSON.stringify(workout))
+
+    this.resetPage()
   }
 
   resetPage(){
