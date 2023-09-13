@@ -106,9 +106,18 @@ export class UserService {
     }
 
 
-  getGoalHistory(id: String): Observable <Goal[]>{
+    getGoalHistory(id: String): Observable <Goal[]>{
     return this.http.get<Goal[]>(this.baseApiUrl + `/users/${id}/history`);
-}
+    }
 
+    addGoalToUser(id: String, goalId: number){
+        return this.http.patch<any>(this.baseApiUrl + `/users/${id}/goal/${goalId}`, {
+        }, 
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
 
 }

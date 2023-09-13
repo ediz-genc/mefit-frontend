@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Exercise } from "../models/exercise.model";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -39,7 +40,7 @@ export class ExerciseService {
             vidUrl: exercise.vidUrl,
             fitnessLevel: exercise.fitnessLevel
           };
-          return this.http.post<Exercise>(`/api/v1/exercises/`, JSON.stringify({data}), {
+          return this.http.post<Exercise>(`${environment.apiUrl}/exercises/`, JSON.stringify({data}), {
             headers: {
 
             }
@@ -50,7 +51,7 @@ export class ExerciseService {
 
     //Delete exercise
     deleteExercise(exerciseId: number){
-        return this.http.delete(`/api/v1/exercises/${exerciseId}`);
+        return this.http.delete(`${environment.apiUrl}/exercises/${exerciseId}`);
     }
 
     updateExercise(exercise: Exercise): Observable<Exercise>{
@@ -62,7 +63,7 @@ export class ExerciseService {
             vidUrl: exercise.vidUrl,
             fitnessLevel: exercise.fitnessLevel
         };
-        return this.http.put<Exercise>(`/api/v1/exercises/${exercise.exerciseId}`, JSON.stringify({data}),{
+        return this.http.put<Exercise>(`${environment.apiUrl}/exercises/${exercise.exerciseId}`, JSON.stringify({data}),{
             headers: {
 
         }

@@ -13,7 +13,7 @@
 // A button to set the goal for the week
 // An option to set the starting date to a day other than the present day
 
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Goal } from "../models/goal.model";
@@ -66,6 +66,29 @@ export class GoalService {
     // All programs
     getAllPrograms(goalId: number): Observable <Program[]>{
         return this.http.get<Program[]>(this.baseApiUrl +`/goals/${goalId}/programs`);
+    }
+
+    createGoal(goal: Goal): Observable<any>{
+        const data = {
+            id: goal.goalId,
+            name: goal.name,
+            startDate: goal.startDate,
+            endDate: goal.endDate,
+            completed: goal.completed,
+            userId: goal.userId,
+            programId: goal.programs,
+            completedProgramId: goal.completedProgramId,
+            workoutId: goal.workoutId,
+            completedWorkoutId: goal.completedWorkoutId
+        }
+
+        return (this.http.post<any>(`${environment.apiUrl}/goals`, 
+        JSON.stringify(data),
+        {
+            headers: {
+                'Content-Type': 'application/json'
+        }
+        }))
     }
 
     addProgramAndWorkoutToGoal(goalId: number, programId: number, workoutId: number): Observable<void> {

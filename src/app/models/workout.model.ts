@@ -4,10 +4,9 @@ import { Program } from "./program.model"
 
 export interface Workout {
     workoutId: number
-    name: string
-    description: string
-    exercises: number[]
-    programs: number[]
-    goals: number[]
-    goalsCompleted: number[]
+    name?: string
+    description?: string
+    exerciseIds: number[]
+    programId: number[]
+    goalId: number[]
 }
