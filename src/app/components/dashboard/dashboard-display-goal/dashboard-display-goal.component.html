@@ -1,22 +1,15 @@
 <div class="form-card">
     <div class="form-container">
-        <div class="row">
-            <div class="goal-header">
-                <h2>Goal-info</h2>
-                <p>Goal-name: {{goal?.name}}</p>
-                <p>Days left to complete goal: {{'ba' + this.daysLeft + 'a'}}</p>
-                <p>Start-date: {{goal?.startDate}}</p>
-                <p>End-date: {{goal?.endDate}}</p>
-            </div>
-            <div class="goal-percent-circle" attr.value={{completedPercentage}}>
-                <svg viewBox="0 0 50 50" class="circular-chart">
-                    <path class="circle"
-                      stroke-dasharray="60, 100"
-                      d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
-                </svg>
+        <div class="info-container">
+            <div class="row">
+                <div class="goal-header">
+                    <h2>Total goal progress</h2>
+                    <p>Goal-name: {{goal?.name}}</p>
+                    <p>Days left to complete goal: {{'ba' + this.daysLeft + 'a'}}</p>
+                    <p>Start-date: {{goal?.startDate}}</p>
+                    <p>End-date: {{goal?.endDate}}</p>
+                </div>
+                <app-dashboard-progress-circle percentage={{totalCompletedPercentage}}></app-dashboard-progress-circle>
             </div>
         </div>
 
@@ -28,11 +21,7 @@
                     <p>Description: {{ item.description }}</p>
                 </div>
             </div>
-            <div class="goal-percent-circle">
-                
-
-            </div>
-
+            <app-dashboard-progress-circle percentage="50"></app-dashboard-progress-circle>
         </div>
 
         <div *ngFor="let item of pendingWorkoutsInGoal" class="row">
@@ -55,7 +44,9 @@
                     <p>Category: {{item.category}}</p>
                     <img src= {{item.imgUrl}} alt="Img for {{item.name}}" >
                 </div>
+                
             </div>
+            <app-dashboard-progress-circle percentage="10"></app-dashboard-progress-circle>
         </div>
 
         <div *ngFor="let item of pendingProgramsInGoal" class="row">
@@ -69,7 +60,6 @@
                     <button class="form-button">Completed</button>
                 </div>
             </div>
-            
 
         </div>
     </div>

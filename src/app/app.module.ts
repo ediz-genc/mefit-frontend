@@ -28,6 +28,7 @@ import {RegisterFormComponent} from './components/register-form/register-form.co
 import {NgOptimizedImage} from "@angular/common";
 import { DashboardCreateGoalComponent } from './components/dashboard/dashboard-create-goal/dashboard-create-goal.component';
 import { DashboardDisplayGoalComponent } from './components/dashboard/dashboard-display-goal/dashboard-display-goal.component';
+import { DashboardProgressCircleComponent } from './components/dashboard/dashboard-display-goal/dashboard-progress-circle/dashboard-progress-circle.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { DashboardDisplayGoalComponent } from './components/dashboard/dashboard-
     RegisterFormComponent,
     DashboardCreateGoalComponent,
     DashboardDisplayGoalComponent,
+    DashboardProgressCircleComponent,
   ],
   imports: [
     BrowserModule,
