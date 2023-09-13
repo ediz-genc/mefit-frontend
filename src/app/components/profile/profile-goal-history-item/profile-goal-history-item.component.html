@@ -1,7 +1,9 @@
 <div class="container">
-    <div class="row">
-        <p>Goal name</p>
-        <p>Completed?</p>
-    </div>
-    
+  <div class="row">
+    <ng-container *ngIf="goal"> <!-- To check if the goal is populated-->
+      <p>Goal name: {{ goal.name }}</p>
+      <p>Started date: {{ goal.startDate }}</p>
+      <p>Ended date: {{ goal.endDate }}</p>
+    </ng-container>
+  </div>
 </div>

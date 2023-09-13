@@ -1,7 +1,9 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {User} from 'src/app/models/user.model';
 import {LoginService} from 'src/app/services/login.service';
 import {UserService} from 'src/app/services/user.service';
+import {Goal} from 'src/app/models/goal.model';
+import {GoalService} from 'src/app/services/goal.service';
 
 @Component({
   selector: 'app-profile-card',
@@ -11,27 +13,20 @@ import {UserService} from 'src/app/services/user.service';
 export class ProfileCardComponent implements OnInit {
 
   @ViewChild('userSettings') userSettings: any;
-  formVisible = false;
-  isTriangleExpanded = false;
-
-  public currentUser:User = this.userService.getCurrentUser();
-  // currentUser: User = {
-  //   id: "0",
-  //   username: '',
-  //   profilePicUrl: '',
-  //   bio: '',
-  //   weight: 0,
-  //   length: 0,
-  //   currentGoalId: 0,
-  //   goalHistoryId: []
-  // };
+  goalHistory: Goal[] = [];
 
   constructor(
     private userService: UserService,
+    private goalService: GoalService,
     private readonly loginService: LoginService) {
   }
 
+  public currentUser: User = this.userService.getCurrentUser();
+  public currentGoal: Goal = this.goalService.getCurrentGoal()
+
   ngOnInit(): void {
+    const userId = this.loginService.getTokenId();
+
     this.userService.getUserById(this.loginService.getTokenId()).subscribe((data) => {
       this.currentUser = {
         id: data.id,
@@ -44,21 +39,15 @@ export class ProfileCardComponent implements OnInit {
         goalHistoryId: data.goalHistoryId
       }
     });
-  }
 
-  toggleForm() {
-    this.formVisible = !this.formVisible;
-    this.isTriangleExpanded = this.formVisible;
-    const userSettingsElement = this.userSettings.nativeElement;
-    const toggleButton = userSettingsElement.querySelector('.toggle-button');
-    if (this.formVisible) {
-      toggleButton.classList.add('expanded');
-    } else {
-      toggleButton.classList.remove('expanded');
-    }
-  }
-  closeToggle() {
-    this.formVisible = false;
-    this.isTriangleExpanded = false;
+    this.userService.getGoalHistory(this.loginService.getTokenId()).subscribe({
+      next: (data) => {
+        this.goalHistory = data;
+        console.log(data);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 }

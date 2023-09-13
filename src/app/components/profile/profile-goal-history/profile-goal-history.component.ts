@@ -11,12 +11,14 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileGoalHistoryComponent {
   goalHistory: Goal[] = []
 
-  constructor(private readonly loginService:LoginService, private readonly userService:UserService) {}
+  constructor(private readonly loginService:LoginService,
+              private readonly userService:UserService) {}
   ngOnInit(): void {
     this.userService.getGoalHistory(this.loginService.getTokenId()).subscribe({
       next: (data) => {
         this.goalHistory = data;
-    }, 
+        console.log(data);
+    },
       error: (error) => {
         console.log(error);
     }});
