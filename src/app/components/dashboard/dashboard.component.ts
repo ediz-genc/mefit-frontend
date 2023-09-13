@@ -31,6 +31,8 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
 
+    this.userId = this.loginService.getTokenId();
+
     // Fetch goal
     this.userService.getUserById(this.userId).subscribe({next: (response: User) => {this.currentUser = {
       id: response.id,

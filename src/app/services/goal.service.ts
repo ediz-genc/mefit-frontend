@@ -1,3 +1,4 @@
+
 // View and set goals
 // This view should show the full details pertaining to a goal (weekly workouts).
 
@@ -12,101 +13,97 @@
 // A button to set the goal for the week
 // An option to set the starting date to a day other than the present day
 
-import {HttpClient} from "@angular/common/http";
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {Goal} from "../models/goal.model";
-import {Workout} from "../models/workout.model";
-import {Program} from "../models/program.model";
-import {environment} from "src/environments/environment";
-import {User} from "../models/user.model";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Goal } from "../models/goal.model";
+import { User } from "../models/user.model";
+import { Workout } from "../models/workout.model";
+import { Program } from "../models/program.model";
+import { environment } from "src/environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 
 export class GoalService {
-  private currentGoal:Goal = {
-    goalId: 10,
-    name: "TestUser",
-    startDate: "2023-01-01",
-    endDate: "2023-01-31",
-    completed: true,
-    userId: 100,
-    programs: [1, 2, 3],
-    completedProgramId: [12],
-    workoutId: [4,5,6],
-    completedWorkoutId: [11]
-  }
+    constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-  }
+    baseApiUrl = environment.apiUrl
 
-  baseApiUrl = environment.apiUrl
+    //-----------------User-specific actions-----------------//
 
-  //-----------------User-specific actions-----------------//
+    // The period and status of the current goal
+    getGoalById(goalId: number):Observable<Goal>{
+        return this.http.get<Goal>(this.baseApiUrl +`/goals/` + goalId)
+    }
 
+    // Completed workouts
+    getCompletedWorkouts(goalId: number): Observable <Workout[]>{
+        return this.http.get<Workout[]>(this.baseApiUrl + `/goals/${goalId}/workouts/completed`);
+    }
 
-  // getGoals(): Observable<Goal> {
-  //   return this.http.get<Goal>(this.baseApiUrl + `/goals/`)
-  // }
+    // Pending workouts
+    getPendingWorkouts(goalId: number): Observable <Workout[]>{
+        return this.http.get<Workout[]>(this.baseApiUrl +`/goals/${goalId}/workouts/pending`);
+    }
 
-  getCurrentGoal() {
-    return this.currentGoal;
-  }
+    // All workouts
+    getAllWorkouts(goalId: number): Observable<Workout[]>{
+        return this.http.get<Workout[]>(this.baseApiUrl +`/goals/${goalId}/workouts`)
+    }
 
-  getUserGoalHistory(userId: string): Observable<Goal[]> {
-    // Make an HTTP request to your API to retrieve the user's goal history.
-    // You can adjust the URL and request type (GET, POST, etc.) based on your API design.
-    const url = `/api/goals/user/${userId}/history`;
-    return this.http.get<Goal[]>(this.baseApiUrl + `/goals/`);
-  }
+    // Completed programs
+    getCompletedPrograms(goalId: number): Observable <Program[]>{
+        return this.http.get<Program[]>(this.baseApiUrl +`goals/${goalId}/programs/completed`);
+    }
 
-  // The period and status of the current goal
-  getGoalById(goalId: number): Observable<Goal> {
-    return this.http.get<Goal>(this.baseApiUrl + `/goals/` + goalId)
-  }
+    //Pending programs
+    getPendingPrograms(goalId: number): Observable <Program[]>{
+        return this.http.get<Program[]>(this.baseApiUrl +`/goals/${goalId}/programs/pending`);
+    }
 
-  // Completed workouts
-  getCompletedWorkouts(goalId: number): Observable<Workout[]> {
-    return this.http.get<Workout[]>(this.baseApiUrl + `/goals/${goalId}/workouts/completed`);
-  }
+    // All programs
+    getAllPrograms(goalId: number): Observable <Program[]>{
+        return this.http.get<Program[]>(this.baseApiUrl +`/goals/${goalId}/programs`);
+    }
 
-  // Pending workouts
-  getPendingWorkouts(goalId: number): Observable<Workout[]> {
-    return this.http.get<Workout[]>(this.baseApiUrl + `/goals/${goalId}/workouts/pending`);
-  }
+    createGoal(goal: Goal): Observable<any>{
+        const data = {
+            id: goal.goalId,
+            name: goal.name,
+            startDate: goal.startDate,
+            endDate: goal.endDate,
+            completed: goal.completed,
+            userId: goal.userId,
+            programId: goal.programs,
+            completedProgramId: goal.completedProgramId,
+            workoutId: goal.workoutId,
+            completedWorkoutId: goal.completedWorkoutId
+        }
 
-  // All workouts
-  getAllWorkouts(goalId: number): Observable<Workout[]> {
-    return this.http.get<Workout[]>(this.baseApiUrl + `/goals/${goalId}/workouts`)
-  }
+        return (this.http.post<any>(`${environment.apiUrl}/goals`,
+        JSON.stringify(data),
+        {
+            headers: {
+                'Content-Type': 'application/json'
+        }
+        }))
+    }
 
-  // Completed programs
-  getCompletedPrograms(goalId: number): Observable<Program[]> {
-    return this.http.get<Program[]>(this.baseApiUrl + `goals/${goalId}/programs/completed`);
-  }
-
-  //Pending programs
-  getPendingPrograms(goalId: number): Observable<Program[]> {
-    return this.http.get<Program[]>(this.baseApiUrl + `/goals/${goalId}/programs/pending`);
-  }
-
-  // All programs
-  getAllPrograms(goalId: number): Observable<Program[]> {
-    return this.http.get<Program[]>(this.baseApiUrl + `/goals/${goalId}/programs`);
-  }
-
-  addProgramAndWorkoutToGoal(goalId: number, programId: number, workoutId: number): Observable<void> {
-    const data = {
-      programId: programId,
-      workoutId: workoutId,
-    };
-    return this.http.patch<void>(this.baseApiUrl + `/goals/${goalId}`, data);
-  }
+    addProgramAndWorkoutToGoal(goalId: number, programId: number, workoutId: number): Observable<void> {
+        const data = {
+          programId: programId,
+          workoutId: workoutId,
+        };
+        return this.http.patch<void>(this.baseApiUrl +`/goals/${goalId}`, data);
+      }
 
 
-  //-----------------Contributor-specific actions-----------------//
+
+    //-----------------Contributor-specific actions-----------------//
+
+
 
 
 }

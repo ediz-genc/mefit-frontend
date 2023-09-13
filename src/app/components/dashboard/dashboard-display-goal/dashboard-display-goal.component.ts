@@ -24,7 +24,7 @@ export class DashboardDisplayGoalComponent implements OnInit{
     startDate: '',
     endDate: '',
     completed: false,
-    userId: 0,
+    userId: '',
     programs: [],
     completedProgramId: [],
     workoutId: [],
@@ -65,7 +65,7 @@ export class DashboardDisplayGoalComponent implements OnInit{
     })
 
       //Get days left
-    this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.startDate);
+    //this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.startDate);
   }
 
 }

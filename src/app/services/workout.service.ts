@@ -7,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Workout } from "../models/workout.model";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -24,7 +25,7 @@ export class WorkoutService {
 
     // A user can add a workout to a goal.
     addWorkoutToGoal(workoutId: number, goalId: number): Observable<any> {
-        return this.http.patch<any>(`/api/v1/goals/${goalId}`, {
+        return this.http.patch<any>(`${environment.apiUrl}/goals/${goalId}`, {
           workoutId: workoutId,
         });
     }
@@ -38,20 +39,24 @@ export class WorkoutService {
     // Recommended fitness level
     // An optional image
     
-    createWorkout(workout: Workout): Observable<Workout>{
+    createWorkout(workout: Workout): void{
         const data ={
             id: workout.workoutId,
             name: workout.name,
             description: workout.description, 
+            exerciseId: workout.exerciseIds,
+            programId: workout.programId,
+            goalId: workout.goalId
+
         }
-        return this.http.post<Workout>(`/api/v1/workouts`, 
+        const send = this.http.post<Workout>(`${environment.apiUrl}/workouts`, 
         JSON.stringify(data),
         {
             headers: {
-                Authentication: 'Bearer ' + localStorage.getItem('token'),
                 'Content-Type': 'application/json'
         },
-        }) 
+        }).subscribe()
+        console.log(JSON.stringify(data))
     }
 
     putWorkout(workout: Workout, workoutId: number): void{
@@ -59,12 +64,18 @@ export class WorkoutService {
             name: workout.name,
             description: workout.description
         }
-        const changeWorkout = this.http.put(`api/v1/workouts/${workoutId}`, 
+        const changeWorkout = this.http.put(`${environment.apiUrl}/workouts/${workoutId}`, 
         JSON.stringify(data), 
         {
             headers: {Authentication: 'Bearer ' + localStorage.getItem('token'),
             'Content-Type': 'application/json'},
         })
+    }
+
+    addExercisesToWorkout(exerciseIds: number[], workoutId: number): void{
+        const data = exerciseIds;
+        const addWorkouts = this.http.patch(`${environment.apiUrl}/workouts/${workoutId}`, 
+        JSON.stringify(data))
     }
 
     
