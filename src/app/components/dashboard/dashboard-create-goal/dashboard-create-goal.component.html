@@ -54,7 +54,7 @@
             <div class="grid-item">
                 <h3 *ngIf="selectedWorkout != undefined"> {{selectedWorkout.name}}</h3>
                 <p *ngIf="selectedWorkout != undefined"> {{selectedWorkout.description}}</p>
-                <div *ngIf="selectedWorkout != undefined">
+                <div class="included-exercises" *ngIf="selectedWorkout != undefined">
                     <h4>Includes exercises:</h4>
                         <div *ngFor="let exercise of selectedWorkout.exercises">{{exercise.name}}</div>
                 </div>                

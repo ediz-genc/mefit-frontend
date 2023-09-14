@@ -10,54 +10,56 @@
 }
 
 .header{
-    border: 2px solid black;
-    margin: 2%;
+    /* border: 2px solid black;*/
+    margin: 2%; 
 }
 
 .attributes{
-    border: 2px solid black;
-    margin: 2%;
+    /* border: 2px solid black;*/
+    margin: 2%; 
 }
 
 .goal-attributes{
-    border-bottom: 2px solid black;
-    margin: 2%;
+    /* border-bottom: 2px solid black;*/
+    margin: 2%; 
 }
 
 .add-program-grid{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin: 2%;
     display: grid;
     grid-template-columns: 50%, 50%;
 }
 
 .add-workout-grid{
-    border: 2px solid green;
-    margin: 2%;
+    /* border: 2px solid green;*/
+    margin: 2%; 
 }
 
 .workout-header{
-    border: 2px solid black;
-    margin: 2%
+    /* border: 2px solid black;*/
+    margin: 2% 
 }
 
 .workout-attribute{
-    border: 2px solid orchid;
-    margin: 2%;
+    /* border: 2px solid orchid;*/
+    margin: 2%; 
 }
 
 .display-box{
-    border: 2px solid yellow;
-    margin: 2%;
+    /* border: 2px solid yellow;*/
+    margin: 2%; 
 }
 
 .add-exercise{
-    border: 2px solid orange;
-    margin: 2%;
+    /* border: 2px solid orange;*/
+    margin: 2%; 
 }
 
 input{
-    border-radius: 5px;
+    /* border-radius: 5px;*/
+    height: 30px; 
+    margin: 2%;
 }
 
 select{
@@ -74,6 +76,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    margin: 2%;
 }
   
 button:hover {
@@ -88,7 +91,8 @@ textarea{
 }
 
 .grid-item{
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    margin: 2%;
 }
 
 .grid{
@@ -98,6 +102,12 @@ textarea{
     margin: 2%;
 }
 
-.image{
+img{
+    height: 50%;
+    width: 50%;
+    border-radius: 8px;
+}
 
+.included-exercises{
+    grid-template-rows: auto;
 }

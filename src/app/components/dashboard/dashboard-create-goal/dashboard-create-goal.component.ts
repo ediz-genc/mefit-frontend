@@ -138,41 +138,48 @@ export class DashboardCreateGoalComponent{
 
   createNewGoal() {
 
-    let goalId: number;
+    if(!this.goalName || !this.endDate || !this.startDate || this.selectedWorkouts.length == 0){
+      alert("Name, starting-date and end-date must be selected. You also have to add at least on workout")
+    }else{
+      let goalId: number;
 
-    // Converts workouts and programs to lists with there ids
-    this.workoutsIds = this.selectedWorkouts.map((workout) => workout.id)
-    this.programIds = this.selectedPrograms.map((program) => program.id)
-
-    // Creating the goal
-    const goal: Goal = {
-      goalId: 0,
-      name: this.goalName,
-      startDate: this.startDate,
-      endDate: this.endDate,
-      completed: false,
-      userId: this.userId,
-      programs: this.programIds,
-      completedProgramId: [],
-      workoutId: this.workoutsIds,
-      completedWorkoutId: []
+      // Converts workouts and programs to lists with there ids
+      this.workoutsIds = this.selectedWorkouts.map((workout) => workout.id)
+      this.programIds = this.selectedPrograms.map((program) => program.id)
+  
+      // Creating the goal
+      const goal: Goal = {
+        goalId: 0,
+        name: this.goalName,
+        startDate: this.startDate,
+        endDate: this.endDate,
+        completed: false,
+        userId: this.userId,
+        programs: this.programIds,
+        completedProgramId: [],
+        workoutId: this.workoutsIds,
+        completedWorkoutId: []
+      }
+  
+      // Sends post-request to server -> gets the goal-id in response -> sends a patch-request with the
+      // goal-id to users current goal. 
+      this.goalService.createGoal(goal).subscribe({
+        next: (response) => goalId = response,
+        error: (error: HttpErrorResponse) => console.log(error),
+        complete: () =>  (this.userService.addGoalToUser(this.userId, goalId).subscribe())
+      })
+  
+      // Reset the page
+      this.resetPage()
     }
-
-    // Sends post-request to server -> gets the goal-id in response -> sends a patch-request with the
-    // goal-id to users current goal. 
-    this.goalService.createGoal(goal).subscribe({
-      next: (response) => goalId = response,
-      error: (error: HttpErrorResponse) => console.log(error),
-      complete: () =>  (this.userService.addGoalToUser(this.userId, goalId).subscribe())
-    })
-
-    // Reset the page
-    this.resetPage()
   }
 
   createNewWorkout(){
 
-    // Maps list with exercises to list with exercise-ids
+    if(!this.workoutName || !this.workoutDescription || this.selectedExercises.length < 5){
+      alert("Name and description must be added. You also have to add at least five exercises")
+    }else{
+          // Maps list with exercises to list with exercise-ids
     this.exercisesIds = this.selectedExercises.map((exercise) => exercise.id)
 
     // Creating a workout-object with collected data
@@ -190,6 +197,8 @@ export class DashboardCreateGoalComponent{
 
     // Reset the page
     this.resetPage()
+    }
+
   }
 
   resetPage(){
