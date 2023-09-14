@@ -2,6 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import keycloak from "src/keycloak";
 import {Route, Router} from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class LoginService {
 
   constructor(private readonly http: HttpClient, private readonly router: Router) {
   }
+
+  baseApiUrl = environment.frontEndUrl
 
   saveToken(): void {
     localStorage.setItem('token', keycloak.token!);
@@ -31,12 +34,11 @@ export class LoginService {
   }
 
   login() {
-    keycloak.login();
+    keycloak.login({redirectUri: this.baseApiUrl + '/register'});
   }
 
   logout() {
-    keycloak.logout();
-    this.router.navigateByUrl('').then(r => true)
+    keycloak.logout({redirectUri: this.baseApiUrl});
     localStorage.removeItem('token');
   }
 

@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { forkJoin, map } from 'rxjs';
 import { Goal } from 'src/app/models/goal.model';
 import { Program } from 'src/app/models/program.model';
 import { Workout } from 'src/app/models/workout.model';
+import { GoalService } from 'src/app/services/goal.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -21,7 +23,7 @@ export class DashboardDisplayGoalComponent implements OnInit{
   pendingProgramsInGoal: any[] = []
 
   goal: Goal = {
-    goalId: 0,
+    id: 0,
     name: '',
     startDate: '',
     endDate: '',
@@ -42,8 +44,11 @@ export class DashboardDisplayGoalComponent implements OnInit{
   totalCompletedPercentage: number = 0;
   
 
-  constructor( private readonly loginService: LoginService,
-    private readonly userService: UserService) {}
+  constructor( 
+    private readonly loginService: LoginService,
+    private readonly userService: UserService, 
+    private readonly goalService: GoalService,
+    private readonly router: Router) {}
 
     userId: string = this.loginService.getTokenId();
 
@@ -163,4 +168,27 @@ export class DashboardDisplayGoalComponent implements OnInit{
     return completedPercentage;
   }
 
+  // Should fire when all programs and workouts in goal are completed
+  completeGoal():void {
+    this.goalService.completeGoal(this.goal.id, this.goal).subscribe(
+      {
+        error: (error: HttpErrorResponse) => console.log(error), 
+        complete: () => {
+          this.goal.completed = true;
+          this.userService.completeGoalByUser(this.userId).subscribe({
+            complete: () => {this.router.navigate(['/dashboard'])}
+          })
+        }
+      }
+    )
+  }
+  
+  // Should move pending workout to completed workout
+  completeWorkout(userId: String, workoutId: number): void {
+    this.goalService.completeWorkout(userId, workoutId).subscribe()
+  }
+  // Should move pending program to completed program
+  // completeProgram(programId: number): void {
+  //   this.goalService.completeProgram(this.goal.goalId, programId).subscribe()
+  // }
 }
