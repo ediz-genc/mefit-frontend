@@ -115,8 +115,12 @@ export class GoalService {
         );
     }
 
-    completeWorkout(userId: String, workoutId: number): Observable<void> {
-        return this.http.patch<void>(this.baseApiUrl +`/goals/${userId}/workout/${workoutId}`, {});
+    completeWorkout(userId: String, workoutId: number): Observable<Goal> {
+        return this.http.patch<Goal>(this.baseApiUrl +`/goals/${userId}/workout/${workoutId}`, {});
+    }
+
+    completeProgram(userId: String, programId: number): Observable<Goal> {
+        return this.http.patch<Goal>(this.baseApiUrl +`/goals/${userId}/program/${programId}`, {});
     }
 
 

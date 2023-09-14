@@ -75,56 +75,8 @@ export class DashboardDisplayGoalComponent implements OnInit{
       }, error: (error: HttpErrorResponse) => console.log(error), 
       complete: () => {
         this.totalCompletedPercentage = this.calculateCompletedProgramsPercentage();
+        this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.endDate!);
       }})
-
-      
-
-    // // Fetch goal
-    // this.userService.getCurrentGoal(this.userId).subscribe({
-    //   next: (response: Goal) => {this.goal = response},
-    //   error: (error: HttpErrorResponse) => console.log(error)})
-
-    // // Fetch completed workouts
-    // this.userService.getCompletedWorkouts(this.userId).subscribe({
-    //   next: (response) => {this.completedWorkoutsInGoal = response}, 
-    //   error: (error: HttpErrorResponse)=> console.log(error),
-    //   complete: () => {
-    //     this.numberOfCompletedExercises = this.completedWorkouts()
-    //   }
-    // })
-
-    // // Fetch completed programs
-    // this.userService.getCompletedPrograms(this.userId).subscribe({
-    //   next: (response) => {this.completedProgramsInGoal = response}, 
-    //   error: (error: HttpErrorResponse) => console.log(error),
-    //   complete: () => {
-    //     this.numberOfCompletedPrograms = this.completedPrograms()
-    //   }
-    // })
-
-    // // Fetch pending workouts
-    // this.userService.getPendingWorkouts(this.userId).subscribe({
-    //   next: (response) =>{this.pendingWorkoutsInGoal = response}, 
-    //   error: (error: HttpErrorResponse) => console.log(error),
-    //   complete: () => {
-    //     this.numberOfPendingExercises = this.pendingWorkouts()
-    //   }
-    // })
-
-    // // Fetch pending programs
-    // this.userService.getPendingPrograms(this.userId).subscribe({
-    //   next: (response) =>{this.pendingProgramsInGoal = response}, 
-    //   error: (error: HttpErrorResponse) => console.log(error),
-    //   complete: () => {
-    //     this.numberOfPendingPrograms = this.pendingPrograms()
-    //   }
-    // })
-
-      //Get days left
-    //this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.startDate);
-
-    //Get completed percentage
-    this.totalCompletedPercentage = this.calculateCompletedTotalPercentage();
   }
 
   completedWorkouts() : number {
@@ -160,10 +112,10 @@ export class DashboardDisplayGoalComponent implements OnInit{
   calculateCompletedTotalPercentage() : number {
     let completedWorkouts = this.completedWorkouts();
     let completedPrograms = this.completedPrograms();
-    console.log(completedWorkouts, completedPrograms)
+
     let totalWorkouts = this.pendingWorkouts() + completedWorkouts;
     let totalPrograms = this.pendingPrograms() + completedPrograms;
-    console.log(totalWorkouts, totalPrograms)
+
     let completedPercentage = (completedWorkouts + completedPrograms) / (totalWorkouts + totalPrograms) * 100;
     return completedPercentage;
   }
@@ -184,11 +136,24 @@ export class DashboardDisplayGoalComponent implements OnInit{
   }
   
   // Should move pending workout to completed workout
-  completeWorkout(userId: String, workoutId: number): void {
-    this.goalService.completeWorkout(userId, workoutId).subscribe()
+  completeWorkout(workoutId: number): void {
+    this.goalService.completeWorkout(this.userId, workoutId).subscribe({
+      next: (response) => this.goal = response,
+      error: (error: HttpErrorResponse) => console.log(error),
+      complete: () => {
+        this.ngOnInit();
+      }
+    })
   }
+
   // Should move pending program to completed program
-  // completeProgram(programId: number): void {
-  //   this.goalService.completeProgram(this.goal.goalId, programId).subscribe()
-  // }
+  completeProgram(programId: number): void {
+    this.goalService.completeProgram(this.userId, programId).subscribe({
+      next: (response) => this.goal = response,
+      error: (error: HttpErrorResponse) => console.log(error),
+      complete: () => {
+        this.ngOnInit();
+      }
+    })
+  }
 }
