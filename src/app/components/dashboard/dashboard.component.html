@@ -1,6 +1,8 @@
-<div *ngIf="!userHasCurrentGoal()">
-    <app-dashboard-create-goal></app-dashboard-create-goal>
-</div>
-<div *ngIf="userHasCurrentGoal()">
-    <app-dashboard-display-goal></app-dashboard-display-goal>
-</div>
+<body>
+    <div *ngIf="!userHasCurrentGoal()">
+        <app-dashboard-create-goal></app-dashboard-create-goal>
+    </div>
+    <div *ngIf="userHasCurrentGoal()">
+        <app-dashboard-display-goal></app-dashboard-display-goal>
+    </div>
+</body>

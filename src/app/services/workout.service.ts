@@ -78,6 +78,10 @@ export class WorkoutService {
         JSON.stringify(data))
     }
 
+    getWorkoutsWithExercises(): Observable<Workout[]> {
+        return this.http.get<Workout[]>(environment.apiUrl + "/workouts/withexercises");
+    }
+
     
 
 }
