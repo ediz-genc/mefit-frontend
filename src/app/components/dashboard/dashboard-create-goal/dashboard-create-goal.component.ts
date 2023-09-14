@@ -18,19 +18,6 @@ import { WorkoutService } from 'src/app/services/workout.service';
 })
 export class DashboardCreateGoalComponent{
 
-  // goal: Goal = {
-  //   goalId: 0,
-  //   name: '',
-  //   startDate: '',
-  //   endDate: '',
-  //   completed: false,
-  //   userId: 0,
-  //   programs: [],
-  //   completedProgramId: [],
-  //   workoutId: [],
-  //   completedWorkoutId: [],
-  // }
-
   constructor(private readonly goalService: GoalService, 
     private readonly workoutService: WorkoutService, 
     private readonly loginService: LoginService, 
@@ -38,12 +25,13 @@ export class DashboardCreateGoalComponent{
     private readonly programService: ProgramService,
     private readonly userService: UserService){}
 
+    //Get logged in users id
     userId: string = this.loginService.getTokenId();
 
     //Fetched data
-    programs: Program[] = []
-    workouts: Workout[] = []
-    exercises: Exercise[] = []
+    programs: any[] = []
+    workouts: any[] = []
+    exercises: any[] = []
 
     //Lists with selected objects
     selectedPrograms: any[] = []
@@ -85,13 +73,15 @@ export class DashboardCreateGoalComponent{
     });
 
     // Fetch all workouts
-    this.workoutService.getWorkouts().subscribe((response) => {
+    this.workoutService.getWorkoutsWithExercises().subscribe((response) => {
       this.workouts = response;
       console.log(response)
-    });
-    
+    });    
+
   }
 
+
+  // Moves the selected exercise to the selectedExercises-list
   addExerciseToWorkout(){
     if (this.selectedExercise) {
       this.selectedExercises.push(this.selectedExercise);
@@ -100,6 +90,7 @@ export class DashboardCreateGoalComponent{
     }
   }
 
+  // Moves the exercise from selectedExercises back to the exercises-list
   removeExerciseFromWorkout(exercise: Exercise){
     const index = this.selectedExercises.indexOf(exercise);
     if (index !== -1) {
@@ -108,6 +99,7 @@ export class DashboardCreateGoalComponent{
     }
   }
 
+  // Moves the selected program to the selectedPrograms-list
   addProgramToGoal(){
     if (this.selectedProgram) {
       this.selectedPrograms.push(this.selectedProgram);
@@ -116,6 +108,7 @@ export class DashboardCreateGoalComponent{
     }
   }
 
+  // Moves the program from selectedPrograms back to the programs-list
   removeProgramFromGoal(program: Program){
     const index = this.selectedPrograms.indexOf(program);
     if (index !== -1) {
@@ -124,6 +117,7 @@ export class DashboardCreateGoalComponent{
     }
   }
 
+  // Moves the selected workout to the selectedPrograms-list
   addWorkoutToGoal(){
     console.log(this.selectedWorkout)
     if (this.selectedWorkout) {
@@ -133,6 +127,7 @@ export class DashboardCreateGoalComponent{
     }
   }
 
+  // Moves the workout from selectedWorkouts back to the workouts-list
   removeWorkoutFromGoal(workout: Workout){
     const index = this.selectedWorkouts.indexOf(workout);
     if (index !== -1) {
@@ -144,9 +139,12 @@ export class DashboardCreateGoalComponent{
   createNewGoal() {
 
     let goalId: number;
+
+    // Converts workouts and programs to lists with there ids
     this.workoutsIds = this.selectedWorkouts.map((workout) => workout.id)
     this.programIds = this.selectedPrograms.map((program) => program.id)
 
+    // Creating the goal
     const goal: Goal = {
       goalId: 0,
       name: this.goalName,
@@ -160,18 +158,24 @@ export class DashboardCreateGoalComponent{
       completedWorkoutId: []
     }
 
+    // Sends post-request to server -> gets the goal-id in response -> sends a patch-request with the
+    // goal-id to users current goal. 
     this.goalService.createGoal(goal).subscribe({
       next: (response) => goalId = response,
       error: (error: HttpErrorResponse) => console.log(error),
       complete: () =>  (this.userService.addGoalToUser(this.userId, goalId).subscribe())
     })
 
+    // Reset the page
     this.resetPage()
   }
 
   createNewWorkout(){
+
+    // Maps list with exercises to list with exercise-ids
     this.exercisesIds = this.selectedExercises.map((exercise) => exercise.id)
 
+    // Creating a workout-object with collected data
     const workout: Workout = {
       workoutId: 0,
       name: this.workoutName,
@@ -181,8 +185,10 @@ export class DashboardCreateGoalComponent{
       goalId: [],
     }
     
+    // Sends post-request to server
     this.workoutService.createWorkout(workout)
 
+    // Reset the page
     this.resetPage()
   }
 
@@ -230,7 +236,7 @@ export class DashboardCreateGoalComponent{
         });
     
         // Fetch all workouts
-        this.workoutService.getWorkouts().subscribe((response) => {
+        this.workoutService.getWorkoutsWithExercises().subscribe((response) => {
           this.workouts = response;
           console.log(response)
         });
