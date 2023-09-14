@@ -120,4 +120,14 @@ export class UserService {
         });
     }
 
+    completeGoalByUser(id: String): Observable<User> {
+        return this.http.put<any>(this.baseApiUrl + `/users/${id}/goal/finish`,
+        {},
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
+
 }

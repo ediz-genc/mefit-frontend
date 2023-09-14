@@ -149,7 +149,7 @@ export class DashboardCreateGoalComponent{
   
       // Creating the goal
       const goal: Goal = {
-        goalId: 0,
+        id: 0,
         name: this.goalName,
         startDate: this.startDate,
         endDate: this.endDate,
@@ -166,7 +166,7 @@ export class DashboardCreateGoalComponent{
       this.goalService.createGoal(goal).subscribe({
         next: (response) => goalId = response,
         error: (error: HttpErrorResponse) => console.log(error),
-        complete: () =>  (this.userService.addGoalToUser(this.userId, goalId).subscribe())
+        complete: () =>  (this.userService.addGoalToUser(this.userId, goalId).subscribe({complete: () => this.resetPage()}))
       })
   
       // Reset the page

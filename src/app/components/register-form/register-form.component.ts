@@ -62,6 +62,7 @@ export class RegisterFormComponent {
       },
       complete: () => {
         console.log("User added");
+        this.router.navigate(['/dashboard']);
       }
     });
   }
