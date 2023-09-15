@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Exercise } from 'src/app/models/exercise.model';
+
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-workout-item',
@@ -8,7 +9,11 @@ import { Exercise } from 'src/app/models/exercise.model';
 })
 export class WorkoutItemComponent {
 
-
   @Input() exercise!: any;
+  @Input() workoutId!: number;
+
+  
+
+  
 
 }

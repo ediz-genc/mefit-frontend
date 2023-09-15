@@ -7,6 +7,7 @@ import { Program } from 'src/app/models/program.model';
 import { Workout } from 'src/app/models/workout.model';
 import { GoalService } from 'src/app/services/goal.service';
 import { LoginService } from 'src/app/services/login.service';
+import { PerformWorkoutService } from 'src/app/services/perform-workout.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -45,6 +46,7 @@ export class DashboardDisplayGoalComponent implements OnInit{
   
 
   constructor( 
+    private readonly performWorkoutService: PerformWorkoutService,
     private readonly loginService: LoginService,
     private readonly userService: UserService, 
     private readonly goalService: GoalService,
@@ -159,5 +161,10 @@ export class DashboardDisplayGoalComponent implements OnInit{
         this.ngOnInit();
       }
     })
+  }
+
+  performWorkout(workoutId: number): void {
+    this.performWorkoutService.setWorkoutId(workoutId);
+    this.router.navigateByUrl('/perform-workout');
   }
 }
