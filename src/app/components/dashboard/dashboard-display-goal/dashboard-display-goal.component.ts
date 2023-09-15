@@ -76,6 +76,10 @@ export class DashboardDisplayGoalComponent implements OnInit{
       complete: () => {
         this.totalCompletedPercentage = this.calculateCompletedProgramsPercentage();
         this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.endDate!);
+
+        if (this.pendingWorkoutsInGoal.length == 0 && this.pendingProgramsInGoal.length == 0) {
+          this.completeGoal();
+        }
       }})
   }
 
@@ -128,7 +132,7 @@ export class DashboardDisplayGoalComponent implements OnInit{
         complete: () => {
           this.goal.completed = true;
           this.userService.completeGoalByUser(this.userId).subscribe({
-            complete: () => {this.router.navigate(['/dashboard'])}
+            complete: () => {/*This needs to redirect to dashboard view*/this.router.navigateByUrl('/dashboard')}
           })
         }
       }
