@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Exercise } from 'src/app/models/exercise.model';
 import { PerformWorkoutService } from 'src/app/services/perform-workout.service';
 import { WorkoutService } from 'src/app/services/workout.service';
 
@@ -18,14 +19,16 @@ export class PerformWorkoutComponent {
 
     public workouts: any[] = [];
     public workout: any = [];
+    public exercises: any[] = [];
 
+    
     ngOnInit(): void {
       this.workoutService.getWorkoutsWithExercises().subscribe({
         next: (workouts) => this.workouts = workouts,
         error: (error: HttpErrorResponse) => console.log(error),
         complete: () => {
-           this.workout = this.workouts.find((workout: any) => workout.id === this.workoutId)
-           console.log(this.workout.exercises)
+          this.workout = this.workouts.find((workout: any) => workout.id === this.workoutId)
+          this.exercises = this.workout.exercises;
           }
       });
     }

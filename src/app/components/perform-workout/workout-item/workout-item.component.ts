@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Exercise } from 'src/app/models/exercise.model';
 
 @Component({
   selector: 'app-workout-item',
@@ -7,9 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class WorkoutItemComponent {
 
-  constructor() { }
-  
-  ngOnInit(): void {}
 
   @Input() exercise!: any;
 
