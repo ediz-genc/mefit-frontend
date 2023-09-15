@@ -14,8 +14,7 @@ export class HomeComponent {
     private readonly loginService: LoginService) { }
 
   ngOnInit(): void {
-    if (this.loginService.userAuthenticated() == true && this.loginService.tokenSaved() == false) {
-      this.loginService.saveToken();
+    if (this.loginService.userAuthenticated() == true && !this.loginService.userAuthenticated()) {
       this.router.navigateByUrl("register");
     }
   }

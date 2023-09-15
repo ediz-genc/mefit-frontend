@@ -6,6 +6,9 @@ import {ProfileViewComponent} from "./views/profile-view/profile-view.component"
 import {AdminViewComponent} from "./views/admin-view/admin-view.component";
 import {FitnessContentViewComponent} from './views/fitnessContent-view/fitnessContent-view.component';
 import {RegisterViewComponent} from './views/register-view/register-view.component';
+import { AuthGuard } from './guards/auth.guard';
+import { regGuard } from './guards/reg.guard';
+import { adminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
 
@@ -17,27 +20,28 @@ const routes: Routes = [
   {
     path: "dashboard",
     component: DashboardViewComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard, regGuard]
   },
   {
     path: "fitness-content",
     component: FitnessContentViewComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard, regGuard]
   },
   {
     path: "profile",
     component: ProfileViewComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard, regGuard]
+    
   },
   {
     path: "register",
     component: RegisterViewComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: "admin",
     component: AdminViewComponent,
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard, regGuard, adminGuard]
   }
 ];
 

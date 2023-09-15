@@ -15,22 +15,21 @@ export class LoginService {
 
   baseApiUrl = environment.frontEndUrl
 
-  saveToken(): void {
-    localStorage.setItem('token', keycloak.token!);
-  }
-
-  tokenSaved(): boolean {
-    if (localStorage.getItem('token') == null) {
-      return false;
-    }
-    return true;
-  }
-
   userAuthenticated(): boolean {
     if (keycloak.authenticated == true) {
       return true;
     }
     return false;
+  }
+
+  // Returns true if user has keycloak-role "Admin"
+  isAdmin(): boolean{
+    return keycloak.hasRealmRole('Admin');
+  }
+
+  // Returns true if user has keycloak-role "Contributor"
+  isContributor(): boolean{
+    return keycloak.hasRealmRole('Contributor');
   }
 
   login() {
@@ -39,11 +38,6 @@ export class LoginService {
 
   logout() {
     keycloak.logout({redirectUri: this.baseApiUrl});
-    localStorage.removeItem('token');
-  }
-
-  getToken(): string {
-    return localStorage.getItem('token')!;
   }
 
   getTokenId(): string {

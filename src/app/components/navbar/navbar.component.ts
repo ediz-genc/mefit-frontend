@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit{
 
   public currentUser:User = this.userService.getCurrentUser();
   isUserPanelOpen = false;
-  isUserLoggedIn = false;
 
   constructor(
     private readonly router: Router,
@@ -24,7 +23,6 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
     console.log(keycloak.token)
     this.currentUser = this.userService.getCurrentUser();
-    this.isUserLoggedIn = true;
   }
 
   toggleUserPanel() {
@@ -34,16 +32,16 @@ export class NavbarComponent implements OnInit{
     this.isUserPanelOpen = false;
   }
 
-  loggedIn() {
-    this.isUserLoggedIn = true;
+  isLoggedIn(): boolean {
+    return this.loginService.userAuthenticated()
   }
 
-  logout(): void {
+  logout(): void
+  {
     this.loginService.logout();
-    this.isUserLoggedIn = false;
   }
 
-  tokenSaved(): boolean {
-    return this.loginService.tokenSaved();
+  isAdmin(): boolean{
+    return this.loginService.isAdmin();
   }
 }

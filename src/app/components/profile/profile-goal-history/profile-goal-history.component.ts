@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile-goal-history.component.css']
 })
 export class ProfileGoalHistoryComponent {
-  goalHistory: Goal[] = []
+  goalHistory: any[] = []
 
   constructor(private readonly loginService:LoginService, private readonly userService:UserService) {}
   ngOnInit(): void {
@@ -19,6 +19,7 @@ export class ProfileGoalHistoryComponent {
     }, 
       error: (error) => {
         console.log(error);
-    }});
+    }, complete: () =>     console.log(this.goalHistory)
+  });
   }
 }

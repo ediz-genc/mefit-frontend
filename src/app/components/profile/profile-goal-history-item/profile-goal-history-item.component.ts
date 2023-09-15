@@ -7,5 +7,5 @@ import { Goal } from 'src/app/models/goal.model';
   styleUrls: ['./profile-goal-history-item.component.css']
 })
 export class ProfileGoalHistoryItemComponent {
-  @Input() goal!: Goal;
+  @Input() goal!: any;
 }
