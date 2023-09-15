@@ -9,6 +9,8 @@ import {RegisterViewComponent} from './views/register-view/register-view.compone
 import { AuthGuard } from './guards/auth.guard';
 import { regGuard } from './guards/reg.guard';
 import { adminGuard } from './guards/admin.guard';
+import { PerformWorkoutViewComponent } from './views/perform-workout-view/perform-workout-view.component';
+
 
 const routes: Routes = [
 
@@ -42,6 +44,11 @@ const routes: Routes = [
     path: "admin",
     component: AdminViewComponent,
     canActivate:[AuthGuard, regGuard, adminGuard]
+  },
+  {
+    path: "perform-workout",
+    component: PerformWorkoutViewComponent,
+    canActivate:[AuthGuard, regGuard]
   }
 ];
 
