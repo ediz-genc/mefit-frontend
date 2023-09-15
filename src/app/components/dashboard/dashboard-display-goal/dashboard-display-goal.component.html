@@ -21,7 +21,6 @@
                     <p>Name: {{ workout.name }}</p>
                     <p>Description: {{ workout.description }}</p>
                 </div>
-                <app-dashboard-progress-circle percentage="50"></app-dashboard-progress-circle>
             </div>
         </div>
 
@@ -32,7 +31,7 @@
                 <div class="object-container">
                     <p>Name: {{workout.name}}</p>
                     <p>Description: {{workout.description}}</p>
-                    <button (click)="completeWorkout(workout.id)" class="form-button">Completed</button>
+                    <button (click)="performWorkout(workout.id)" class="form-button">Start workout!</button>
                 </div>
             </div>
         </div>

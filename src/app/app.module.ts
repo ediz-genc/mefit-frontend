@@ -29,6 +29,9 @@ import {NgOptimizedImage} from "@angular/common";
 import { DashboardCreateGoalComponent } from './components/dashboard/dashboard-create-goal/dashboard-create-goal.component';
 import { DashboardDisplayGoalComponent } from './components/dashboard/dashboard-display-goal/dashboard-display-goal.component';
 import { DashboardProgressCircleComponent } from './components/dashboard/dashboard-display-goal/dashboard-progress-circle/dashboard-progress-circle.component';
+import { PerformWorkoutViewComponent } from './views/perform-workout-view/perform-workout-view.component';
+import { PerformWorkoutComponent } from './components/perform-workout/perform-workout.component';
+import { WorkoutItemComponent } from './components/perform-workout/workout-item/workout-item.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { DashboardProgressCircleComponent } from './components/dashboard/dashboa
     DashboardCreateGoalComponent,
     DashboardDisplayGoalComponent,
     DashboardProgressCircleComponent,
+    PerformWorkoutViewComponent,
+    PerformWorkoutComponent,
+    WorkoutItemComponent,
   ],
   imports: [
     BrowserModule,
