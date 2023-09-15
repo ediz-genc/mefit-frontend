@@ -9,7 +9,6 @@
       <li *ngIf="!isLoggedIn()"><a routerLink="" routerLinkActive="active" class="home">Home</a></li>
       <li><a routerLink="dashboard" routerLinkActive="active" class="dashboard">Dashboard</a></li>
       <li *ngIf="isLoggedIn()"><a routerLink="profile" routerLinkActive="active" class="profile">Profile</a></li>
-      <li *ngIf="!isLoggedIn()"><a routerLink="register" routerLinkActive="active" class="register">Register User</a></li>
       <li *ngIf="isAdmin()"><a routerLink="admin" routerLinkActive="active" class="admin">Admin</a></li>
     </ul>
     <div class="user-container" *ngIf="isLoggedIn()">

@@ -1,1 +1,5 @@
-<p>perform-workout works!</p>
+<div class="container main">
+    <h1 class="header">Time to work out!</h1>
+    <h3 class="info">When you've finished an exercise, mark it as completed</h3>
+    <app-workout-item *ngFor="let exercise of workout.exercises" exercise="exercise"></app-workout-item>
+</div>
