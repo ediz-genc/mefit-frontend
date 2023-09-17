@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit{
   constructor(public readonly userService: UserService, public readonly loginService: LoginService){}
 
   currentUser: User = {
-    id: "0",
+    id: '',
     username: '',
     profilePicUrl: '',
     bio: '',

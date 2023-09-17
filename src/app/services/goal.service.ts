@@ -70,7 +70,7 @@ export class GoalService {
 
     createGoal(goal: Goal): Observable<any>{
         const data = {
-            id: goal.goalId,
+            id: goal.id,
             name: goal.name,
             startDate: goal.startDate,
             endDate: goal.endDate,
@@ -98,6 +98,30 @@ export class GoalService {
         };
         return this.http.patch<void>(this.baseApiUrl +`/goals/${goalId}`, data);
       }
+
+    completeGoal(goalId: number, goal:any): Observable<void> {
+        return this.http.put<void>(this.baseApiUrl +`/goals/${goalId}`,
+        JSON.stringify({
+            name: goal.name,
+            startDate: goal.startDate,
+            endDate: goal.endDate,
+            completed: true
+        }), 
+        {
+            headers: {
+                'Content-Type': 'application/json'
+        }
+        }
+        );
+    }
+
+    completeWorkout(userId: String, workoutId: number): Observable<Goal> {
+        return this.http.patch<Goal>(this.baseApiUrl +`/goals/${userId}/workout/${workoutId}`, {});
+    }
+
+    completeProgram(userId: String, programId: number): Observable<Goal> {
+        return this.http.patch<Goal>(this.baseApiUrl +`/goals/${userId}/program/${programId}`, {});
+    }
 
 
 

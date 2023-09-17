@@ -6,14 +6,12 @@
     <span id="app-name" style="font-family: cursive;">MeFIT</span>
     <div class="spacer"></div>
     <ul>
-      <li *ngIf="!tokenSaved()"><a routerLink="" routerLinkActive="active" class="home">Home</a></li>
+      <li *ngIf="!isLoggedIn()"><a routerLink="" routerLinkActive="active" class="home">Home</a></li>
       <li><a routerLink="dashboard" routerLinkActive="active" class="dashboard">Dashboard</a></li>
-      <li><a routerLink="fitness-content" routerLinkActive="active" class="fitness-content">Fitness Content</a></li>
-      <li><a routerLink="profile" routerLinkActive="active" class="profile">Profile</a></li>
-      <li><a routerLink="register" routerLinkActive="active" class="register">Register User</a></li>
-      <li><a routerLink="admin" routerLinkActive="active" class="admin">Admin</a></li>
+      <li *ngIf="isLoggedIn()"><a routerLink="profile" routerLinkActive="active" class="profile">Profile</a></li>
+      <li *ngIf="isAdmin()"><a routerLink="admin" routerLinkActive="active" class="admin">Admin</a></li>
     </ul>
-    <div class="user-container" *ngIf="isUserLoggedIn">
+    <div class="user-container" *ngIf="isLoggedIn()">
 
       <button class="btn btn-link" id="user-panel-button" (click)="toggleUserPanel()">
         <ng-container *ngIf="currentUser.profilePicUrl; else avatarImage">

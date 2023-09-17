@@ -1,0 +1,16 @@
+.container {
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.complete-exercise-btn {
+}
+

@@ -1,6 +1,8 @@
 import {Component, Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
+import { UserService } from '../services/user.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-guards',
@@ -13,18 +15,13 @@ import {Observable} from "rxjs";
 })
 
 export class AuthGuard {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService, private loginService: LoginService) { }
+  userExists:boolean = false;
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    const username = sessionStorage.getItem('username');
-    if (username !== null && username !== '') {
-      // The user is logged in, allow navigation
-      return true;
-    } else {
-      // The user is not logged in, redirect to the login page
-      return this.router.parseUrl('/')
-    }
+      return this.loginService.userAuthenticated()
   }
 }
+

@@ -2,6 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import keycloak from "src/keycloak";
 import {Route, Router} from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,7 @@ export class LoginService {
   constructor(private readonly http: HttpClient, private readonly router: Router) {
   }
 
-  saveToken(): void {
-    localStorage.setItem('token', keycloak.token!);
-  }
-
-  tokenSaved(): boolean {
-    if (localStorage.getItem('token') == null) {
-      return false;
-    }
-    return true;
-  }
+  baseApiUrl = environment.frontEndUrl
 
   userAuthenticated(): boolean {
     if (keycloak.authenticated == true) {
@@ -30,18 +22,22 @@ export class LoginService {
     return false;
   }
 
+  // Returns true if user has keycloak-role "Admin"
+  isAdmin(): boolean{
+    return keycloak.hasRealmRole('Admin');
+  }
+
+  // Returns true if user has keycloak-role "Contributor"
+  isContributor(): boolean{
+    return keycloak.hasRealmRole('Contributor');
+  }
+
   login() {
-    keycloak.login();
+    keycloak.login({redirectUri: this.baseApiUrl + '/register'});
   }
 
   logout() {
-    keycloak.logout();
-    this.router.navigateByUrl('').then(r => true)
-    localStorage.removeItem('token');
-  }
-
-  getToken(): string {
-    return localStorage.getItem('token')!;
+    keycloak.logout({redirectUri: this.baseApiUrl});
   }
 
   getTokenId(): string {

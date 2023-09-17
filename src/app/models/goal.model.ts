@@ -3,7 +3,7 @@ import { User } from "./user.model"
 import { Workout } from "./workout.model"
 
 export interface Goal {
-    goalId: number
+    id: number
     name?: string
     startDate?: string
     endDate?: string
