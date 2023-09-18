@@ -8,57 +8,85 @@
     opacity: 0.9;
 }
 
-.header{
-    /* border: 2px solid black;*/
-    margin: 2%; 
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin: 1rem 2rem 0 0;
 }
 
+.column>label,
+.column>input {
+    margin: 0.5rem 0;
+}
+
+input {
+    padding:0.5rem;
+    width: 100%;
+}
 .attributes{
-     border-top: 2px solid black;
-    margin: 2%; 
+    display: flex;
+    flex-direction: row;
 }
 
+hr {
+    width: 100%;
+    margin: 1rem 0.5rem;
+}
 .goal-attributes{
-    /* border-bottom: 2px solid black;*/
-    margin: 2%; 
+    margin: 2rem 0 0;
 }
 
-.add-program-grid{
-    /* border: 2px solid red;  */
-    margin: 2%;
-    display: grid;
-    grid-template-columns: 50%, 50%;
+.add-program-container {
+    display: flex;
+    flex-direction: row;
 }
 
+.program-card,
+.workout-card {
+    margin: 1rem 1rem 0 0;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    border: 1px solid lightgray;
+}
+
+.select-program-input,
+.select-workout-input {
+    width: 100%;
+}
+
+.add-workout-container {
+    display: flex;
+    flex-direction: row;
+}
 .add-workout-grid{
     /* border: 2px solid green;*/
-    margin: 2%; 
 }
 
 .workout-header{
     /* border: 2px solid black;*/
-    margin: 2% 
 }
 
 .workout-attribute{
     /* border: 2px solid orchid;*/
-    margin: 2%; 
 }
 
 .display-box{
     /* border: 2px solid yellow;*/
-    margin: 2%; 
 }
 
 .add-exercise{
     /* border: 2px solid orange;*/
-    margin: 2%; 
 }
 
 input{
     /* border-radius: 5px;*/
     height: 30px; 
-    margin: 2%;
+}
+details {
+    margin: 0.5rem;
 }
 
 select{
@@ -75,7 +103,6 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin: 2%;
 }
   
 button:hover {
@@ -86,19 +113,16 @@ textarea{
     height: 100px;
     width: 600px;
     border-radius: 5px;
-    margin: 2%;
 }
 
 .grid-item{
     /* border: 2px solid black; */
-    margin: 2%;
 }
 
 .grid{
     display: grid;
     grid-template-columns: auto auto auto;
-    border: 2px bold green;
-    margin: 2%;
+    gap: 0.5rem;
 }
 
 img{

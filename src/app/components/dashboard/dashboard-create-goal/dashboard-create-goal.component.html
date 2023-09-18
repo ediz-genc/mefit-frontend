@@ -3,61 +3,61 @@
             <h1>You don't have a current goal &#10006;</h1>
             <p>Please make one to get started!</p>
         </div>
-
+        <hr>
         <!-- Attributes for goal -->
         <div class="attributes">
-            <!-- Goal name -->
-            <div class="goal-attributes">
+            <div class="column">
                 <label for="goalName">Name your goal: </label>
-                <input type="start" id="goalName" [(ngModel)]="goalName" name="goalName" required>
-            </div>
-            <!-- Goal starting-date -->
-            <div class="goal-attributes">
                 <label for="startDate">Starting-date: </label>
-                <input type="date" id="startDate" [(ngModel)]="startDate" name="startDate" required>
-            </div>
-            <!-- Goal ending-date -->
-            <div class="goal-attributes">
                 <label for="endDate">Ending-date: </label>
+            </div>
+            <div class="column">
+                <input type="start" id="goalName" [(ngModel)]="goalName" name="goalName" required>
+                <input type="date" id="startDate" [(ngModel)]="startDate" name="startDate" required>
                 <input type="date" id="endDate" [(ngModel)]="endDate" name="endDate" required>
             </div>
-        </div>
+        </div>  
+        <hr>
 
 
         <!-- Add program -->
-        <div class="add-program-grid">
-            <div class="grid-item">
+        <div class="add-program-container">
+            <div class="column">
                 <label for="program">Select programs: </label>
+            </div>
+            <div class="column">
                 <select class="select-program-input" [(ngModel)]="selectedProgram" id="program" name="selected-program" required>
                     <option *ngFor="let program of programs" [ngValue]="program">{{program.name}}</option>
                 </select>
-                <button (click)="addProgramToGoal()">Add program</button>
             </div>
-            <div class="grid-item">
-                <p *ngIf="selectedProgram != undefined" >{{selectedProgram.name}}</p>
-                <p *ngIf="selectedProgram != undefined" >{{selectedProgram.description}}</p>
-                <p class= "image" *ngIf="selectedProgram != undefined" >
+            <div *ngIf="selectedProgram != undefined" class="program-card">
+                <p >{{selectedProgram.name}}</p>
+                <p >{{selectedProgram.description}}</p>
+                <p class= "image">
                     <img src="{{selectedProgram.imgUrl}}" alt="Picture for {{selectedProgram.name}}">
                 </p>
+                <button (click)="addProgramToGoal()">Add program</button>
             </div>
         </div>
 
         <!-- Add workouts -->
-        <div class="add-workout-grid">
-            <div class="grid-item">
+        <div class="add-workout-container">
+            <div class="column">
                 <label for="workout">Select workouts:</label>
+            </div>
+            <div class="column">
                 <select class="select-workout-input" [(ngModel)]="selectedWorkout" id="workout" name="selected-workout" required>
                     <option *ngFor="let workout of workouts" [ngValue]="workout">{{workout.name}}</option>
                 </select>
-                <button (click)="addWorkoutToGoal()">Add workout</button>
             </div>
-            <div class="grid-item">
-                <h3 *ngIf="selectedWorkout != undefined"> {{selectedWorkout.name}}</h3>
-                <p *ngIf="selectedWorkout != undefined"> {{selectedWorkout.description}}</p>
-                <div class="included-exercises" *ngIf="selectedWorkout != undefined">
-                    <h4>Includes exercises:</h4>
-                        <div *ngFor="let exercise of selectedWorkout.exercises">{{exercise.name}}</div>
-                </div>
+            <div *ngIf="selectedWorkout != undefined" class="workout-card">
+                <h3> {{selectedWorkout.name}}</h3>
+                <p> {{selectedWorkout.description}}</p>
+                <details>
+                    <summary>Includes exercises:</summary>
+                    <div *ngFor="let exercise of selectedWorkout.exercises">{{exercise.name}}</div>
+                </details>
+                <button (click)="addWorkoutToGoal()">Add workout</button>
             </div>
         </div>
 
