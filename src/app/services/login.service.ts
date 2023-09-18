@@ -33,11 +33,11 @@ export class LoginService {
   }
 
   login() {
-    keycloak.login({redirectUri: this.baseApiUrl + '/register'});
+    keycloak.login({redirectUri: 'https://me-fit-frontend-tawny.vercel.app/register'});
   }
 
   logout() {
-    keycloak.logout({redirectUri: this.baseApiUrl});
+    keycloak.logout({redirectUri: 'https://me-fit-frontend-tawny.vercel.app'});
   }
 
   getTokenId(): string {
