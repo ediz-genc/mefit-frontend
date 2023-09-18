@@ -106,7 +106,7 @@ export class GoalService {
             startDate: goal.startDate,
             endDate: goal.endDate,
             completed: true
-        }), 
+        }),
         {
             headers: {
                 'Content-Type': 'application/json'
