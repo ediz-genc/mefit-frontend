@@ -28,7 +28,7 @@ export class ProfileCardComponent implements OnInit {
     }
 
     public currentUser: User = this.userService.getCurrentUser();
-
+    isUserSettingsOpen = false;
     // public currentGoal: Goal = this.goalService.getCurrentGoal()
 
     ngOnInit(): void {
@@ -69,5 +69,8 @@ export class ProfileCardComponent implements OnInit {
         this.workoutService.getWorkouts().subscribe((workouts) => {
             this.completedWorkouts = workouts;
         });
+    }
+    toggleUserSettings() {
+        this.isUserSettingsOpen = !this.isUserSettingsOpen;
     }
 }

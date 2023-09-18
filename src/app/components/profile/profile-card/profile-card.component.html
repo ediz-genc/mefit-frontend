@@ -10,7 +10,11 @@
                 <p class="user-details">Weight: {{currentUser.weight}}</p>
             </div>
         </div>
-        <section class="user-settings" #userSettings>
+        <button (click)="toggleUserSettings()">
+            {{ isUserSettingsOpen ? 'Hide Settings' : 'Edit Profile Settings' }}
+        </button>
+        <hr class="separator">
+        <section class="user-settings" *ngIf="isUserSettingsOpen" #userSettings>
             <h1>Edit Profile Settings</h1>
 
             <div class="form-text">
@@ -29,26 +33,24 @@
             <input type="file" id="profile-picture" name="profile-picture">
 
             <button type="submit">Save Changes</button>
-            <button>Cancel</button>
-
+            <button (click)="toggleUserSettings()">Cancel</button>
         </section>
         <div class="goal-history">
-            <h2>My fitness goal history</h2>
+            <h2 class="my-fitness-goal-history">My fitness goal history</h2>
             <div *ngFor="let goal of goalHistory" class="goal-container">
-                <h3>Goal Title: {{ goal.name }}</h3>
-                <p>Started date: {{ goal.startDate }}</p>
+                <p>Goal Title:{{ goal.name }}</p>
+                <p>Started date:{{ goal.startDate }}</p>
                 <p>Ended date: {{ goal.endDate }}</p>
                 <p>Completed: {{ goal.completed ? 'Yes' : 'No'}}</p>
 
                 <div class="profile-history-container">
-                    <h5>Completed Programs</h5>
+                    <h4 class="completed-programs">Completed Programs</h4>
                     <div *ngFor="let program of completedPrograms">
                         <p>Name: {{ program.name }}</p>
                         <p>Description: {{ program.description }}</p>
                     </div>
-                    >
 
-                    <h5>Completed Workouts</h5>
+                    <h4 class="completed-workouts">Completed Workouts</h4>
                     <div *ngFor="let workout of completedWorkouts">
                         <p>Name: {{ workout.name }}</p>
                         <p>Description: {{ workout.description }}</p>

@@ -26,15 +26,56 @@
 }
 
 .goal-history {
-  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
 }
 .goal-history h2 {
   font-size: 20px;
   margin-bottom: 10px;
+}
+.goal-container {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #bdd7f1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.goal-container p {
+  margin: 5px 0;
+}
+.profile-history-container {
+  margin-top: 10px;
+}
+.profile-history-container > div {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+}
+.profile-history-container > div h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+.profile-history-container > div p {
+  margin: 5px 0;
+}
+.profile-history-container > div:hover {
+  background-color: #e8e8e8;
+  transition: background-color 0.3s ease;
+}
+.my-fitness-goal-history,
+.completed-programs,
+.completed-workouts{
+  text-align: center;
+  font-weight: bold;
 }
 .profile-info p {
   font-size: 16px;
@@ -114,4 +155,8 @@ button:hover {
   border-radius: 5px;
   overflow: auto; /* Add scrollbars if content overflows */
   margin: 20px;
+}
+
+.separator{
+  margin: 10px;
 }
