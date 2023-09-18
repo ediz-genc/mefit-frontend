@@ -6,16 +6,16 @@
     <span id="app-name" style="font-family: cursive;">MeFIT</span>
     <div class="spacer"></div>
     <ul>
-      <li *ngIf="!isLoggedIn()"><a routerLink="" routerLinkActive="active" class="home">Home</a></li>
-      <li><a routerLink="dashboard" routerLinkActive="active" class="dashboard">Dashboard</a></li>
+      <!-- <li *ngIf="!isLoggedIn()"><a routerLink="" routerLinkActive="active" class="home">Home</a></li> -->
+      <li *ngIf="isLoggedIn()"><a routerLink="dashboard" routerLinkActive="active" class="dashboard">Dashboard</a></li>
       <li *ngIf="isLoggedIn()"><a routerLink="profile" routerLinkActive="active" class="profile">Profile</a></li>
       <li *ngIf="isAdmin()"><a routerLink="admin" routerLinkActive="active" class="admin">Admin</a></li>
     </ul>
     <div class="user-container" *ngIf="isLoggedIn()">
 
       <button class="btn btn-link" id="user-panel-button" (click)="toggleUserPanel()">
-        <ng-container *ngIf="currentUser.profilePicUrl; else avatarImage">
-          <img ngSrc="{{currentUser.profilePicUrl}}" alt="Avatar" class="avatar" width="50" height="50">
+        <ng-container *ngIf="this.userPicUrl; else avatarImage">
+          <img ngSrc="{{this.userPicUrl}}" alt="Avatar" class="avatar" width="50" height="50">
         </ng-container>
         <ng-template #avatarImage>
           <img ngSrc="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar" width="50"
@@ -27,8 +27,7 @@
         <button class="close-button" (click)="closeUserPanel()">X</button>
         <h5>Signed in as:</h5>
         <hr class="separator">
-        <p><b>ID:</b> {{currentUser.id}}</p>
-        <p><b>Name:</b> {{currentUser.username}}</p>
+        <p><b>Name:</b> {{this.username}}</p>
         <hr class="separator">
         <li><a routerLink="" routerLinkActive="active" class="logout" (click)="logout()">Logout</a></li>
       </div>

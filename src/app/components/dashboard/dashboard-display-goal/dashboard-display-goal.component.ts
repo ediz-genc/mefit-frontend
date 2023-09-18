@@ -75,7 +75,7 @@ export class DashboardDisplayGoalComponent implements OnInit {
                 this.pendingProgramsInGoal = response.pendingPrograms;
             }, error: (error: HttpErrorResponse) => console.log(error),
             complete: () => {
-                this.totalCompletedPercentage = this.calculateCompletedProgramsPercentage();
+                this.totalCompletedPercentage = this.calculateCompletedWorkoutsPercentage();
                 this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.endDate!);
 
                 if (this.pendingWorkoutsInGoal.length == 0 && this.pendingProgramsInGoal.length == 0) {
@@ -86,11 +86,11 @@ export class DashboardDisplayGoalComponent implements OnInit {
     }
 
     completedWorkouts(): number {
-        return this.completedWorkoutsInGoal.reduce((a, workout) => a + workout.exerciseIds.length, 0);
+        return this.completedWorkoutsInGoal.reduce((a, workout) => a + workout.exerciseId.length, 0);
     }
 
     pendingWorkouts(): number {
-        return this.pendingWorkoutsInGoal.reduce((a, workout) => a + workout.exerciseIds.length, 0);
+        return this.pendingWorkoutsInGoal.reduce((a, workout) => a + workout.exerciseId.length, 0);
     }
 
     completedPrograms(): number {
@@ -112,6 +112,7 @@ export class DashboardDisplayGoalComponent implements OnInit {
         let completedPrograms = this.completedPrograms();
         let totalPrograms = this.pendingPrograms() + completedPrograms;
         let completedPercentage = completedPrograms / totalPrograms * 100;
+        console.log(completedPercentage)
         return completedPercentage;
     }
 
@@ -128,6 +129,7 @@ export class DashboardDisplayGoalComponent implements OnInit {
 
     // Should fire when all programs and workouts in goal are completed
     completeGoal(): void {
+        window.alert('Congratulations! You finished your goal! :)')
         this.goalService.completeGoal(this.goal.id, this.goal).subscribe(
             {
                 error: (error: HttpErrorResponse) => console.log(error),
@@ -135,7 +137,7 @@ export class DashboardDisplayGoalComponent implements OnInit {
                     this.goal.completed = true;
                     this.userService.completeGoalByUser(this.userId).subscribe({
                         complete: () => {/*This needs to redirect to dashboard view*/
-                            this.router.navigateByUrl('/dashboard')
+                            window.location.reload()
                         }
                     })
                 }

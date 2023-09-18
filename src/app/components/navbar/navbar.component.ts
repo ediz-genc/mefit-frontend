@@ -10,10 +10,14 @@ import {User} from "../../models/user.model";
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
 export class NavbarComponent implements OnInit{
 
   public currentUser:User = this.userService.getCurrentUser();
   isUserPanelOpen = false;
+
+  public userPicUrl: string = ''
+  public username: string = '';
 
   constructor(
     private readonly router: Router,
@@ -23,6 +27,7 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
     console.log(keycloak.token)
     this.currentUser = this.userService.getCurrentUser();
+    this.getUsername();
   }
 
   toggleUserPanel() {
@@ -43,5 +48,14 @@ export class NavbarComponent implements OnInit{
 
   isAdmin(): boolean{
     return this.loginService.isAdmin();
+  }
+
+  getUsername(){
+    
+    this.userService.getUserById(this.loginService.getTokenId()).subscribe({
+      next: (user) => {
+        this.username = user.username
+        this.userPicUrl = user.profilePicUrl
+    }})
   }
 }

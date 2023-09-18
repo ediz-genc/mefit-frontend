@@ -169,8 +169,6 @@ export class DashboardCreateGoalComponent{
         complete: () =>  (this.userService.addGoalToUser(this.userId, goalId).subscribe({complete: () => this.resetPage()}))
       })
   
-      // Reset the page
-      this.resetPage()
     }
   }
 
@@ -249,5 +247,7 @@ export class DashboardCreateGoalComponent{
           this.workouts = response;
           console.log(response)
         });
+
+        window.location.reload();
   }
 }
