@@ -2,6 +2,7 @@
 .main-area {
     position: relative;
     min-width: 40%;
+    min-height: 100vh;
 }
   .row{
     display: flex;
@@ -14,5 +15,6 @@
     object-fit: contain;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    background-position: center;
+    height: 100%;
   }

@@ -20,7 +20,7 @@ export class ExerciseService {
     // As a user, you can browse exercises in the application. This includes a filter to view exercises by muscle group, intensity, 
     // or any other relevant fields. 
     getExercises(): Observable<Exercise[]>{
-        return this.http.get<Exercise[]>(`http://localhost:8080/api/v1/exercises`)
+        return this.http.get<Exercise[]>(`${environment.apiUrl}/exercises`)
     }
 
     //Get exercise by id

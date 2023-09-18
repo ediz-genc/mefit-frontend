@@ -4,6 +4,12 @@
     align-items: center;
 }
 
+.container.main {
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+}
 .container-exercises {
     width: 100%;
 }

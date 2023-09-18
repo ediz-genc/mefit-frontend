@@ -20,7 +20,7 @@ export class WorkoutService {
     
     // As a user, you can browse workouts in the application. Workouts can be filtered by type or other tags. Users can view the details of a workout, such as the exercises, sets, and reps for each exercise.
     getWorkouts(): Observable<Workout[]> {
-        return this.http.get<Workout[]>("http://localhost:8080/api/v1/workouts");
+        return this.http.get<Workout[]>(`${environment.apiUrl}/workouts`);
     }
 
     // A user can add a workout to a goal.
@@ -39,7 +39,7 @@ export class WorkoutService {
     // Recommended fitness level
     // An optional image
     
-    createWorkout(workout: Workout): void{
+    createWorkout(workout: Workout): Observable<any>{
         const data ={
             id: workout.workoutId,
             name: workout.name,
@@ -49,14 +49,13 @@ export class WorkoutService {
             goalId: workout.goalId
 
         }
-        const send = this.http.post<Workout>(`${environment.apiUrl}/workouts`, 
+        return this.http.post<Workout>(`${environment.apiUrl}/workouts`, 
         JSON.stringify(data),
         {
             headers: {
                 'Content-Type': 'application/json'
         },
-        }).subscribe()
-        console.log(JSON.stringify(data))
+        })
     }
 
     putWorkout(workout: Workout, workoutId: number): void{

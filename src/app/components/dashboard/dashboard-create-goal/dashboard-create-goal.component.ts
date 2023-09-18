@@ -191,10 +191,10 @@ export class DashboardCreateGoalComponent{
     }
     
     // Sends post-request to server
-    this.workoutService.createWorkout(workout)
+    this.workoutService.createWorkout(workout).subscribe({complete: () => this.resetPage()})
 
     // Reset the page
-    this.resetPage()
+    
     }
 
   }
