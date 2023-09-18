@@ -57,7 +57,7 @@
                 <div class="included-exercises" *ngIf="selectedWorkout != undefined">
                     <h4>Includes exercises:</h4>
                         <div *ngFor="let exercise of selectedWorkout.exercises">{{exercise.name}}</div>
-                </div>                
+                </div>
             </div>
         </div>
 
@@ -94,17 +94,17 @@
 
         <h3 class="workout-header">Customize and create your own workouts based on already different exercises</h3>
         <!-- Attributes for new workout -->
-        <div class="attributes">    
+        <div class="attributes">
             <!-- Workout-name -->
             <div class="workout-attribute">
                 <label for="workoutName">Name your workout: </label>
-                <input type="text" rows="10" id="workoutName" [(ngModel)]="workoutName" name="desc" required>    
+                <input type="text" rows="10" id="workoutName" [(ngModel)]="workoutName" name="desc" required>
             </div>
 
             <!-- Workout-description -->
-            <div class="workout-attribute">  
+            <div class="workout-attribute">
                 <label for="workoutDescription">Describe your workout: </label>
-                <textarea class="input-describe-workout" type="text" id="workout-description" 
+                <textarea class="input-describe-workout" type="text" id="workout-description"
                 [(ngModel)]="workoutDescription" name="desc" required>
                 </textarea>
             </div>
@@ -127,7 +127,7 @@
                     <p>{{exercise.name}} </p>
                     <p>{{exercise.description}}</p>
                     <img src="{{exercise.picUrl}}" alt="Picture for {{exercise.name}}">
-                    <button class="remove-button" (click)="removeExerciseFromWorkout(exercise)">Remove workout</button> 
+                    <button class="remove-button" (click)="removeExerciseFromWorkout(exercise)">Remove workout</button>
                 </div>
             </div>
         </div>
@@ -135,4 +135,3 @@
         <button (click)="createNewWorkout()">Create workout with exercises</button>
 
     </div>
-    

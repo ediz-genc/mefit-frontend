@@ -1,6 +1,6 @@
 
 // View and set goals
-// This view should show the full details pertaining to a goal (weekly workouts). 
+// This view should show the full details pertaining to a goal (weekly workouts).
 
 
 // If a goal has not been set for the week, then the following should be present.
@@ -82,7 +82,7 @@ export class GoalService {
             completedWorkoutId: goal.completedWorkoutId
         }
 
-        return (this.http.post<any>(`${environment.apiUrl}/goals`, 
+        return (this.http.post<any>(`${environment.apiUrl}/goals`,
         JSON.stringify(data),
         {
             headers: {
@@ -106,7 +106,7 @@ export class GoalService {
             startDate: goal.startDate,
             endDate: goal.endDate,
             completed: true
-        }), 
+        }),
         {
             headers: {
                 'Content-Type': 'application/json'
@@ -126,8 +126,8 @@ export class GoalService {
 
 
     //-----------------Contributor-specific actions-----------------//
-     
 
 
-    
+
+
 }

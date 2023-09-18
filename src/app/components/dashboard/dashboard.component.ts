@@ -5,7 +5,6 @@ import { User } from 'src/app/models/user.model';
 import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class DashboardComponent implements OnInit{
 
   constructor(public readonly userService: UserService, public readonly loginService: LoginService){}
-  
+
   currentUser: User = {
     id: '',
     username: '',
@@ -27,10 +26,11 @@ export class DashboardComponent implements OnInit{
     currentGoalId: 0,
     goalHistoryId: []
   };
-  userId: string = ''
 
+  userId: string = this.loginService.getTokenId();
 
   ngOnInit(): void {
+
     this.userId = this.loginService.getTokenId();
 
     // Fetch goal
