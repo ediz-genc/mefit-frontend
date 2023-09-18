@@ -8,12 +8,14 @@ import {Observable} from "rxjs";
 import {User} from "../models/user.model";
 import {environment} from "src/environments/environment";
 import { Goal } from "../models/goal.model";
+import { LoginService } from "./login.service";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
+
 
     private currentUser:User = {
         id: "test",
@@ -26,8 +28,7 @@ export class UserService {
         goalHistoryId: []
     }
 
-    constructor(private http: HttpClient) {}
-
+    constructor(private http: HttpClient, private loginService: LoginService) {}
     
     getCurrentUser() {
         return this.currentUser;
@@ -128,6 +129,11 @@ export class UserService {
                 'Content-Type': 'application/json'
             }
         });
+    }
+
+    userExistsBool(): any{
+        let userExists: boolean 
+        this.userExists(this.loginService.getTokenId()).subscribe({next: (bool) => bool = userExists, complete: () => {return userExists}})
     }
 
 }

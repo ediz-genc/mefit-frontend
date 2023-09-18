@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { regGuard } from './guards/reg.guard';
 import { adminGuard } from './guards/admin.guard';
 import { PerformWorkoutViewComponent } from './views/perform-workout-view/perform-workout-view.component';
+import { homeGuard } from './guards/home.guard';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {
     path: "",
     component: HomeViewComponent,
+    canActivate:[homeGuard]
   },
 
   {
