@@ -9,6 +9,8 @@
     border: 2px solid grey;
     border-radius: 10px;
     padding: 0.5rem;
+    
+
 }
 
 .header-container {
@@ -41,9 +43,10 @@
 }
 
 .form-card {
-    background: lightgray;
+    background: white;
     padding: 2rem;
     border-radius: 1rem;
+    opacity: 0.9;
 }
 
 input {

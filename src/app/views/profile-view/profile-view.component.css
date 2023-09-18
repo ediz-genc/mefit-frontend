@@ -1,0 +1,18 @@
+
+.main-area {
+    position: relative;
+    min-width: 40%;
+}
+  .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+  
+  .main {
+    background-image: url('https://wallpapercave.com/wp/wp2639543.jpg');
+    object-fit: contain;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }

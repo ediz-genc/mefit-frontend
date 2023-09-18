@@ -136,5 +136,4 @@ export class UserService {
         let userExists: boolean 
         this.userExists(this.loginService.getTokenId()).subscribe({next: (bool) => bool = userExists, complete: () => {return userExists}})
     }
-
 }

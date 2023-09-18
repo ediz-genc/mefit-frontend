@@ -79,7 +79,7 @@ export class DashboardDisplayGoalComponent implements OnInit {
                 this.daysLeft = this.userService.getDaysLeftUntilDate(this.goal.endDate!);
 
                 if (this.pendingWorkoutsInGoal.length == 0 && this.pendingProgramsInGoal.length == 0) {
-                    this.completeGoal();
+                    //this.completeGoal();
                 }
             }
         })
@@ -129,7 +129,7 @@ export class DashboardDisplayGoalComponent implements OnInit {
 
     // Should fire when all programs and workouts in goal are completed
     completeGoal(): void {
-        window.alert('Congratulations! You finished your goal! :)')
+        
         this.goalService.completeGoal(this.goal.id, this.goal).subscribe(
             {
                 error: (error: HttpErrorResponse) => console.log(error),
@@ -138,6 +138,8 @@ export class DashboardDisplayGoalComponent implements OnInit {
                     this.userService.completeGoalByUser(this.userId).subscribe({
                         complete: () => {/*This needs to redirect to dashboard view*/
                             window.location.reload()
+                            window.alert('Congratulations! You finished your goal! :)')
+                                
                         }
                     })
                 }

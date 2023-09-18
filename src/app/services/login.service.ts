@@ -14,6 +14,7 @@ export class LoginService {
   }
 
   baseApiUrl = environment.frontEndUrl
+  prodUrl: string = 'https://me-fit-frontend-tawny.vercel.app/'
 
   userAuthenticated(): boolean {
     if (keycloak.authenticated == true) {
@@ -33,11 +34,11 @@ export class LoginService {
   }
 
   login() {
-    keycloak.login({redirectUri: 'https://me-fit-frontend-tawny.vercel.app/register'});
+    keycloak.login({redirectUri: this.baseApiUrl});
   }
 
   logout() {
-    keycloak.logout({redirectUri: 'https://me-fit-frontend-tawny.vercel.app'});
+    keycloak.logout({redirectUri: this.baseApiUrl});
   }
 
   getTokenId(): string {

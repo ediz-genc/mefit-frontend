@@ -63,6 +63,7 @@ export class ProfileCardComponent implements OnInit {
         this.programService.getPrograms().subscribe((programs) => {
             this.completedPrograms = programs;
         });
+        console.log(this.completedPrograms)
     }
 
     fetchCompletedWorkouts() {

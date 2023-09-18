@@ -5,17 +5,20 @@
 }
 
 .form-card {
-    background: lightgray;
+    background: white;
     padding: 2rem;
     border-radius: 1rem;
+    opacity: 0.9;
 }
 
 input {
     margin-bottom: 1rem;
     border-radius: 0.5rem;
-    border: none;
+    border: solid 2px;
     padding: 1rem;
     height: 2rem;
+    background-color: aliceblue;
+    
 }
 
 .row{
@@ -30,5 +33,6 @@ input {
 
 p {
     margin: 0.5rem;
+
 }
 

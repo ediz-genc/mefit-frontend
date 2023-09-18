@@ -200,54 +200,6 @@ export class DashboardCreateGoalComponent{
   }
 
   resetPage(){
-    //Fetched data
-    this.programs = []
-    this.workouts = []
-    this.exercises= []
-  
-    //Lists with selected objects
-    this.selectedPrograms = []
-    this.selectedWorkouts = []
-    this.selectedExercises = []
-  
-    //Lists with ids
-    this.programIds
-    this.workoutsIds
-    this.exercisesIds
-  
-    //Selected objects
-    this.selectedProgram = []
-    this.selectedWorkout = []
-    this.selectedExercise = []
-  
-    //Workout bindings
-    this.workoutName = ''
-    this.workoutDescription = ''
-  
-    //Goal bindings
-    this.goalName = ''
-    this.goalDescription = ''
-    this.startDate = ''
-    this.endDate = ''
-
-        //Fetch all exercises
-        this.exerciseService.getExercises().subscribe((response) => {
-          this.exercises = response;
-          console.log(response)
-        })
-    
-        //Fetch all programs
-        this.programService.getPrograms().subscribe((response) => {
-          this.programs = response;
-          console.log(response)
-        });
-    
-        // Fetch all workouts
-        this.workoutService.getWorkoutsWithExercises().subscribe((response) => {
-          this.workouts = response;
-          console.log(response)
-        });
-
-        window.location.reload();
+    window.location.reload();
   }
 }
