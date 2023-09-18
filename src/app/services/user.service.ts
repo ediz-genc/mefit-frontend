@@ -28,7 +28,7 @@ export class UserService {
 
     constructor(private http: HttpClient) {}
 
-    
+
     getCurrentUser() {
         return this.currentUser;
     }
@@ -39,7 +39,7 @@ export class UserService {
         return this.http.get(this.baseApiUrl + '/users')
     }
 
-    getUserById(id: string) :Observable<User>{ 
+    getUserById(id: string) :Observable<User>{
         return this.http.get<User>(this.baseApiUrl + '/users/' + id);
     }
 
@@ -49,7 +49,7 @@ export class UserService {
 
     addUser(newUser: User) :Observable<any>{
 
-        const userToAdd = this.http.post<User>(this.baseApiUrl + '/users', 
+        const userToAdd = this.http.post<User>(this.baseApiUrl + '/users',
             JSON.stringify(newUser),
             {
                 headers: {
@@ -92,16 +92,16 @@ export class UserService {
 
         // Get the current date
         const currentDate = new Date();
-      
+
         // Create a new Date object for the target date, adjusting month (0-based) and day
         const targetDate = new Date(year, month - 1, day)
-      
+
         // Calculate the time difference in milliseconds
         const timeDifference = targetDate.getTime() - currentDate.getTime();
-      
+
         // Calculate the number of days left
         const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
-      
+
         return daysLeft;
     }
 
@@ -112,7 +112,7 @@ export class UserService {
 
     addGoalToUser(id: String, goalId: number){
         return this.http.patch<any>(this.baseApiUrl + `/users/${id}/goal/${goalId}`, {
-        }, 
+        },
         {
             headers: {
                 'Content-Type': 'application/json'

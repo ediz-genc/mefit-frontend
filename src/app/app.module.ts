@@ -14,7 +14,6 @@ import {AdminViewComponent} from "./views/admin-view/admin-view.component";
 import {DashboardViewComponent} from "./views/dashboard-view/dashboard-view.component";
 import {ProfileViewComponent} from "./views/profile-view/profile-view.component";
 import {DashboardComponent} from './components/dashboard/dashboard.component';
-import {ProfileComponent} from './components/profile/profile.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {AuthInterceptor} from './guards/interceptor/auth.interceptor';
 import {FitnessContentViewComponent} from './views/fitnessContent-view/fitnessContent-view.component';
@@ -46,7 +45,6 @@ import { WorkoutItemComponent } from './components/perform-workout/workout-item/
     DashboardViewComponent,
     ProfileViewComponent,
     DashboardComponent,
-    ProfileComponent,
     AdminComponent,
     FitnessContentViewComponent,
     ProfileCardComponent,
