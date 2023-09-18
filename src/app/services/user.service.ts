@@ -29,8 +29,6 @@ export class UserService {
     }
 
     constructor(private http: HttpClient, private loginService: LoginService) {}
-    
-    constructor(private http: HttpClient) {}
 
 
     getCurrentUser() {
