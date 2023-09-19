@@ -53,7 +53,8 @@ hr {
 }
 
 .select-program-input,
-.select-workout-input {
+.select-workout-input,
+.exercise-dropdown {
     width: 100%;
 }
 
@@ -61,25 +62,21 @@ hr {
     display: flex;
     flex-direction: row;
 }
-.add-workout-grid{
-    /* border: 2px solid green;*/
+
+.row {
+    display: flex;
+    flex-direction: row;
 }
+.btn.row {
+    justify-content: end;
+}
+
 
 .workout-header{
-    /* border: 2px solid black;*/
+    margin-top: 0.5rem;
 }
 
-.workout-attribute{
-    /* border: 2px solid orchid;*/
-}
 
-.display-box{
-    /* border: 2px solid yellow;*/
-}
-
-.add-exercise{
-    /* border: 2px solid orange;*/
-}
 
 input{
     /* border-radius: 5px;*/
@@ -115,14 +112,10 @@ textarea{
     border-radius: 5px;
 }
 
-.grid-item{
-    /* border: 2px solid black; */
-}
-
 .grid{
     display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 0.5rem;
+    grid-template-columns: auto auto;
+    gap: 1rem;
 }
 
 img{

@@ -1,7 +1,7 @@
     <div class="container">
         <div class="header">
             <h1>You don't have a current goal &#10006;</h1>
-            <p>Please make one to get started!</p>
+            <h4>Please make one to get started!</h4>
         </div>
         <hr>
         <!-- Attributes for goal -->
@@ -36,7 +36,10 @@
                 <p class= "image">
                     <img src="{{selectedProgram.imgUrl}}" alt="Picture for {{selectedProgram.name}}">
                 </p>
-                <button (click)="addProgramToGoal()">Add program</button>
+                <div class="btn row">
+                    <button (click)="addProgramToGoal()">Add program</button>
+                </div>
+                
             </div>
         </div>
 
@@ -57,10 +60,13 @@
                     <summary>Includes exercises:</summary>
                     <div *ngFor="let exercise of selectedWorkout.exercises">{{exercise.name}}</div>
                 </details>
-                <button (click)="addWorkoutToGoal()">Add workout</button>
+                <div class="btn row">
+                    <button (click)="addWorkoutToGoal()">Add workout</button>
+                </div>
             </div>
         </div>
 
+        <hr>
         <!-- <div class="info-box">
             <h3>{{selectedProgram.name}}</h3>
             <p>{{selectedProgram.description}}</p>
@@ -69,7 +75,7 @@
 
         <!-- Displaying selected programs -->
         <div class="display-box">
-            <h2>Your selected programs: </h2>
+            <h4>Your selected programs: </h4>
             <div class="grid">
                 <div class="grid-item" *ngFor="let program of selectedPrograms">
                     <p>{{program.name}}</p>
@@ -81,7 +87,7 @@
 
         <!-- Displaying selected workouts -->
         <div class="display-box">
-            <h2>Your selected workouts: </h2>
+            <h4>Your selected workouts: </h4>
             <div class="grid">
                 <div class="grid-item" *ngFor="let workout of selectedWorkouts">
                     <p>{{workout.name}}</p>
@@ -90,34 +96,34 @@
                 </div>
             </div>
         </div>
-        <button class="create-goal-button" (click)="createNewGoal()">Create Goal</button>
-
-        <h3 class="workout-header">Customize and create your own workouts based on already different exercises</h3>
+        <div class="btn row">
+            <button class="create-goal-button" (click)="createNewGoal()">Create Goal</button>
+        </div>
+        <!-- Dropdown to create custom workout-->
+        <details>
+            <summary>Create custom workout</summary>
+            <h3 class="workout-header">Customize and create your own workout</h3>
         <!-- Attributes for new workout -->
-        <div class="attributes">
+        <div class="column">
             <!-- Workout-name -->
-            <div class="workout-attribute">
-                <label for="workoutName">Name your workout: </label>
-                <input type="text" rows="10" id="workoutName" [(ngModel)]="workoutName" name="desc" required>
-            </div>
-
-            <!-- Workout-description -->
-            <div class="workout-attribute">
-                <label for="workoutDescription">Describe your workout: </label>
-                <textarea class="input-describe-workout" type="text" id="workout-description"
-                [(ngModel)]="workoutDescription" name="desc" required>
-                </textarea>
+            <div class="row">
+                <div class="column">
+                    <label for="workoutName">Name your workout: </label>
+                    <label for="workoutDescription">Describe your workout: </label>
+                    <label for="exercise">Select exercises: </label>
+                </div>
+                <div class="column">
+                    <input type="text" rows="10" id="workoutName" [(ngModel)]="workoutName" name="desc" required>
+                    <input class="input-describe-workout" type="text" id="workout-description"
+                    [(ngModel)]="workoutDescription" name="desc" required>
+                    <select [(ngModel)]="selectedExercise" class="exercise-dropdown" name="selectedExercise" required>
+                        <option *ngFor="let exercise of exercises" [ngValue]="exercise"> {{exercise.name}} </option>
+                    </select>
+                </div>
             </div>
         </div>
-
-        <!-- Add exercise -->
-        <div class="add-exercise">
-            <label for="exercise">Select exercises: </label>
-            <select [(ngModel)]="selectedExercise" class="exercise-dropdown" name="selectedExercise" required>
-                <option *ngFor="let exercise of exercises" [ngValue]="exercise"> {{exercise.name}} </option>
-            </select>
             <button (click)="addExerciseToWorkout()">Add to workout</button>
-        </div>
+        
 
         <!-- Display selected exercises -->
         <div class="display-box">
@@ -126,12 +132,16 @@
                 <div class="grid-item" *ngFor="let exercise of selectedExercises">
                     <p>{{exercise.name}} </p>
                     <p>{{exercise.description}}</p>
-                    <img src="{{exercise.picUrl}}" alt="Picture for {{exercise.name}}">
-                    <button class="remove-button" (click)="removeExerciseFromWorkout(exercise)">Remove workout</button>
+                    <img src="{{exercise.imgUrl}}" alt="Picture for {{exercise.name}}">
+                    <button class="remove-button" (click)="removeExerciseFromWorkout(exercise)">X</button>
                 </div>
             </div>
         </div>
-
-        <button (click)="createNewWorkout()">Create workout with exercises</button>
+        <div class="row btn">
+            <button (click)="createNewWorkout()">Create workout with exercises</button>
+        </div>
+            
+        </details>
+        
 
     </div>
