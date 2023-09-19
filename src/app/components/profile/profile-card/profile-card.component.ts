@@ -74,4 +74,9 @@ export class ProfileCardComponent implements OnInit {
     toggleUserSettings() {
         this.isUserSettingsOpen = !this.isUserSettingsOpen;
     }
+
+    saveChanges(){
+        this.userService.updateUserProfile(this.currentUser).subscribe()
+        this.toggleUserSettings()
+    }
 }

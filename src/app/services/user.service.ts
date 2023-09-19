@@ -63,8 +63,15 @@ export class UserService {
 
     // Every user should have a corresponding settings view containing a form to edit their profile settings.
     // They should not be able to change their credentials in MeFit as they are stored on an Identity Provider.
-    updateUserProfile() {
-        return;
+    updateUserProfile(user: User) {
+        const putUser = {
+            username: user.username,
+            profilePicUrl: user.profilePicUrl,
+            bio: user.bio,
+            weight: user.weight,
+            length: user.length
+        }
+        return this.http.put<User>(this.baseApiUrl + `/users/${user.id}`, putUser);
     }
 
     getPendingWorkouts(userId: string): Observable<any>{
