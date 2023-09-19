@@ -42,10 +42,6 @@
             <button (click)="saveChanges()" type="submit">Save Changes</button>
             <button (click)="toggleUserSettings()">Cancel</button>
         </section>
-        <div class="profile-bio">
-            <h2>About Me</h2>
-            <p>{{currentUser.bio}}</p>
-        </div>
         <div class="goal-history">
             <h2 class="my-fitness-goal-history">My fitness goal history</h2>
             <div *ngFor="let goal of goalHistory" class="goal-container">
