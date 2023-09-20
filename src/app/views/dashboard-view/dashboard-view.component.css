@@ -1,8 +1,9 @@
 
-
+/*Potential for media-query!! >700px, max-with:none */
 .main-area {
     position: relative;
     min-width: 40%;
+    max-width: 40%;
     min-height: 100vh;
 }
   .row{

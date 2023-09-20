@@ -1,7 +1,6 @@
 .form-container {
     display: flex;
     flex-direction: column;
-    
 }
 
 .form-card {
@@ -9,6 +8,7 @@
     padding: 2rem;
     border-radius: 1rem;
     opacity: 0.9;
+    margin-top: 2rem;
 }
 
 input {
@@ -36,3 +36,18 @@ p {
 
 }
 
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }

@@ -37,7 +37,7 @@
                     <img src="{{selectedProgram.imgUrl}}" alt="Picture for {{selectedProgram.name}}">
                 </p>
                 <div class="btn row">
-                    <button (click)="addProgramToGoal()">Add program</button>
+                    <button (click)="addProgramToGoal()">+</button>
                 </div>
             </div>
         </div>
@@ -60,26 +60,21 @@
                     <div *ngFor="let exercise of selectedWorkout.exercises">{{exercise.name}}</div>
                 </details>
                 <div class="btn row">
-                    <button (click)="addWorkoutToGoal()">Add workout</button>
+                    <button (click)="addWorkoutToGoal()">+</button>
                 </div>
             </div>
         </div>
 
         <hr>
-        <!-- <div class="info-box">
-            <h3>{{selectedProgram.name}}</h3>
-            <p>{{selectedProgram.description}}</p>
-            <img src="{{selectedProgram.imgUrl}}" alt="">
-        </div> -->
 
         <!-- Displaying selected programs -->
         <div class="display-box">
             <h4>Your selected programs: </h4>
             <div class="grid">
-                <div class="grid-item" *ngFor="let program of selectedPrograms">
+                <div class="added-program-container" *ngFor="let program of selectedPrograms">
                     <p>{{program.name}}</p>
                     <p>{{program.description}}</p>
-                    <button class="remove-button" (click)="removeProgramFromGoal(program)">Remove program</button>
+                    <button class="remove-btn" (click)="removeProgramFromGoal(program)">X</button>
                 </div>
             </div>
         </div>
@@ -88,16 +83,20 @@
         <div class="display-box">
             <h4>Your selected workouts: </h4>
             <div class="grid">
-                <div class="grid-item" *ngFor="let workout of selectedWorkouts">
-                    <p>{{workout.name}}</p>
+                <div class="workout-container" *ngFor="let workout of selectedWorkouts">
+                    <div class="row workout-container-header">
+                        <h4>{{workout.name}}</h4>
+                        <button class="remove-btn" (click)="removeWorkoutFromGoal(workout)">X</button>
+                    </div>
                     <p>{{workout.description}}</p>
-                    <button class="remove-button" (click)="removeWorkoutFromGoal(workout)">Remove workout</button>
                 </div>
             </div>
         </div>
         <div class="btn row">
             <button class="create-goal-button" (click)="createNewGoal()">Create Goal</button>
         </div>
+
+
         <!-- Dropdown to create custom workout-->
         <details>
             <summary>Create custom workout</summary>
@@ -119,25 +118,31 @@
                         <option *ngFor="let exercise of exercises" [ngValue]="exercise"> {{exercise.name}} </option>
                     </select>
                 </div>
+                <div class="column justify-end">
+                    <button class="add-btn" (click)="addExerciseToWorkout()">+</button>
+                </div>
             </div>
         </div>
-            <button (click)="addExerciseToWorkout()">Add to workout</button>
+            
         
 
         <!-- Display selected exercises -->
         <div class="display-box">
             <h2>Your selected exercises: </h2>
             <div class="grid">
-                <div class="grid-item" *ngFor="let exercise of selectedExercises">
-                    <p>{{exercise.name}} </p>
+                <div class="grid-item exercise-container" *ngFor="let exercise of selectedExercises">
+                    <div class="row exercise-container-header">
+                        <h4>{{exercise.name}} </h4>
+                        <button class="remove-btn" (click)="removeExerciseFromWorkout(exercise)">X</button>
+                    </div>
                     <p>{{exercise.description}}</p>
-                    <img src="{{exercise.imgUrl}}" alt="Picture for {{exercise.name}}">
-                    <button class="remove-button" (click)="removeExerciseFromWorkout(exercise)">X</button>
+                    <img src="{{exercise.imgUrl}}" class="exercise-img" alt="Picture for {{exercise.name}}">
+                    
                 </div>
             </div>
         </div>
         <div class="row btn">
-            <button (click)="createNewWorkout()">Create workout with exercises</button>
+            <button (click)="createNewWorkout()" >Create workout with exercises</button>
         </div>
             
         </details>

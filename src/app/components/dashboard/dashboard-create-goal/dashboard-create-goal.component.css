@@ -105,16 +105,27 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+button.remove-btn {
+    background-color: red;
+    padding: 5px 10px;
+    height: 2rem;
+    
+}
+
 
 textarea{
     height: 100px;
     width: 600px;
     border-radius: 5px;
 }
+.column.justify-end {
+    justify-content: end;
+}
 
-.grid{
+.grid {
+    position: relative;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     gap: 1rem;
 }
 
@@ -126,4 +137,29 @@ img{
 
 .included-exercises{
     grid-template-rows: auto;
+}
+
+.exercise-container,
+.workout-container {
+    border: 1px solid lightgray;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.exercise-img {
+    margin-top: 0.3rem;
+}
+
+.row.exercise-container-header,
+.row.workout-container-header {
+    justify-content: space-between;
+}
+
+.display-box {
+    margin: 1rem 0;
+}
+
+h4 {
+    margin-bottom: 0.5rem;
 }
