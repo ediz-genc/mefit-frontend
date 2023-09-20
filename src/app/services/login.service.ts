@@ -34,11 +34,11 @@ export class LoginService {
   }
 
   login() {
-    keycloak.login({redirectUri: this.baseApiUrl});
+    keycloak.login({redirectUri: this.prodUrl});
   }
 
   logout() {
-    keycloak.logout({redirectUri: this.baseApiUrl});
+    keycloak.logout({redirectUri: this.prodUrl});
   }
 
   getTokenId(): string {
