@@ -48,7 +48,7 @@ export class RegisterFormComponent {
   registerUser() {
     const newUser: User = {
       id: this.loginService.getTokenId(), //get ID from jwt token
-      username: this.username,
+      username: this.loginService.getUsername(),
       profilePicUrl: this.profilePicUrl,
       bio: this.bio,
       weight: this.weight,

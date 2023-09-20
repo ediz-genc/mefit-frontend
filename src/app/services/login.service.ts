@@ -44,4 +44,8 @@ export class LoginService {
   getTokenId(): string {
     return keycloak.tokenParsed!.sub!;
   }
+
+  getUsername(): string{
+    return keycloak.tokenParsed!.preferred_username!;
+  }
 }
