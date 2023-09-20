@@ -32,6 +32,7 @@ export class DashboardCreateGoalComponent{
     programs: any[] = []
     workouts: any[] = []
     exercises: any[] = []
+    filteredExercises: any[] = this.exercises
 
     //Lists with selected objects
     selectedPrograms: any[] = []
@@ -58,6 +59,8 @@ export class DashboardCreateGoalComponent{
     startDate: string | undefined
     endDate: string | undefined
 
+    filter: string | undefined
+
   ngOnInit(): void {
     
     //Fetch all exercises
@@ -80,6 +83,14 @@ export class DashboardCreateGoalComponent{
 
   }
 
+  filterFitnessLvl(){
+    if(this.filter != "noFilter"){
+      this.filteredExercises = this.exercises.filter((exercise) => exercise.fitnessLevel == this.filter)
+      console.log(this.filter)
+    }else{
+      this.filteredExercises = this.exercises
+    }
+  }
 
   // Moves the selected exercise to the selectedExercises-list
   addExerciseToWorkout(){

@@ -114,8 +114,15 @@
                     <input type="text" rows="10" id="workoutName" [(ngModel)]="workoutName" name="desc" required>
                     <input class="input-describe-workout" type="text" id="workout-description"
                     [(ngModel)]="workoutDescription" name="desc" required>
+                    <select [(ngModel)]="filter" (ngModelChange)="filterFitnessLvl()">
+                        <option value="Advanced">Advanced</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="noFilter">All</option>
+
+                    </select>
                     <select [(ngModel)]="selectedExercise" class="exercise-dropdown" name="selectedExercise" required>
-                        <option *ngFor="let exercise of exercises" [ngValue]="exercise"> {{exercise.name}} </option>
+                        <option *ngFor="let exercise of filteredExercises" [ngValue]="exercise"> {{exercise.name}} </option>
                     </select>
                 </div>
                 <div class="column justify-end">
