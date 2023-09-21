@@ -76,7 +76,11 @@ export class ProfileCardComponent implements OnInit {
     }
 
     saveChanges(){
-        this.userService.updateUserProfile(this.currentUser).subscribe()
-        this.toggleUserSettings()
+        if(this.currentUser.length == null || this.currentUser.weight == null){
+            window.alert('Weight and height must be inserted!')
+        }else{
+            this.userService.updateUserProfile(this.currentUser).subscribe()
+            this.toggleUserSettings()
+        }
     }
 }
