@@ -57,7 +57,7 @@ export class RegisterFormComponent {
       goalHistoryId: []
     }
 
-    if(isNaN(newUser.weight) && isNaN(newUser.length)){
+    if(isNaN(newUser.weight) || isNaN(newUser.length)){
       window.alert('Weight and hight must be numbers!')
     }else{
       this.userService.addUser(newUser).subscribe({
