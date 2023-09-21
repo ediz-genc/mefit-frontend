@@ -14,8 +14,8 @@ export class RegisterFormComponent {
   username = "";
   profilePicUrl = "";
   bio = "";
-  weight = 0;
-  length = 0;
+  weight: number = 0;
+  length: number = 0;
 
   userExists:boolean = false;
 
@@ -56,14 +56,48 @@ export class RegisterFormComponent {
       currentGoalId: 0,
       goalHistoryId: []
     }
-    this.userService.addUser(newUser).subscribe({
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log("User added");
-        this.router.navigate(['/dashboard']);
-      }
-    });
+
+    if(isNaN(newUser.weight) && isNaN(newUser.length)){
+      window.alert('Weight and hight must be numbers!')
+    }else{
+      this.userService.addUser(newUser).subscribe({
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+          console.log("User added");
+          this.router.navigate(['/dashboard']);
+        }
+      });
+    }
+  }
+
+ // --- ---- ----Error-checking--- ----- ----  
+  checkNumberWeight: boolean = false;
+  checkNumberLength: boolean = false;
+  checkURL: boolean = false;
+
+  checkInput(){
+    if(this.profilePicUrl.length > 255){
+      this.checkURL = true;
+    }else{
+      this.checkURL = false;
+    }
+  }
+
+  checkInputWeight(){
+    if(isNaN(this.weight) || null || undefined){
+      this.checkNumberWeight = true
+    }else{
+      this.checkNumberWeight = false;
+    }
+  }
+
+  checkInputLength(){
+    if(isNaN(this.length) || null || undefined){
+      this.checkNumberLength = true;
+    }else{
+      this.checkNumberLength = false;
+    }
   }
 }

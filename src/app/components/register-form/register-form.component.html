@@ -4,13 +4,16 @@
     <div class="form-container">
         <h2>Please take a minute to register your profile!</h2>
         <p>Profile Image</p>
-        <input type="text" [(ngModel)]="profilePicUrl">
+        <input type="text" [(ngModel)]="profilePicUrl" (input)="checkInput()">
+        <p *ngIf="checkURL" class="check-text">Url can't be longer than 255 characters!</p>
         <p>Present yourself!</p>
         <input type="text" [(ngModel)]="bio">
         <p>Current Weight</p>
-        <input type="text" [(ngModel)]="weight">
+        <input type="text" [(ngModel)]="weight" (input)="checkInputWeight()">
+        <p *ngIf="checkNumberWeight" class="check-text">Must be an integer!</p>
         <p>Height</p>
-        <input type="text" [(ngModel)]="length">
+        <input type="text" [(ngModel)]="length" (input)="checkInputLength()">
+        <p *ngIf="checkNumberLength" class="check-text">Must be a number!</p>
         <div class="row">
             <button (click)="registerUser()" class="accept form-button">Accept</button>
         </div>
