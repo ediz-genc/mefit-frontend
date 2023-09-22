@@ -114,7 +114,7 @@
                     <input type="text" rows="10" id="workoutName" [(ngModel)]="workoutName" name="desc" required>
                     <input class="input-describe-workout" type="text" id="workout-description"
                     [(ngModel)]="workoutDescription" name="desc" required>
-                    <select [(ngModel)]="filter" (ngModelChange)="filterFitnessLvl()">
+                    <select [(ngModel)]="filter" (ngModelChange)="filterFitnessLvl()" class="filter-select">
                         <option value="Advanced">Advanced</option>
                         <option value="Intermediate">Intermediate</option>
                         <option value="Beginner">Beginner</option>

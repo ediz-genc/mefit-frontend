@@ -32,12 +32,12 @@ export class DashboardCreateGoalComponent{
     programs: any[] = []
     workouts: any[] = []
     exercises: any[] = []
-    filteredExercises: any[] = this.exercises
 
     //Lists with selected objects
     selectedPrograms: any[] = []
     selectedWorkouts: any[] = []
     selectedExercises: any[] = []
+    filteredExercises: any[] = []
 
     //Lists with ids
     programIds: number[] = []
@@ -64,10 +64,9 @@ export class DashboardCreateGoalComponent{
   ngOnInit(): void {
     
     //Fetch all exercises
-    this.exerciseService.getExercises().subscribe((response) => {
+    this.exerciseService.getExercises().subscribe({next: (response) => {
       this.exercises = response;
-      console.log(response)
-    })
+    }, complete: () => this.filteredExercises = this.exercises})
 
     //Fetch all programs
     this.programService.getPrograms().subscribe((response) => {

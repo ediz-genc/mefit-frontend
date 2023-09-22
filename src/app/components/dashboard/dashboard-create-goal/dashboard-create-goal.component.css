@@ -163,3 +163,9 @@ img{
 h4 {
     margin-bottom: 0.5rem;
 }
+
+.filter-select{
+    width: 100%;
+    margin-bottom: 2%;
+    height: 15px;
+}
