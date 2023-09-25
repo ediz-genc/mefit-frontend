@@ -100,12 +100,12 @@ _Project tree will be printed here_
 <br>
 
 <div align="center">
-<center><h2 align="center">Views</h2></center>
+<center><h2 align="center"></h2></center>
 </div>
-<br>
-<div align="center">
-<center><img src=" " alt="Teaser"/></center>
-</div>
+
+## Views/Documentation
+> Detailed information about the application can be seen in [Views/Documentation](https://github.com/GustafHasselgren/MeFit-Frontend/wiki/User-Documentation) 
+
 <br>
 
 ## Requirements
