@@ -70,11 +70,6 @@ No more struggling with inconsistent routines, boredom, or lack of motivation. M
 
 Join us today and experience the power of MeFIT as your trusted companion to a fitter, healthier you.
 
-## Project Structure
-
-_Project tree will be printed here_
-
-<br>
 
 ## Features
 
@@ -93,9 +88,7 @@ _Project tree will be printed here_
 - **Login:** Users authenticate their sessions and can register if new to the platform.
 - **Navbar:** A navigation bar with user-specific options, including links to different components.
 - **Dashboard:** Displays progress towards fitness goals, a calendar, and goal-setting options. Provides detailed information on fitness goals, including completed workouts and logging capabilities. For users to apply for contributor roles, with admin approval.
-- **Fitness Library:** Allows users to explore and select fitness programs, workouts, and exercises.
 - **Profile:** Displays user information, including name, picture, bio, and fitness preferences, with the ability to edit settings.
-- **Admin:** A special interface for administrators to manage users and contributor actions.
 
 <br>
 
@@ -106,11 +99,6 @@ _Project tree will be printed here_
 ## Views/Documentation
 > Detailed information about the application can be seen in [Views/Documentation](https://github.com/GustafHasselgren/MeFit-Frontend/wiki/User-Documentation) 
 
-<br>
-
-## Requirements
-
-> Check out the detailed [requirements](https://github.com/GustafHasselgren/MeFit-Frontend/milestones) for the entire project
 <br>
 
 ## Getting started
@@ -165,6 +153,13 @@ the Film API project locally.
 - Now in the system variables go to the path and click the edit button.
 - Click the New button.
 - Now add the following path: %JAVA_HOME%\bin
+
+#### Setting environment variables
+##### The following environment variables are needed by the application
+  * meFit_env : either "dev" or "prod", depending on the environment you want to use. This variable sets what application.properties file to be loaded and used.
+  * meFit_db : URL for postgresql database.
+  * db_user : username for user for postgresql database.
+  * db_pw : password for user for postgresql database.
 
 1. **Clone the Repository**: Clone this Git repository to your local machine using Git or your preferred
    version control tool as shown above.
